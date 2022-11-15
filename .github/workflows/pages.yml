@@ -50,11 +50,14 @@ jobs:
             exit 1
           fi
       - name: Setup Node
+        run: "cd ui"
         uses: actions/setup-node@v3
+        
         with:
           node-version: "16"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
+        run: "cd ui"
         uses: actions/configure-pages@v2
         with:
           # Automatically inject basePath in your Next.js configuration file and disable
@@ -63,6 +66,7 @@ jobs:
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
       - name: Restore cache
+        run: "cd ui"
         uses: actions/cache@v3
         with:
           path: |
