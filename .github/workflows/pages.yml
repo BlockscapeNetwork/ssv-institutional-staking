@@ -24,17 +24,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  _jobWorkflow:
-    runs-on: ubuntu-latest
-    env:
-      working-directory: ./ui
-
   # Build job
   build:
     runs-on: ubuntu-latest
-
-  
-
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -42,12 +35,12 @@ jobs:
         id: detect-package-manager
         working-directory: ui/
         run: |
-          if [ -f "${{ env.working-directory }}/yarn.lock" ]; then
+          if [ -f "${{ github.workspace }}/ui/yarn.lock" ]; then
             echo "::set-output name=manager::yarn"
             echo "::set-output name=command::install"
             echo "::set-output name=runner::yarn"
             exit 0
-          elif [ -f "${{ env.working-directory }}/ui/package.json" ]; then
+          elif [ -f "${{ github.workspace }}/ui/package.json" ]; then
             echo "::set-output name=manager::npm"
             echo "::set-output name=command::ci"
             echo "::set-output name=runner::npx --no-install"
