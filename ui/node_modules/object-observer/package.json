@@ -1,0 +1,64 @@
+{
+	"name": "object-observer",
+	"version": "4.8.0",
+	"description": "object-observer utility provides simple means to (deeply) observe specified object/array changes; implemented via native Proxy; changes delivered in a synchronous way",
+	"keywords": [
+		"object",
+		"array",
+		"observe",
+		"observer",
+		"object observe",
+		"object.observe",
+		"observable",
+		"changes",
+		"deep",
+		"tree",
+		"graph",
+		"javascript",
+		"proxy"
+	],
+	"homepage": "https://github.com/gullerya/object-observer",
+	"bugs": {
+		"url": "https://github.com/gullerya/object-observer/issues",
+		"email": "gullerya@gmail.com"
+	},
+	"license": "ISC",
+	"files": [
+		"dist",
+		"sri.json"
+	],
+	"main": "./dist/object-observer.min.js",
+	"browser": "./dist/object-observer.min.js",
+	"types": "./dist/object-observer.d.ts",
+	"type": "module",
+	"author": {
+		"name": "Yuri Guller",
+		"email": "gullerya@gmail.com"
+	},
+	"funding": [
+		{
+			"url": "https://paypal.me/gullerya?locale.x=en_US"
+		},
+		{
+			"url": "https://tidelift.com/funding/github/npm/object-observer"
+		}
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/gullerya/object-observer"
+	},
+	"scripts": {
+		"build": "node ./ci/tools/build-utils.js",
+		"lint": "eslint -c ./ci/.eslintrc.json ./src/*.js ./tests/*.js ./ci/**/*.js",
+		"test": "node ./node_modules/just-test/dist/tests-runner/run-tests.js --config=./tests/tests-runner-config.json",
+		"version": "npm run build -- --cdn && git add --all",
+		"postversion": "git push && git push --tags"
+	},
+	"devDependencies": {
+		"eslint": "^8.8.0",
+		"fs-extra": "^10.0.0",
+		"just-test": "2.3.2",
+		"puppeteer": "^13.3.1",
+		"uglify-js": "^3.15.1"
+	}
+}

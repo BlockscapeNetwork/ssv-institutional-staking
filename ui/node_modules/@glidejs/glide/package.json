@@ -1,0 +1,59 @@
+{
+  "private": false,
+  "name": "@glidejs/glide",
+  "version": "3.5.2",
+  "description": "Glide.js is a dependency-free JavaScript ES6 slider and carousel. It’s lightweight, flexible and fast. Designed to slide. No less, no more",
+  "author": "Jędrzej Chałubek (https://github.com/jedrzejchalubek/)",
+  "homepage": "https://glidejs.com",
+  "main": "dist/glide.js",
+  "module": "dist/glide.esm.js",
+  "unpkg": "dist/glide.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glidejs/glide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/glidejs/glide/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "simple",
+    "lightweight",
+    "fast",
+    "slider",
+    "carousel",
+    "touch",
+    "responsive"
+  ],
+  "scripts": {
+    "sass:core": "sass src/assets/sass/glide.core.scss:dist/css/glide.core.css && sass src/assets/sass/glide.core.scss:dist/css/glide.core.min.css --style=compressed",
+    "sass:theme": "sass src/assets/sass/glide.theme.scss:dist/css/glide.theme.css && sass src/assets/sass/glide.theme.scss:dist/css/glide.theme.min.css --style=compressed",
+    "build:css": "npm run sass:core && npm run sass:theme",
+    "build:esm": "rollup --config build/esm.js && rollup --config build/esm.modular.js",
+    "build:umd": "rollup --config build/umd.js && rollup --config build/umd.min.js",
+    "build:js": "npm run build:esm && npm run build:umd",
+    "build": "npm run build:css && npm run build:js",
+    "test": "jest tests/**/*.test.js",
+    "lint": "eslint {src,tests}/**/*.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@rollup/plugin-babel": "^5.3.0",
+    "babel-jest": "^27.3.1",
+    "eslint": "^8.3.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-node": "^7.0.0",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^27.3.1",
+    "jsdom": "^18.1.0",
+    "rollup": "^2.50.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.43.4",
+    "stylelint": "^14.1.0",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-scss": "^4.0.0"
+  }
+}

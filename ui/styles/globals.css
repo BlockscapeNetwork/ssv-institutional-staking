@@ -1,0 +1,169 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Quadrata Styling */
+
+.quad-input {
+  display: flex;
+}
+
+
+.quad-section{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+}
+
+.quad-button{
+  background-color: #E79132; 
+  border: none;
+  color: white;
+  padding: 10px 24px;
+  margin: 4px;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+.quad-page{
+  display: flex;
+  flex-direction: column;
+}
+
+.quad-section{
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+}
+
+.quad-error-message{
+  color: red;
+}
+
+
+
+.quad-anchor{
+  color: #E79132;
+}
+
+.quad-field-container{
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+}
+
+.quad-kyb-agree-checkbox{
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+}
+
+.quad-small-textarea {
+  width: 100%;
+  height: 100px;
+  padding-bottom: 155px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+  
+}
+
+.quad-select{
+  background-color: #E79132; 
+  border: none;
+  color: white;
+  padding: 6px 18px;
+  margin: 2px;
+  border-radius: 6px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.quad-ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.quad-kyb-agree-checkbox{
+  display: flex;
+  flex-direction: row;
+}
+.quad-label{
+  font-weight: bold;
+}
+
+.quad-input{
+  background-color: #ffffffa7; 
+  border: 2px solid #E79132;
+  color: rgb(0, 0, 0);
+  padding: 6px 18px;
+  margin: 2px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.quad-textarea{
+  background-color: #ffffffa7; 
+  border: 2px solid #E79132;
+  color: rgb(0, 0, 0);
+  padding: 6px 18px;
+  margin: 2px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+.quad-section-quadrata-logo{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.quad-svg-springlabs-logo{
+  width: 0%;
+  height: 0%;
+  align-self: center
+}
+
+.quad-section-issuer{
+  align-self: left;
+  flex-direction: column;
+  margin: 10px;
+}
+
+
+/* Quadrata Styling */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
