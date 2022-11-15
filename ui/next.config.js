@@ -18,16 +18,6 @@ const nextConfig = {
       },
     ]
   },
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: process.env.NEXT_PUBLIC_BASE_PATH,
-        permanent: false,
-        basePath: false,
-      },
-    ]
-  },
 };
 
 module.exports = nextConfig;
