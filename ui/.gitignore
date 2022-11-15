@@ -10,8 +10,8 @@ ui/package-lock.json
 /coverage
 
 # next.js
-ui//.next/
-ui//out/
+ui/.next/
+ui/out/
 
 # productiom
 /ui/build
