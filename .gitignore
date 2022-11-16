@@ -3,14 +3,14 @@
 # dependencies
 /ui/node_modules
 /ui/.pnp
-ui/.pnp.js
+/ui/.pnp.js
 
 # testing
 /coverage
 
 # next.js
-ui/.next/
-ui/out/
+/ui/.next/
+/ui/out/
 
 # productiom
 /ui/build
