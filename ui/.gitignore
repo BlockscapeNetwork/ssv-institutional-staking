@@ -1,16 +1,16 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/ui/node_modules
-/ui/.pnp
-ui/.pnp.js
+node_modules
+.pnp
+.pnp.js
 
 # testing
 /coverage
 
 # next.js
-ui/.next/
-ui/out/
+.next/
+out/
 
 # productiom
 /ui/build
