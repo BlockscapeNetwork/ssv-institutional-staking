@@ -88,17 +88,18 @@ const Navbar = () => {
                 <li>
                   <Link href={"/rewards"}>Overview</Link>
                 </li>
+                <li>
+                  <Link href={"/partner"}>Partner</Link>
+                </li>
               </ul>
             </div>
             <Link href={"/stake"}>
               <label className="btn btn-ghost normal-case text-xl">
-                <Image
-                  className={inver}
-                  src="/blcs_logo.svg"
-                  width="200px"
-                  height="36px"
+                <img
+                  src={process.env.NEXT_PUBLIC_BASE_PATH+"/logo_bsb_pro.png"}
+                  width="200"
+                  height="36"
                   alt="logo"
-                  quality="100"
                 />
               </label>
             </Link>
@@ -110,6 +111,9 @@ const Navbar = () => {
               </li>
               <li>
                 <Link href={"/rewards"}>Overview</Link>
+              </li>
+              <li>
+                <Link href={"/partner"}>Partner</Link>
               </li>
             </ul>
           </div>
