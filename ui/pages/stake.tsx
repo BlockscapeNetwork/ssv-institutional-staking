@@ -21,7 +21,7 @@ const Staking: NextPage = () => {
 
   const [stakeAmount, setStakeAmount] = useState("0");
   const [statusKYB, setStatusKYB] = useState(
-    "Not Verified KYC/KYB - Become Verified:"
+    "Not Verified KYB - Become Verified:"
   );
   const [verified, setVerified] = useState(false);
 
