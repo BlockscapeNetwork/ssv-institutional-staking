@@ -13,7 +13,7 @@ const nextConfig = {
     return [
       {
         source: '/',
-        destination: '/stake',
+        destination: process.env.NEXT_PUBLIC_BASE_PATH+'/stake',
         permanent: true,
       },
     ]

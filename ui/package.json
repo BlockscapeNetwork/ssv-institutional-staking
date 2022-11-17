@@ -11,13 +11,13 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^0.4.5",
-    "daisyui": "^2.22.0",
-    "ethers": "^5.0.0",
+    "daisyui": "^2.41.0",
+    "ethers": "^5.7.0",
     "next": "^13.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "theme-change": "^2.2.0",
-    "wagmi": "^0.6.0"
+    "wagmi": "^0.8.5"
   },
   "devDependencies": {
     "@apollo/client": "^3.6.9",

@@ -40,6 +40,88 @@
         "anonymous": false,
         "inputs": [
             {
+                "indexed": false,
+                "internalType": "uint8",
+                "name": "version",
+                "type": "uint8"
+            }
+        ],
+        "name": "Initialized",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "_account",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "_caller",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "bytes32[]",
+                "name": "_attributes",
+                "type": "bytes32[]"
+            }
+        ],
+        "name": "QueryBulkEvent",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "_account",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "_caller",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "bytes32",
+                "name": "_attribute",
+                "type": "bytes32"
+            }
+        ],
+        "name": "QueryEvent",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "_receiver",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "_fee",
+                "type": "uint256"
+            }
+        ],
+        "name": "QueryFeeReceipt",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
                 "indexed": true,
                 "internalType": "address",
                 "name": "implementation",
@@ -48,6 +130,44 @@
         ],
         "name": "Upgraded",
         "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "_issuer",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "_treasury",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "_fee",
+                "type": "uint256"
+            }
+        ],
+        "name": "WithdrawEvent",
+        "type": "event"
+    },
+    {
+        "inputs": [],
+        "name": "DIGEST_TO_SIGN",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
     },
     {
         "inputs": [],
@@ -63,53 +183,39 @@
         "type": "function"
     },
     {
-        "inputs": [
-            {
-                "internalType": "bytes32",
-                "name": "_attribute",
-                "type": "bytes32"
-            },
-            {
-                "internalType": "address",
-                "name": "_account",
-                "type": "address"
-            }
-        ],
-        "name": "calculatePaymentETH",
+        "inputs": [],
+        "name": "ISSUER_ROLE",
         "outputs": [
             {
-                "internalType": "uint256",
+                "internalType": "bytes32",
                 "name": "",
-                "type": "uint256"
+                "type": "bytes32"
             }
         ],
         "stateMutability": "view",
         "type": "function"
     },
     {
-        "inputs": [
-            {
-                "internalType": "bytes32",
-                "name": "_attribute",
-                "type": "bytes32"
-            },
-            {
-                "internalType": "address",
-                "name": "_tokenPayment",
-                "type": "address"
-            },
-            {
-                "internalType": "address",
-                "name": "_account",
-                "type": "address"
-            }
-        ],
-        "name": "calculatePaymentToken",
+        "inputs": [],
+        "name": "PAUSER_ROLE",
         "outputs": [
             {
-                "internalType": "uint256",
+                "internalType": "bytes32",
                 "name": "",
-                "type": "uint256"
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "READER_ROLE",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
             }
         ],
         "stateMutability": "view",
@@ -123,40 +229,61 @@
                 "type": "address"
             },
             {
+                "internalType": "bytes32",
+                "name": "_attribute",
+                "type": "bytes32"
+            }
+        ],
+        "name": "balanceOf",
+        "outputs": [
+            {
                 "internalType": "uint256",
-                "name": "_tokenId",
+                "name": "",
                 "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_account",
+                "type": "address"
             },
             {
                 "internalType": "bytes32",
                 "name": "_attribute",
                 "type": "bytes32"
-            },
-            {
-                "internalType": "address",
-                "name": "_tokenAddr",
-                "type": "address"
             }
         ],
         "name": "getAttributes",
         "outputs": [
             {
-                "internalType": "bytes32[]",
-                "name": "",
-                "type": "bytes32[]"
-            },
-            {
-                "internalType": "uint256[]",
-                "name": "",
-                "type": "uint256[]"
-            },
-            {
-                "internalType": "address[]",
-                "name": "",
-                "type": "address[]"
+                "components": [
+                    {
+                        "internalType": "bytes32",
+                        "name": "value",
+                        "type": "bytes32"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "epoch",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "issuer",
+                        "type": "address"
+                    }
+                ],
+                "internalType": "struct IQuadPassportStore.Attribute[]",
+                "name": "attributes",
+                "type": "tuple[]"
             }
         ],
-        "stateMutability": "nonpayable",
+        "stateMutability": "payable",
         "type": "function"
     },
     {
@@ -167,31 +294,67 @@
                 "type": "address"
             },
             {
-                "internalType": "uint256",
-                "name": "_tokenId",
-                "type": "uint256"
-            },
-            {
-                "internalType": "bytes32",
-                "name": "_attribute",
-                "type": "bytes32"
+                "internalType": "bytes32[]",
+                "name": "_attributes",
+                "type": "bytes32[]"
             }
         ],
-        "name": "getAttributesETH",
+        "name": "getAttributesBulk",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "bytes32",
+                        "name": "value",
+                        "type": "bytes32"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "epoch",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "issuer",
+                        "type": "address"
+                    }
+                ],
+                "internalType": "struct IQuadPassportStore.Attribute[]",
+                "name": "",
+                "type": "tuple[]"
+            }
+        ],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_account",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes32[]",
+                "name": "_attributes",
+                "type": "bytes32[]"
+            }
+        ],
+        "name": "getAttributesBulkLegacy",
         "outputs": [
             {
                 "internalType": "bytes32[]",
-                "name": "",
+                "name": "values",
                 "type": "bytes32[]"
             },
             {
                 "internalType": "uint256[]",
-                "name": "",
+                "name": "epochs",
                 "type": "uint256[]"
             },
             {
                 "internalType": "address[]",
-                "name": "",
+                "name": "issuers",
                 "type": "address[]"
             }
         ],
@@ -206,309 +369,30 @@
                 "type": "address"
             },
             {
-                "internalType": "uint256",
-                "name": "_tokenId",
-                "type": "uint256"
-            },
-            {
                 "internalType": "bytes32",
                 "name": "_attribute",
                 "type": "bytes32"
-            },
-            {
-                "internalType": "address[]",
-                "name": "_excluded",
-                "type": "address[]"
             }
         ],
-        "name": "getAttributesETHExcluding",
+        "name": "getAttributesLegacy",
         "outputs": [
             {
                 "internalType": "bytes32[]",
-                "name": "",
+                "name": "values",
                 "type": "bytes32[]"
             },
             {
                 "internalType": "uint256[]",
-                "name": "",
+                "name": "epochs",
                 "type": "uint256[]"
             },
             {
                 "internalType": "address[]",
-                "name": "",
+                "name": "issuers",
                 "type": "address[]"
             }
         ],
         "stateMutability": "payable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_account",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_tokenId",
-                "type": "uint256"
-            },
-            {
-                "internalType": "bytes32",
-                "name": "_attribute",
-                "type": "bytes32"
-            },
-            {
-                "internalType": "address[]",
-                "name": "_onlyIssuers",
-                "type": "address[]"
-            }
-        ],
-        "name": "getAttributesETHIncludingOnly",
-        "outputs": [
-            {
-                "internalType": "bytes32[]",
-                "name": "",
-                "type": "bytes32[]"
-            },
-            {
-                "internalType": "uint256[]",
-                "name": "",
-                "type": "uint256[]"
-            },
-            {
-                "internalType": "address[]",
-                "name": "",
-                "type": "address[]"
-            }
-        ],
-        "stateMutability": "payable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_account",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_tokenId",
-                "type": "uint256"
-            },
-            {
-                "internalType": "bytes32",
-                "name": "_attribute",
-                "type": "bytes32"
-            },
-            {
-                "internalType": "address",
-                "name": "_tokenAddr",
-                "type": "address"
-            },
-            {
-                "internalType": "address[]",
-                "name": "_excluded",
-                "type": "address[]"
-            }
-        ],
-        "name": "getAttributesExcluding",
-        "outputs": [
-            {
-                "internalType": "bytes32[]",
-                "name": "",
-                "type": "bytes32[]"
-            },
-            {
-                "internalType": "uint256[]",
-                "name": "",
-                "type": "uint256[]"
-            },
-            {
-                "internalType": "address[]",
-                "name": "",
-                "type": "address[]"
-            }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_account",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_tokenId",
-                "type": "uint256"
-            },
-            {
-                "internalType": "bytes32",
-                "name": "_attribute",
-                "type": "bytes32"
-            }
-        ],
-        "name": "getAttributesFree",
-        "outputs": [
-            {
-                "internalType": "bytes32[]",
-                "name": "",
-                "type": "bytes32[]"
-            },
-            {
-                "internalType": "uint256[]",
-                "name": "",
-                "type": "uint256[]"
-            },
-            {
-                "internalType": "address[]",
-                "name": "",
-                "type": "address[]"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_account",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_tokenId",
-                "type": "uint256"
-            },
-            {
-                "internalType": "bytes32",
-                "name": "_attribute",
-                "type": "bytes32"
-            },
-            {
-                "internalType": "address[]",
-                "name": "_excluded",
-                "type": "address[]"
-            }
-        ],
-        "name": "getAttributesFreeExcluding",
-        "outputs": [
-            {
-                "internalType": "bytes32[]",
-                "name": "",
-                "type": "bytes32[]"
-            },
-            {
-                "internalType": "uint256[]",
-                "name": "",
-                "type": "uint256[]"
-            },
-            {
-                "internalType": "address[]",
-                "name": "",
-                "type": "address[]"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_account",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_tokenId",
-                "type": "uint256"
-            },
-            {
-                "internalType": "bytes32",
-                "name": "_attribute",
-                "type": "bytes32"
-            },
-            {
-                "internalType": "address[]",
-                "name": "_onlyIssuers",
-                "type": "address[]"
-            }
-        ],
-        "name": "getAttributesFreeIncludingOnly",
-        "outputs": [
-            {
-                "internalType": "bytes32[]",
-                "name": "",
-                "type": "bytes32[]"
-            },
-            {
-                "internalType": "uint256[]",
-                "name": "",
-                "type": "uint256[]"
-            },
-            {
-                "internalType": "address[]",
-                "name": "",
-                "type": "address[]"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_account",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_tokenId",
-                "type": "uint256"
-            },
-            {
-                "internalType": "bytes32",
-                "name": "_attribute",
-                "type": "bytes32"
-            },
-            {
-                "internalType": "address",
-                "name": "_tokenAddr",
-                "type": "address"
-            },
-            {
-                "internalType": "address[]",
-                "name": "_onlyIssuers",
-                "type": "address[]"
-            }
-        ],
-        "name": "getAttributesIncludingOnly",
-        "outputs": [
-            {
-                "internalType": "bytes32[]",
-                "name": "",
-                "type": "bytes32[]"
-            },
-            {
-                "internalType": "uint256[]",
-                "name": "",
-                "type": "uint256[]"
-            },
-            {
-                "internalType": "address[]",
-                "name": "",
-                "type": "address[]"
-            }
-        ],
-        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -519,6 +403,35 @@
                 "internalType": "contract IQuadGovernance",
                 "name": "",
                 "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_account",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "_attribute",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "address",
+                "name": "_issuer",
+                "type": "address"
+            }
+        ],
+        "name": "hasPassportByIssuer",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
             }
         ],
         "stateMutability": "view",
@@ -543,6 +456,30 @@
         "type": "function"
     },
     {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_account",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "_attribute",
+                "type": "bytes32"
+            }
+        ],
+        "name": "latestEpoch",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
         "inputs": [],
         "name": "passport",
         "outputs": [
@@ -550,6 +487,67 @@
                 "internalType": "contract IQuadPassport",
                 "name": "",
                 "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "proxiableUUID",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_account",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "_attribute",
+                "type": "bytes32"
+            }
+        ],
+        "name": "queryFee",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_account",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes32[]",
+                "name": "_attributes",
+                "type": "bytes32[]"
+            }
+        ],
+        "name": "queryFeeBulk",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
             }
         ],
         "stateMutability": "view",
@@ -584,6 +582,24 @@
         "name": "upgradeToAndCall",
         "outputs": [],
         "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address payable",
+                "name": "_to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "withdraw",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
     }
 ]

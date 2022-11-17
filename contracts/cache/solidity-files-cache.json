@@ -623,8 +623,8 @@
       }
     },
     "src/EthAlloc.sol": {
-      "lastModificationDate": 1668597095672,
-      "contentHash": "356b3572a1f2a7a1c3fc98c09a02631b",
+      "lastModificationDate": 1668687490466,
+      "contentHash": "a2ffe77ba681d3f37e77374bf13903bb",
       "sourceName": "src/EthAlloc.sol",
       "solcConfig": {
         "settings": {

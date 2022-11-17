@@ -12,11 +12,10 @@ import {console} from "forge-std/console.sol"; // foundry testing only
 
 // Interface for the KYB contract powered by Quadrata: https://quadrata.com/
 interface IQuadrata {
-    function getAttributesFree(
+    function balanceOf(
         address _account,
-        uint256 _tokenId,
         bytes32 _attribute
-    ) external view returns (bool);
+    ) external view returns (uint256);
 }
 
 // Start of the contract definition
@@ -62,13 +61,18 @@ contract EthAlloc is ReentrancyGuard, Ownable {
         emit PubPoolClosed(allowPubDeposit);
     }
 
-    function verified(address _sender) public view returns (bool) {
-        return
-            IQuadrata(quadrataContract).getAttributesFree(
+     function verified(address _sender) public view returns (bool) {
+        uint256 rslt = 
+            IQuadrata(quadrataContract).balanceOf(
                 _sender,
-                1,
                 is_BUSINESS
             );
+        if (rslt >= 1) {
+            return true;
+        } else {
+            return false;
+        }
+            
     }
 
     function depositEthKYB() public payable nonReentrant {
