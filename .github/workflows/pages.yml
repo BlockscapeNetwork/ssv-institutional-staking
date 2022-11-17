@@ -72,7 +72,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         working-directory: ui/
-        run: ${{ steps.detect-package-manager.outputs.runner }} npm i && next build
+        run: ${{ steps.detect-package-manager.outputs.runner }} npm i && npx next build
       - name: Static HTML export with Next.js
         working-directory: ui/
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
