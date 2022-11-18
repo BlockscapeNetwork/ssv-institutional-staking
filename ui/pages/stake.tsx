@@ -15,6 +15,7 @@ import { ethers } from "ethers";
 import ETHALLOC from "../utils/EthAlloc.json";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
+import { useSSVRegisterValidator } from "../hooks/write/useSSVRegisterValidator";
 
 const Staking: NextPage = () => {
   const { chain } = useNetwork();
@@ -95,10 +96,19 @@ const Staking: NextPage = () => {
     setShowChild(true);
   }, []);
 
+  // Listen for 32 eth collected event
+  // TODO
+  // Then ...
+  // a) deposit
+  // TODO
+  // b) ssv keysplit on backend
+  // TODO
+  // c) call registerValidator on contract
+  // const { data: dataSSV, write: registerVali } = useSSVRegisterValidator();
+
   if (!showChild) {
     return null;
   }
-
   if (typeof window === "undefined") {
     return <></>;
   } else {
