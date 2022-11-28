@@ -21,9 +21,19 @@ export class AppController {
     return this.appService.getBlock(hash);
   }
 
-  @Get('keystore')
+  @Get('key-store')
   getKeyStore(): Promise<string> {
     return this.appService.getKeyStore();
+  }
+
+  @Get('key-threshold')
+  getKeyThreshold(): Promise<any> {
+    return this.appService.getKeyThreshold();
+  }
+
+  @Get('key-shares')
+  getKeyShares(): Promise<any> {
+    return this.appService.getKeyShares();
   }
 
   @Post('register-validator')
