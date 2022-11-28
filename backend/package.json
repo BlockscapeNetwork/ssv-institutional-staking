@@ -28,7 +28,8 @@
     "ethers": "^5.7.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "ssv-keys": "https://github.com/bloxapp/ssv-keys.git"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

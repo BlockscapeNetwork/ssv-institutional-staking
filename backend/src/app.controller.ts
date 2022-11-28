@@ -21,6 +21,11 @@ export class AppController {
     return this.appService.getBlock(hash);
   }
 
+  @Get('keystore')
+  getKeyStore(): Promise<string> {
+    return this.appService.getKeyStore();
+  }
+
   @Post('register-validator')
   registerValidator(): Promise<boolean> {
     return this.appService.registerValidatorSSV();
