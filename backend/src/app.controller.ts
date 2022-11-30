@@ -36,8 +36,8 @@ export class AppController {
     return this.appService.getKeyShares();
   }
 
-  @Post('register-validator')
+  @Get('register-validator-payload')
   registerValidator(): Promise<boolean> {
-    return this.appService.registerValidatorSSV();
+    return this.appService.getRegisterValidatorPayload();
   }
 }
