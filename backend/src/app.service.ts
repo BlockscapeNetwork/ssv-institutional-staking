@@ -119,7 +119,6 @@ export class AppService {
   }
 
   async getNetworkFeeSSV(): Promise<number> {
-    // Get required data from the keystore file
     const netWorkFee = await this.ssvNetworkContract.getNetworkFee();
     return netWorkFee;
   }
@@ -129,7 +128,6 @@ export class AppService {
       this.signer,
     );
     const payloadRegisterValidator = await this.getPayloadRegisterValidator();
-    // Get required data from the keystore file
     const netWorkFee = await ssvNetworkContractWithSigner.registerValidator(
       payloadRegisterValidator[0],
       payloadRegisterValidator[1],
