@@ -18,11 +18,15 @@ const keyStorePW = 'dummy123';
 @Injectable()
 export class AppService {
   provider: ethers.providers.BaseProvider;
-  SSVNetworkContract;
+  ssvNetworkContract;
+  pKey;
+  signer;
 
   constructor() {
     this.provider = ethers.getDefaultProvider('goerli');
-    this.SSVNetworkContract = new ethers.Contract(
+    this.pKey = ethers.Wallet.createRandom();
+    this.signer = new ethers.Wallet(this.pKey, this.provider);
+    this.ssvNetworkContract = new ethers.Contract(
       '0xb9e155e65B5c4D66df28Da8E9a0957f06F11Bc04',
       SSVNetwork.abi,
       this.provider,
@@ -53,10 +57,7 @@ export class AppService {
     const thresholdInstance = new Threshold();
     // Get public key using the keystore password
     const privateKey = await keyStore.getPrivateKey(keyStorePW);
-    const threshold = await thresholdInstance.create(
-      privateKey,
-      [42, 2, 9, 83],
-    );
+    const threshold = await thresholdInstance.create(privateKey, operatorIds);
     return threshold;
   }
 
@@ -115,5 +116,27 @@ export class AppService {
       sharesEncrypted,
       tokenAmount,
     ];
+  }
+
+  async getNetworkFeeSSV(): Promise<number> {
+    // Get required data from the keystore file
+    const netWorkFee = await this.ssvNetworkContract.getNetworkFee();
+    return netWorkFee;
+  }
+
+  async registerValidatorSSV(): Promise<string> {
+    const ssvNetworkContractWithSigner = this.ssvNetworkContract.connect(
+      this.signer,
+    );
+    const payloadRegisterValidator = await this.getPayloadRegisterValidator();
+    // Get required data from the keystore file
+    const netWorkFee = await ssvNetworkContractWithSigner.registerValidator(
+      payloadRegisterValidator[0],
+      payloadRegisterValidator[1],
+      payloadRegisterValidator[3],
+      payloadRegisterValidator[4],
+      payloadRegisterValidator[5],
+    );
+    return netWorkFee;
   }
 }

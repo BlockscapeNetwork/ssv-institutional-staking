@@ -40,4 +40,14 @@ export class AppController {
   getPayloadRegisterValidator(): Promise<any> {
     return this.appService.getPayloadRegisterValidator();
   }
+
+  @Get('network-fee-ssv')
+  getNetworkFeeSSV(): Promise<any> {
+    return this.appService.getNetworkFeeSSV();
+  }
+
+  @Post('register-validator')
+  registerValidator(): Promise<any> {
+    return this.appService.registerValidatorSSV();
+  }
 }
