@@ -128,13 +128,13 @@ export class AppService {
       this.signer,
     );
     const payloadRegisterValidator = await this.getPayloadRegisterValidator();
-    const netWorkFee = await ssvNetworkContractWithSigner.registerValidator(
+    const validator = await ssvNetworkContractWithSigner.registerValidator(
       payloadRegisterValidator[0],
       payloadRegisterValidator[1],
       payloadRegisterValidator[3],
       payloadRegisterValidator[4],
       payloadRegisterValidator[5],
     );
-    return netWorkFee;
+    return validator;
   }
 }
