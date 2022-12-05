@@ -9,7 +9,9 @@ import { KeystoreModule } from './keystore/keystore.module';
     KeystoreModule,
     TypeOrmModule.forRoot({
       type: 'mariadb',
-      host: 'localhost',
+      // uncomment next line for local tests
+      // host: 'localhost',
+      host: 'institutional-staking-backend-database',
       port: 3306,
       username: 'keystore',
       password: 'keystore',
