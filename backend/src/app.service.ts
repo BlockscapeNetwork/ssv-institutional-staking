@@ -25,7 +25,7 @@ export class AppService {
 
   constructor() {
     this.provider = ethers.getDefaultProvider('goerli', {
-      alchemy: "DElz4cgMfsJeX-LChvkiWEA2FlbIeDed",
+      alchemy: 'DElz4cgMfsJeX-LChvkiWEA2FlbIeDed',
     });
     this.pKey = ethers.Wallet.createRandom();
     this.signer = new ethers.Wallet(this.pKey, this.provider);
@@ -111,7 +111,8 @@ export class AppService {
 
     // Token amount (liquidation collateral and operational runway balance to be funded)
     const tokenAmount = web3.utils.toBN(123456789).toString();
-    const operatorIdsString = `${operatorIds.join(',')}`;
+    // const operatorIdsString = `${operatorIds.join(',')}`;
+    const operatorIdsString = Array.from(operatorIds);
 
     // Return all the needed params to build a transaction payload
     return [
@@ -138,12 +139,14 @@ export class AppService {
   }
 
   async registerValidatorSSV(): Promise<string> {
-    const ssvNetworkContractWithSigner = this.ssvNetworkContract.connect(
+    const ssvNetworkContractWithSigner = await this.ssvNetworkContract.connect(
       this.signer,
     );
+    console.log(ssvNetworkContractWithSigner);
+
     const payloadRegisterValidator = await this.getPayloadRegisterValidator();
-    console.log(payloadRegisterValidator);
-    
+    // console.log(payloadRegisterValidator);
+
     const validator = await ssvNetworkContractWithSigner.registerValidator(
       payloadRegisterValidator[0],
       payloadRegisterValidator[1],
