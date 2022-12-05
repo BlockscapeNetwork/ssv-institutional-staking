@@ -1,11 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { ethers } from 'ethers';
-import Web3 from 'web3';
-import { EthereumKeyStore, Encryption, Threshold } from 'ssv-keys';
 import { encode } from 'js-base64';
-import * as SSVNetwork from './assets/SSVNetwork.json';
-import * as dummyKeystore from './assets/keystore-m_12381_3600_0_0_0-1669614977.json';
+import { Encryption, EthereumKeyStore, Threshold } from 'ssv-keys';
+import Web3 from 'web3';
 import * as dummyKeyShares from './assets/keyshares-20221204_061539.json';
+import * as dummyKeystore from './assets/keystore-m_12381_3600_0_0_0-1669614977.json';
+import * as SSVNetwork from './assets/SSVNetwork.json';
 
 const operators = [
   'LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBNVV3SFltUnJoL3hwbWovd1RHcWwKLysvZEdNWFFlSkg0VUptSjNNWXhyMUU0aGF4ZkhLK3NzSkhXYzYvbWlpRTdZMTBxcy9sNzRvNHdGNnJ2SXYrVApTYnQ2UjdONXNKYUZsYnZ3M2ZCampiZElQTnBHQ0JTaXl3aTc3M3lQZy8vOG04OHMxNTNwYjZmVnViU2QxMzJWClpEZkhmMEdPdnA4b0hxcHY5ampsQ0NlV2phNXUzVzhqN2RwWDBsQTYvaTJRaW4yN3VESHViMHd1eWFEcGprNDcKWG1tOHV2d1VFTWw1L0trREg3Z2FXUjNzNkluZjR4TVpKbHEvMGplVkdoUll5bHg3RFE1WnVBNDNCSGNGMWtxMAo3ZHU0ejFUQ2tFN0ZIZlZRMTdFUnpwUHlmS2l5YlQ4UXdnb3VVV2hGUjJqK3ExbHZGbHJQR0U2OWpIWE9MVWM0CnV3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K',
@@ -24,8 +24,15 @@ export class AppService {
   signer;
 
   constructor() {
-    this.provider = ethers.getDefaultProvider('goerli');
-    this.pKey = ethers.Wallet.createRandom();
+    // this.provider = ethers.getDefaultProvider('goerli', {
+    //   alchemy: 'DElz4cgMfsJeX-LChvkiWEA2FlbIeDed',
+    // });
+    this.provider = new ethers.providers.AlchemyProvider(
+      'goerli',
+      'DElz4cgMfsJeX-LChvkiWEA2FlbIeDed',
+    );
+    this.pKey =
+      '6e8cc7f2229ded17fa35e4ce458034c6e9e19bb6a2d128e01f6b1e0e863fc9ac';
     this.signer = new ethers.Wallet(this.pKey, this.provider);
     this.ssvNetworkContract = new ethers.Contract(
       '0xb9e155e65B5c4D66df28Da8E9a0957f06F11Bc04',
@@ -40,7 +47,8 @@ export class AppService {
 
   // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   getBlock(blockNumberOrTag = 'latest'): Promise<ethers.providers.Block> {
-    return ethers.getDefaultProvider('goerli').getBlock(blockNumberOrTag);
+    // return ethers.getDefaultProvider('goerli').getBlock(blockNumberOrTag);
+    return this.provider.getBlock(blockNumberOrTag);
   }
 
   async getKeyStore(): Promise<string> {
@@ -108,7 +116,8 @@ export class AppService {
 
     // Token amount (liquidation collateral and operational runway balance to be funded)
     const tokenAmount = web3.utils.toBN(123456789).toString();
-    const operatorIdsString = `${operatorIds.join(',')}`;
+    // const operatorIdsString = `${operatorIds.join(',')}`;
+    const operatorIdsString = Array.from(operatorIds);
 
     // Return all the needed params to build a transaction payload
     return [
@@ -135,17 +144,57 @@ export class AppService {
   }
 
   async registerValidatorSSV(): Promise<string> {
-    const ssvNetworkContractWithSigner = this.ssvNetworkContract.connect(
+    const ssvNetworkContractWithSigner = await this.ssvNetworkContract.connect(
       this.signer,
     );
-    const payloadRegisterValidator = await this.getPayloadRegisterValidator();
-    const validator = await ssvNetworkContractWithSigner.registerValidator(
-      payloadRegisterValidator[0],
-      payloadRegisterValidator[1],
-      payloadRegisterValidator[2],
-      payloadRegisterValidator[3],
-      payloadRegisterValidator[4],
+
+    console.log(
+      'Balance:',
+      ethers.utils.formatEther(await this.signer.getBalance()),
+      'eth | Address:',
+      await this.signer.getAddress(),
     );
-    return validator;
+
+    const payloadRegisterValidator = await this.getPayloadRegisterValidator();
+
+    try {
+      const tx = await ssvNetworkContractWithSigner.registerValidator(
+        payloadRegisterValidator[0],
+        payloadRegisterValidator[1],
+        payloadRegisterValidator[2],
+        payloadRegisterValidator[3],
+        payloadRegisterValidator[4],
+
+        {
+          gasLimit: 100000,
+          // nonce: nonce || undefined,
+        },
+      );
+      await tx.wait();
+
+      console.log(
+        `\x1b[32m Success\x1b[0m Created Validator ${payloadRegisterValidator[0]}`,
+      );
+
+      return tx;
+    } catch (err) {
+      console.error(
+        `\x1b[31m FAILED\x1b[0m tx: ${err.transactionHash}`,
+        'revert reason:',
+        err.reason,
+      );
+      throw new HttpException(
+        `Could not create validator`,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
+    // await signer.sendTransaction(tx);
+    // console.log(tx);
+    // tx.wait();
+    // console.log('tx pending...');
+    // console.log('\x1b[5m...\x1b[0m');
+    // const txReceipt = await tx.wait();
+    // console.log(txReceipt.status);
   }
 }
