@@ -2,11 +2,11 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Keystore } from './keystore/keystore.entity';
+import { KeystoreModule } from './keystore/keystore.module';
 
 @Module({
   imports: [
-    Keystore,
+    KeystoreModule,
     TypeOrmModule.forRoot({
       type: 'mariadb',
       host: 'localhost',
