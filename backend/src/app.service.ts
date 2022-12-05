@@ -24,8 +24,15 @@ export class AppService {
   signer;
 
   constructor() {
-    this.provider = ethers.getDefaultProvider('goerli');
-    this.pKey = ethers.Wallet.createRandom();
+    // this.provider = ethers.getDefaultProvider('goerli', {
+    //   alchemy: 'DElz4cgMfsJeX-LChvkiWEA2FlbIeDed',
+    // });
+    this.provider = new ethers.providers.AlchemyProvider(
+      'goerli',
+      'DElz4cgMfsJeX-LChvkiWEA2FlbIeDed',
+    );
+    this.pKey =
+      '6e8cc7f2229ded17fa35e4ce458034c6e9e19bb6a2d128e01f6b1e0e863fc9ac';
     this.signer = new ethers.Wallet(this.pKey, this.provider);
     this.ssvNetworkContract = new ethers.Contract(
       '0xb9e155e65B5c4D66df28Da8E9a0957f06F11Bc04',
@@ -40,7 +47,8 @@ export class AppService {
 
   // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   getBlock(blockNumberOrTag = 'latest'): Promise<ethers.providers.Block> {
-    return ethers.getDefaultProvider('goerli').getBlock(blockNumberOrTag);
+    // return ethers.getDefaultProvider('goerli').getBlock(blockNumberOrTag);
+    return this.provider.getBlock(blockNumberOrTag);
   }
 
   async getKeyStore(): Promise<string> {
@@ -108,7 +116,8 @@ export class AppService {
 
     // Token amount (liquidation collateral and operational runway balance to be funded)
     const tokenAmount = web3.utils.toBN(123456789).toString();
-    const operatorIdsString = `${operatorIds.join(',')}`;
+    // const operatorIdsString = `${operatorIds.join(',')}`;
+    const operatorIdsString = Array.from(operatorIds);
 
     // Return all the needed params to build a transaction payload
     return [
@@ -135,17 +144,37 @@ export class AppService {
   }
 
   async registerValidatorSSV(): Promise<string> {
-    const ssvNetworkContractWithSigner = this.ssvNetworkContract.connect(
+    const ssvNetworkContractWithSigner = await this.ssvNetworkContract.connect(
       this.signer,
     );
+
+    console.log(
+      'Balance:',
+      ethers.utils.formatEther(await this.signer.getBalance()),
+      'eth | Address:',
+      await this.signer.getAddress(),
+    );
+
     const payloadRegisterValidator = await this.getPayloadRegisterValidator();
-    const validator = await ssvNetworkContractWithSigner.registerValidator(
+
+    const tx = await ssvNetworkContractWithSigner.registerValidator(
       payloadRegisterValidator[0],
       payloadRegisterValidator[1],
       payloadRegisterValidator[2],
       payloadRegisterValidator[3],
       payloadRegisterValidator[4],
+
+      {
+        gasLimit: 100000,
+        // nonce: nonce || undefined,
+      },
     );
-    return validator;
+    // await signer.sendTransaction(tx);
+    // console.log(tx);
+    console.log(
+      `\x1b[32m Created Validator ${payloadRegisterValidator[0]}\x1b[0m`,
+    );
+
+    return tx;
   }
 }
