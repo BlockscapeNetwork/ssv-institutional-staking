@@ -41,6 +41,11 @@ export class AppController {
     return this.appService.getPayloadRegisterValidator();
   }
 
+  @Get('payload-register-validator-cli-pre-generated')
+  getPayloadRegisterValidatorCliPreGenerated(): Promise<any> {
+    return this.appService.getPayloadRegisterValidatorFromCliSplit();
+  }
+
   @Get('network-fee-ssv')
   getNetworkFeeSSV(): Promise<any> {
     return this.appService.getNetworkFeeSSV();

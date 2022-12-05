@@ -5,6 +5,7 @@ import { EthereumKeyStore, Encryption, Threshold } from 'ssv-keys';
 import { encode } from 'js-base64';
 import * as SSVNetwork from './assets/SSVNetwork.json';
 import * as dummyKeystore from './assets/keystore-m_12381_3600_0_0_0-1669614977.json';
+import * as dummyKeyShares from './assets/keyshares-20221204_061539.json';
 
 const operators = [
   'LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBNVV3SFltUnJoL3hwbWovd1RHcWwKLysvZEdNWFFlSkg0VUptSjNNWXhyMUU0aGF4ZkhLK3NzSkhXYzYvbWlpRTdZMTBxcy9sNzRvNHdGNnJ2SXYrVApTYnQ2UjdONXNKYUZsYnZ3M2ZCampiZElQTnBHQ0JTaXl3aTc3M3lQZy8vOG04OHMxNTNwYjZmVnViU2QxMzJWClpEZkhmMEdPdnA4b0hxcHY5ampsQ0NlV2phNXUzVzhqN2RwWDBsQTYvaTJRaW4yN3VESHViMHd1eWFEcGprNDcKWG1tOHV2d1VFTWw1L0trREg3Z2FXUjNzNkluZjR4TVpKbHEvMGplVkdoUll5bHg3RFE1WnVBNDNCSGNGMWtxMAo3ZHU0ejFUQ2tFN0ZIZlZRMTdFUnpwUHlmS2l5YlQ4UXdnb3VVV2hGUjJqK3ExbHZGbHJQR0U2OWpIWE9MVWM0CnV3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K',
@@ -94,6 +95,7 @@ export class AppService {
     });
     const web3 = new Web3();
     // Loop through the operators and encode them as ABI parameters
+    // not required?!
     const operatorsPublicKeys = operators.map((operator) =>
       web3.eth.abi.encodeParameter('string', encode(operator)),
     );
@@ -106,16 +108,25 @@ export class AppService {
 
     // Token amount (liquidation collateral and operational runway balance to be funded)
     const tokenAmount = web3.utils.toBN(123456789).toString();
+    const operatorIdsString = `${operatorIds.join(',')}`;
 
     // Return all the needed params to build a transaction payload
     return [
       threshold.validatorPublicKey,
-      `[${operatorIds.join(',')}]`,
-      operatorsPublicKeys,
+      operatorIdsString,
       sharesPublicKeys,
       sharesEncrypted,
       tokenAmount,
     ];
+  }
+
+  async getPayloadRegisterValidatorFromCliSplit(): Promise<any> {
+    // key splitted via cli
+    const payload = JSON.stringify(dummyKeyShares);
+    const payloadRegisterValidator = JSON.parse(payload);
+
+    // Return all the needed params to build a transaction payload
+    return payloadRegisterValidator;
   }
 
   async getNetworkFeeSSV(): Promise<number> {
@@ -131,9 +142,9 @@ export class AppService {
     const validator = await ssvNetworkContractWithSigner.registerValidator(
       payloadRegisterValidator[0],
       payloadRegisterValidator[1],
+      payloadRegisterValidator[2],
       payloadRegisterValidator[3],
       payloadRegisterValidator[4],
-      payloadRegisterValidator[5],
     );
     return validator;
   }
