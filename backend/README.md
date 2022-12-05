@@ -78,7 +78,6 @@ verb saddle thank winter chicken music laundry maximum course wool start involve
 ### Password:
 dummy123
 
-
 ## Run Docker-Compose
 
 ```bash
@@ -96,3 +95,7 @@ node version: v18.12.1
 npm version: v9.1.3
 
 nest version: v9.2.0
+
+install workbench:
+
+brew install --cask mysqlworkbench
