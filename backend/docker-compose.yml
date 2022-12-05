@@ -2,7 +2,7 @@ version: '2'
 services:
   mysql:
     container_name: mariadb10
-    image: mariadb:10.3.14
+    image: mariadb:10.9.4
     environment:
       MYSQL_ROOT_PASSWORD: 'keystore' # TODO: Change this
     ports:
