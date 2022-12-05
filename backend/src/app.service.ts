@@ -106,11 +106,12 @@ export class AppService {
 
     // Token amount (liquidation collateral and operational runway balance to be funded)
     const tokenAmount = web3.utils.toBN(123456789).toString();
+    const operatorIdsArray = `[${operatorIds.join(',')}]`;
 
     // Return all the needed params to build a transaction payload
     return [
       threshold.validatorPublicKey,
-      `[${operatorIds.join(',')}]`,
+      operatorIds,
       operatorsPublicKeys,
       sharesPublicKeys,
       sharesEncrypted,
