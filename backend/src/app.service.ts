@@ -24,7 +24,9 @@ export class AppService {
   signer;
 
   constructor() {
-    this.provider = ethers.getDefaultProvider('goerli');
+    this.provider = ethers.getDefaultProvider('goerli', {
+      alchemy: "DElz4cgMfsJeX-LChvkiWEA2FlbIeDed",
+    });
     this.pKey = ethers.Wallet.createRandom();
     this.signer = new ethers.Wallet(this.pKey, this.provider);
     this.ssvNetworkContract = new ethers.Contract(
@@ -40,7 +42,8 @@ export class AppService {
 
   // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   getBlock(blockNumberOrTag = 'latest'): Promise<ethers.providers.Block> {
-    return ethers.getDefaultProvider('goerli').getBlock(blockNumberOrTag);
+    // return ethers.getDefaultProvider('goerli').getBlock(blockNumberOrTag);
+    return this.provider.getBlock(blockNumberOrTag);
   }
 
   async getKeyStore(): Promise<string> {
@@ -139,6 +142,8 @@ export class AppService {
       this.signer,
     );
     const payloadRegisterValidator = await this.getPayloadRegisterValidator();
+    console.log(payloadRegisterValidator);
+    
     const validator = await ssvNetworkContractWithSigner.registerValidator(
       payloadRegisterValidator[0],
       payloadRegisterValidator[1],
