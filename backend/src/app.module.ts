@@ -15,8 +15,8 @@ import { SsvModule } from './ssv/ssv.module';
       //host: 'localhost',
       host: 'institutional-staking-backend-database',
       port: 3306,
-      username: 'keystore',
-      password: 'keystore',
+      username: 'root',
+      password: '',
       database: 'keystore',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       // disable synchronize: true in production
