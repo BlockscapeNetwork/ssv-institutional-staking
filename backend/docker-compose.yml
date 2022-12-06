@@ -1,0 +1,16 @@
+version: '2'
+services:
+  mysql:
+    container_name: mariadb10
+    image: mariadb:10.9.4
+    environment:
+      MYSQL_ROOT_PASSWORD: 'keystore' # TODO: Change this
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - './initdb-keystore.sql:/docker-entrypoint-initdb.d/initdb-keystore.sql'
+      - 'mysql:/var/lib/mysql'
+volumes:
+  mysql:

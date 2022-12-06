@@ -78,4 +78,24 @@ verb saddle thank winter chicken music laundry maximum course wool start involve
 ### Password:
 dummy123
 
+## Run Docker-Compose
 
+```bash
+$ docker-compose up
+```
+or in detached mode:
+```bash
+$ docker-compose up -d
+```
+
+## Info
+
+node version: v18.12.1
+
+npm version: v9.1.3
+
+nest version: v9.2.0
+
+install workbench:
+
+brew install --cask mysqlworkbench
