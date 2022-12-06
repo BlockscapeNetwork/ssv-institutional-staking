@@ -13,7 +13,7 @@ import { SsvModule } from './ssv/ssv.module';
       type: 'mariadb',
       // uncomment next line for local tests
       //host: 'localhost',
-      host: 'institutional-staking-backend-database',
+      host: 'mariadb',
       port: 3306,
       username: 'root',
       password: 'keystore',
