@@ -4,7 +4,7 @@ import { EthereumKeyStore } from "ssv-keys";
 import * as dummyKeystore from '../assets/keystore-m_12381_3600_0_0_0-1669614977.json';
 
 interface Key {
-  id: string,
+  id?: string,
   key: string
 }
 
@@ -19,7 +19,7 @@ export class SsvService {
     const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
     // Get public key using the keystore password
     const publicKey = await keyStore.getPublicKey();
-    const key: Key = null;
+    const key: Key = {key: null};
     key.key = publicKey;
     this.keyStoreService.addKeystore(key);
     return publicKey;

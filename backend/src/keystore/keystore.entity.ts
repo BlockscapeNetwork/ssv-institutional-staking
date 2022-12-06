@@ -5,7 +5,7 @@ import { ApiProperty } from '@nestjs/swagger';
 export class Keystore {
   @ApiProperty()
   @PrimaryGeneratedColumn()
-  id: string;
+  id?: string;
 
   @ApiProperty()
   @Column()
