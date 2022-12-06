@@ -3,10 +3,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { KeystoreModule } from './keystore/keystore.module';
+import { SsvModule } from './ssv/ssv.module';
 
 @Module({
   imports: [
     KeystoreModule,
+    SsvModule,
     TypeOrmModule.forRoot({
       type: 'mariadb',
       // uncomment next line for local tests

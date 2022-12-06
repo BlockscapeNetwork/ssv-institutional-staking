@@ -51,14 +51,14 @@ export class AppService {
     return this.provider.getBlock(blockNumberOrTag);
   }
 
-  async getKeyStore(): Promise<string> {
-    // Get required data from the keystore file
-    const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
-    // Get public key using the keystore password
-    const publicKey = await keyStore.getPublicKey();
-    const privateKey = await keyStore.getPrivateKey(keyStorePW);
-    return privateKey;
-  }
+  // async getKeyStore(): Promise<string> {
+  //   // Get required data from the keystore file
+  //   const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
+  //   // Get public key using the keystore password
+  //   const publicKey = await keyStore.getPublicKey();
+  //   const privateKey = await keyStore.getPrivateKey(keyStorePW);
+  //   return privateKey;
+  // }
 
   async getKeyThreshold(): Promise<any> {
     // Get required data from the keystore file
