@@ -12,7 +12,7 @@ import { SsvModule } from './ssv/ssv.module';
     TypeOrmModule.forRoot({
       type: 'mariadb',
       // uncomment next line for local tests
-      //host: 'localhost',
+      // host: 'localhost',
       host: 'institutional-staking-backend-mariadb',
       port: 3306,
       username: 'root',
@@ -20,7 +20,7 @@ import { SsvModule } from './ssv/ssv.module';
       database: 'keystore',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       // disable synchronize: true in production
-      // synchronize: true,
+      synchronize: true,
       logging: true,
     }),
   ],
