@@ -20,7 +20,7 @@ import { SsvModule } from './ssv/ssv.module';
       database: 'keystore',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       // disable synchronize: true in production
-      synchronize: true,
+      // synchronize: true,
       logging: true,
     }),
   ],
