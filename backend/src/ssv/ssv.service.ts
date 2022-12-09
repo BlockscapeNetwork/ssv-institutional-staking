@@ -1,11 +1,16 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { KeystoreService } from 'src/keystore/keystore.service';
 import { ethers } from 'ethers';
+import Web3 from 'web3';
 import { encode } from 'js-base64';
 import { Encryption, EthereumKeyStore, Threshold } from 'ssv-keys';
-import Web3 from 'web3';
-import * as dummyKeyShares from './assets/keyshares-20221204_061539.json';
-import * as dummyKeystore from './assets/keystore-m_12381_3600_0_0_0-1669614977.json';
-import * as SSVNetwork from './assets/SSVNetwork.json';
+import * as dummyKeystore from '../assets/keystore-m_12381_3600_0_0_0-1669614977.json';
+import * as SSVNetwork from '../assets/SSVNetwork.json';
+
+interface Key {
+  id?: string;
+  key: string;
+}
 
 const operators = [
   'LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBNVV3SFltUnJoL3hwbWovd1RHcWwKLysvZEdNWFFlSkg0VUptSjNNWXhyMUU0aGF4ZkhLK3NzSkhXYzYvbWlpRTdZMTBxcy9sNzRvNHdGNnJ2SXYrVApTYnQ2UjdONXNKYUZsYnZ3M2ZCampiZElQTnBHQ0JTaXl3aTc3M3lQZy8vOG04OHMxNTNwYjZmVnViU2QxMzJWClpEZkhmMEdPdnA4b0hxcHY5ampsQ0NlV2phNXUzVzhqN2RwWDBsQTYvaTJRaW4yN3VESHViMHd1eWFEcGprNDcKWG1tOHV2d1VFTWw1L0trREg3Z2FXUjNzNkluZjR4TVpKbHEvMGplVkdoUll5bHg3RFE1WnVBNDNCSGNGMWtxMAo3ZHU0ejFUQ2tFN0ZIZlZRMTdFUnpwUHlmS2l5YlQ4UXdnb3VVV2hGUjJqK3ExbHZGbHJQR0U2OWpIWE9MVWM0CnV3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K',
@@ -17,16 +22,13 @@ const operatorIds = [42, 2, 9, 83];
 const keyStorePW = 'dummy123';
 
 @Injectable()
-export class AppService {
+export class SsvService {
   provider: ethers.providers.BaseProvider;
   ssvNetworkContract;
   pKey;
   signer;
 
-  constructor() {
-    // this.provider = ethers.getDefaultProvider('goerli', {
-    //   alchemy: 'DElz4cgMfsJeX-LChvkiWEA2FlbIeDed',
-    // });
+  constructor(private keyStoreService: KeystoreService) {
     this.provider = new ethers.providers.AlchemyProvider(
       'goerli',
       'DElz4cgMfsJeX-LChvkiWEA2FlbIeDed',
@@ -41,53 +43,18 @@ export class AppService {
     );
   }
 
-  getHello(): string {
-    return 'Hello World!';
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
-  getBlock(blockNumberOrTag = 'latest'): Promise<ethers.providers.Block> {
-    // return ethers.getDefaultProvider('goerli').getBlock(blockNumberOrTag);
-    return this.provider.getBlock(blockNumberOrTag);
-  }
-
-  // async getKeyStore(): Promise<string> {
-  //   // Get required data from the keystore file
-  //   const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
-  //   // Get public key using the keystore password
-  //   const publicKey = await keyStore.getPublicKey();
-  //   const privateKey = await keyStore.getPrivateKey(keyStorePW);
-  //   return privateKey;
-  // }
-
-  async getKeyThreshold(): Promise<any> {
+  async getKeyStore(): Promise<string> {
     // Get required data from the keystore file
     const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
-    const thresholdInstance = new Threshold();
     // Get public key using the keystore password
-    const privateKey = await keyStore.getPrivateKey(keyStorePW);
-    const threshold = await thresholdInstance.create(privateKey, operatorIds);
-    return threshold;
+    const publicKey = await keyStore.getPublicKey();
+    const key: Key = { key: null };
+    key.key = publicKey;
+    this.keyStoreService.addKeystore(key);
+    return publicKey;
   }
 
-  async getKeyShares(): Promise<any> {
-    // Get required data from the keystore file
-    const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
-    const thresholdInstance = new Threshold();
-    // Get public key using the keystore password
-    const privateKey = await keyStore.getPrivateKey(keyStorePW);
-    const threshold = await thresholdInstance.create(privateKey, operatorIds);
-    let shares = new Encryption(operators, threshold.shares).encrypt();
-    // Loop through the operators RSA keys and format them as base64
-    shares = shares.map((share) => {
-      share.operatorPublicKey = encode(share.operatorPublicKey);
-      // Return the operator key and KeyShares (sharePublicKey & shareEncrypted)
-      return share;
-    });
-    return shares;
-  }
-
-  async getPayloadRegisterValidator(): Promise<any> {
+  async getPayloadForRegisterValidator(): Promise<any> {
     // Get required data from the keystore file
     const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
     const thresholdInstance = new Threshold();
@@ -129,20 +96,6 @@ export class AppService {
     ];
   }
 
-  async getPayloadRegisterValidatorFromCliSplit(): Promise<any> {
-    // key splitted via cli
-    const payload = JSON.stringify(dummyKeyShares);
-    const payloadRegisterValidator = JSON.parse(payload);
-
-    // Return all the needed params to build a transaction payload
-    return payloadRegisterValidator;
-  }
-
-  async getNetworkFeeSSV(): Promise<number> {
-    const netWorkFee = await this.ssvNetworkContract.getNetworkFee();
-    return netWorkFee;
-  }
-
   async registerValidatorSSV(): Promise<string> {
     const ssvNetworkContractWithSigner = await this.ssvNetworkContract.connect(
       this.signer,
@@ -155,7 +108,8 @@ export class AppService {
       await this.signer.getAddress(),
     );
 
-    const payloadRegisterValidator = await this.getPayloadRegisterValidator();
+    const payloadRegisterValidator =
+      await this.getPayloadForRegisterValidator();
 
     try {
       const tx = await ssvNetworkContractWithSigner.registerValidator(

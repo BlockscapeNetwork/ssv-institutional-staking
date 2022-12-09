@@ -4,7 +4,8 @@ services:
     container_name: mariadb10
     image: mariadb:10.9.4
     environment:
-      MYSQL_ROOT_PASSWORD: 'keystore' # TODO: Change this
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: '1'
+      MARIADB_ROOT_PASSWORD: 'keystore' # TODO: Change this
     ports:
       - '3306:3306'
     expose:

@@ -3,17 +3,19 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { KeystoreModule } from './keystore/keystore.module';
+import { SsvModule } from './ssv/ssv.module';
 
 @Module({
   imports: [
     KeystoreModule,
+    SsvModule,
     TypeOrmModule.forRoot({
       type: 'mariadb',
       // uncomment next line for local tests
-      host: 'localhost',
-      // host: 'institutional-staking-backend-database',
+      // host: 'localhost',
+      host: 'institutional-staking-backend-mariadb',
       port: 3306,
-      username: 'keystore',
+      username: 'root',
       password: 'keystore',
       database: 'keystore',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],

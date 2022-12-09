@@ -21,10 +21,10 @@ export class AppController {
     return this.appService.getBlock(hash);
   }
 
-  @Get('key-store')
-  getKeyStore(): Promise<string> {
-    return this.appService.getKeyStore();
-  }
+  // @Get('key-store')
+  // getKeyStore(): Promise<string> {
+  //   return this.appService.getKeyStore();
+  // }
 
   @Get('key-threshold')
   getKeyThreshold(): Promise<any> {
