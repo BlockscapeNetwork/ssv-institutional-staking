@@ -4,8 +4,11 @@ import { ethers } from 'ethers';
 import Web3 from 'web3';
 import { encode } from 'js-base64';
 import { Encryption, EthereumKeyStore, Threshold } from 'ssv-keys';
-import * as dummyKeystore from '../assets/keystore-m_12381_3600_0_0_0-1669614977.json';
+import * as dummyKeystore from '../assets/keystore-m_12381_3600_0_0_0-1671183610.json';
+import * as dummyKeyShares from '../assets/keyshares-20221212_092356.json';
 import * as SSVNetwork from '../assets/SSVNetwork.json';
+import * as SSVToken from '../assets/SSVToken.json';
+import * as EthAlloc from '../assets/EthAlloc.json';
 
 interface Key {
   id?: string;
@@ -25,6 +28,8 @@ const keyStorePW = 'dummy123';
 export class SsvService {
   provider: ethers.providers.BaseProvider;
   ssvNetworkContract;
+  ssvTokenContract;
+  ethAllocContract;
   pKey;
   signer;
 
@@ -39,6 +44,16 @@ export class SsvService {
     this.ssvNetworkContract = new ethers.Contract(
       '0xb9e155e65B5c4D66df28Da8E9a0957f06F11Bc04',
       SSVNetwork.abi,
+      this.provider,
+    );
+    this.ssvTokenContract = new ethers.Contract(
+      '0x3a9f01091C446bdE031E39ea8354647AFef091E7',
+      SSVToken.abi,
+      this.signer,
+    );
+    this.ethAllocContract = new ethers.Contract(
+      '0xf235770a3eb1ff6bfdf06defd0ebcb66a6865da9',
+      EthAlloc.abi,
       this.provider,
     );
   }
@@ -82,14 +97,14 @@ export class SsvService {
     );
 
     // Token amount (liquidation collateral and operational runway balance to be funded)
-    const tokenAmount = web3.utils.toBN(123456789).toString();
+    const tokenAmount = web3.utils.toBN(15342395400000000000).toString();
     // const operatorIdsString = `${operatorIds.join(',')}`;
-    const operatorIdsString = Array.from(operatorIds);
+    const operatorIdsArray = Array.from(operatorIds);
 
     // Return all the needed params to build a transaction payload
     return [
       threshold.validatorPublicKey,
-      operatorIdsString,
+      operatorIdsArray,
       sharesPublicKeys,
       sharesEncrypted,
       tokenAmount,
@@ -101,6 +116,7 @@ export class SsvService {
       this.signer,
     );
 
+
     console.log(
       'Balance:',
       ethers.utils.formatEther(await this.signer.getBalance()),
@@ -110,28 +126,40 @@ export class SsvService {
 
     const payloadRegisterValidator =
       await this.getPayloadForRegisterValidator();
+    const action = 'registerValidator';
+
+    await this.ssvTokenContract.approve('0xb9e155e65B5c4D66df28Da8E9a0957f06F11Bc04', payloadRegisterValidator[4])
+
+
+    // const opIDs = await this.ethAllocContract.getOperators();
+    // console.log(opIDs);
+    // ethAlloc.depositSSV(opIDs, 15342395400000000000);
 
     try {
-      const tx = await ssvNetworkContractWithSigner.registerValidator(
-        payloadRegisterValidator[0],
-        payloadRegisterValidator[1],
-        payloadRegisterValidator[2],
-        payloadRegisterValidator[3],
-        payloadRegisterValidator[4],
+      // const tx = await ssvNetworkContractWithSigner.registerValidator(
+      //   dummyKeyShares.payload.readable.validatorPublicKey,
+      //   opIDs,
+      //   dummyKeyShares.payload.readable.sharePublicKeys,
+      //   dummyKeyShares.payload.readable.sharePrivateKey,
+      //   dummyKeyShares.payload.readable.ssvAmount,
 
-        {
-          gasLimit: 100000,
-          // nonce: nonce || undefined,
-        },
-      );
-      await tx.wait();
+      //   {
+      //     gasLimit: 100000,
+      //     // nonce: nonce || undefined,
+      //   },
+      // );
+      // await tx.wait();
 
-      console.log(
-        `\x1b[32m Success\x1b[0m Created Validator ${payloadRegisterValidator[0]}`,
-      );
+      const unsignedTx = await ssvNetworkContractWithSigner.populateTransaction[action](...payloadRegisterValidator);
+      const tx = await this.signer.sendTransaction(unsignedTx);
+
+      // console.log(
+      //   `\x1b[32m Success\x1b[0m Created Validator ${payloadRegisterValidator[0]}`,
+      // );
 
       return tx;
     } catch (err) {
+      console.log(err)
       console.error(
         `\x1b[31m FAILED\x1b[0m tx: ${err.transactionHash}`,
         'revert reason:',

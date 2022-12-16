@@ -6,6 +6,7 @@ import {console} from "forge-std/console.sol";
 import {EthAlloc} from "src/EthAlloc.sol";
 
 contract EthAllocTest is Test {
+    uint256 testNumber;
     EthAlloc ethAlloc;
     address internal deployer;
     address internal singleStaker;
@@ -16,6 +17,8 @@ contract EthAllocTest is Test {
     address internal poolStaker5;
 
     function setUp() public {
+        testNumber = 42;
+
         deployer = vm.addr(0xDe);
         vm.deal(deployer, 100 ether);
         vm.label(deployer, "deployer");
@@ -52,6 +55,10 @@ contract EthAllocTest is Test {
     }
 
     // positive testcases
+    function testNumberIs42() public {
+        assertEq(testNumber, 42);
+    }
+    
     function testRandomsCanCreatePubPoolAndWithdraw() public {
         vm.prank(poolStaker1);
         ethAlloc.depositEthKYB{value: 1 ether}();
