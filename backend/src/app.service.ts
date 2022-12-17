@@ -45,12 +45,6 @@ export class AppService {
     return 'Hello World!';
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
-  getBlock(blockNumberOrTag = 'latest'): Promise<ethers.providers.Block> {
-    // return ethers.getDefaultProvider('goerli').getBlock(blockNumberOrTag);
-    return this.provider.getBlock(blockNumberOrTag);
-  }
-
   async getKeyThreshold(): Promise<any> {
     // Get required data from the keystore file
     const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
