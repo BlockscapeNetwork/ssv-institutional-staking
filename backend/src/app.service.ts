@@ -41,10 +41,6 @@ export class AppService {
     );
   }
 
-  getHello(): string {
-    return 'Hello World!';
-  }
-
   async getPayloadRegisterValidator(): Promise<any> {
     // Get required data from the keystore file
     const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
