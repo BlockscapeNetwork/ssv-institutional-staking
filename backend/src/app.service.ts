@@ -45,33 +45,6 @@ export class AppService {
     return 'Hello World!';
   }
 
-  async getKeyThreshold(): Promise<any> {
-    // Get required data from the keystore file
-    const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
-    const thresholdInstance = new Threshold();
-    // Get public key using the keystore password
-    const privateKey = await keyStore.getPrivateKey(keyStorePW);
-    const threshold = await thresholdInstance.create(privateKey, operatorIds);
-    return threshold;
-  }
-
-  async getKeyShares(): Promise<any> {
-    // Get required data from the keystore file
-    const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
-    const thresholdInstance = new Threshold();
-    // Get public key using the keystore password
-    const privateKey = await keyStore.getPrivateKey(keyStorePW);
-    const threshold = await thresholdInstance.create(privateKey, operatorIds);
-    let shares = new Encryption(operators, threshold.shares).encrypt();
-    // Loop through the operators RSA keys and format them as base64
-    shares = shares.map((share) => {
-      share.operatorPublicKey = encode(share.operatorPublicKey);
-      // Return the operator key and KeyShares (sharePublicKey & shareEncrypted)
-      return share;
-    });
-    return shares;
-  }
-
   async getPayloadRegisterValidator(): Promise<any> {
     // Get required data from the keystore file
     const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
