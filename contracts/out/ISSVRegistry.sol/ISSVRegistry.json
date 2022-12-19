@@ -1,0 +1,3350 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "ExceedRegisteredOperatorsByAccountLimit",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ExceedValidatorLimit",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidPublicKeyLength",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OessDataStructureInvalid",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OperatorDeleted",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OperatorNotFound",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ValidatorAlreadyExists",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "activeValidatorCount",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "ownerAddress",
+          "type": "address"
+        }
+      ],
+      "name": "disableOwnerValidators",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "ownerAddress",
+          "type": "address"
+        }
+      ],
+      "name": "enableOwnerValidators",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "operatorId",
+          "type": "uint32"
+        }
+      ],
+      "name": "getOperatorById",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "operatorId",
+          "type": "uint32"
+        }
+      ],
+      "name": "getOperatorFee",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "operatorId",
+          "type": "uint32"
+        }
+      ],
+      "name": "getOperatorOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "ownerAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getOperatorsByOwnerAddress",
+      "outputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "",
+          "type": "uint32[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "validatorPublicKey",
+          "type": "bytes"
+        }
+      ],
+      "name": "getOperatorsByValidator",
+      "outputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "",
+          "type": "uint32[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "publicKey",
+          "type": "bytes"
+        }
+      ],
+      "name": "getValidatorOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "ownerAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getValidatorsByAddress",
+      "outputs": [
+        {
+          "internalType": "bytes[]",
+          "name": "",
+          "type": "bytes[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "initialize",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "ownerAddress",
+          "type": "address"
+        }
+      ],
+      "name": "isLiquidated",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "ownerAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "publicKey",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint64",
+          "name": "fee",
+          "type": "uint64"
+        }
+      ],
+      "name": "registerOperator",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "ownerAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "publicKey",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint32[]",
+          "name": "operatorIds",
+          "type": "uint32[]"
+        },
+        {
+          "internalType": "bytes[]",
+          "name": "sharesPublicKeys",
+          "type": "bytes[]"
+        },
+        {
+          "internalType": "bytes[]",
+          "name": "sharesEncrypted",
+          "type": "bytes[]"
+        }
+      ],
+      "name": "registerValidator",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "operatorId",
+          "type": "uint32"
+        }
+      ],
+      "name": "removeOperator",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "publicKey",
+          "type": "bytes"
+        }
+      ],
+      "name": "removeValidator",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "operatorId",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint64",
+          "name": "fee",
+          "type": "uint64"
+        }
+      ],
+      "name": "updateOperatorFee",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "operatorId",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "score",
+          "type": "uint32"
+        }
+      ],
+      "name": "updateOperatorScore",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "publicKey",
+          "type": "bytes"
+        }
+      ],
+      "name": "validators",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "operatorId",
+          "type": "uint32"
+        }
+      ],
+      "name": "validatorsPerOperatorCount",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "activeValidatorCount()": "2340e8d3",
+    "disableOwnerValidators(address)": "27467a18",
+    "enableOwnerValidators(address)": "45413bf4",
+    "getOperatorById(uint32)": "0260d443",
+    "getOperatorFee(uint32)": "f8f08d7f",
+    "getOperatorOwner(uint32)": "e7b21748",
+    "getOperatorsByOwnerAddress(address)": "0dc1eeff",
+    "getOperatorsByValidator(bytes)": "053e8349",
+    "getValidatorOwner(bytes)": "c87b3038",
+    "getValidatorsByAddress(address)": "0e32066a",
+    "initialize()": "8129fc1c",
+    "isLiquidated(address)": "a3b3f606",
+    "registerOperator(string,address,bytes,uint64)": "580ee1b8",
+    "registerValidator(address,bytes,uint32[],bytes[],bytes[])": "9b4ddb5d",
+    "removeOperator(uint32)": "2e1d2f05",
+    "removeValidator(bytes)": "b2f569c5",
+    "updateOperatorFee(uint32,uint64)": "85157361",
+    "updateOperatorScore(uint32,uint32)": "5f10ac30",
+    "validators(bytes)": "6c36511a",
+    "validatorsPerOperatorCount(uint32)": "d379a5f2"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"ExceedRegisteredOperatorsByAccountLimit\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ExceedValidatorLimit\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidPublicKeyLength\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OessDataStructureInvalid\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OperatorDeleted\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OperatorNotFound\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ValidatorAlreadyExists\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"activeValidatorCount\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"}],\"name\":\"disableOwnerValidators\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"}],\"name\":\"enableOwnerValidators\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"}],\"name\":\"getOperatorById\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"}],\"name\":\"getOperatorFee\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"}],\"name\":\"getOperatorOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"}],\"name\":\"getOperatorsByOwnerAddress\",\"outputs\":[{\"internalType\":\"uint32[]\",\"name\":\"\",\"type\":\"uint32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"validatorPublicKey\",\"type\":\"bytes\"}],\"name\":\"getOperatorsByValidator\",\"outputs\":[{\"internalType\":\"uint32[]\",\"name\":\"\",\"type\":\"uint32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"getValidatorOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"}],\"name\":\"getValidatorsByAddress\",\"outputs\":[{\"internalType\":\"bytes[]\",\"name\":\"\",\"type\":\"bytes[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"}],\"name\":\"isLiquidated\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"},{\"internalType\":\"uint64\",\"name\":\"fee\",\"type\":\"uint64\"}],\"name\":\"registerOperator\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"},{\"internalType\":\"uint32[]\",\"name\":\"operatorIds\",\"type\":\"uint32[]\"},{\"internalType\":\"bytes[]\",\"name\":\"sharesPublicKeys\",\"type\":\"bytes[]\"},{\"internalType\":\"bytes[]\",\"name\":\"sharesEncrypted\",\"type\":\"bytes[]\"}],\"name\":\"registerValidator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"}],\"name\":\"removeOperator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"removeValidator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"},{\"internalType\":\"uint64\",\"name\":\"fee\",\"type\":\"uint64\"}],\"name\":\"updateOperatorFee\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"score\",\"type\":\"uint32\"}],\"name\":\"updateOperatorScore\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"validators\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"}],\"name\":\"validatorsPerOperatorCount\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"activeValidatorCount()\":{\"details\":\"Gets active validator count.\"},\"getOperatorById(uint32)\":{\"details\":\"Gets an operator by operator id.\",\"params\":{\"operatorId\":\"Operator id.\"}},\"getOperatorFee(uint32)\":{\"details\":\"Gets operator current fee.\",\"params\":{\"operatorId\":\"Operator id.\"}},\"getOperatorOwner(uint32)\":{\"details\":\"Gets operator's owner.\",\"params\":{\"operatorId\":\"Operator id.\"}},\"getOperatorsByOwnerAddress(address)\":{\"details\":\"Returns operators for owner.\",\"params\":{\"ownerAddress\":\"Owner's address.\"}},\"getOperatorsByValidator(bytes)\":{\"details\":\"Gets operators list which are in use by validator.\",\"params\":{\"validatorPublicKey\":\"Validator's public key.\"}},\"getValidatorOwner(bytes)\":{\"details\":\"Get validator's owner.\",\"params\":{\"publicKey\":\"Validator's public key.\"}},\"getValidatorsByAddress(address)\":{\"details\":\"Gets a validator public keys by owner's address.\",\"params\":{\"ownerAddress\":\"Owner's Address.\"}},\"initialize()\":{\"details\":\"Initializes the contract\"},\"registerOperator(string,address,bytes,uint64)\":{\"details\":\"Registers a new operator.\",\"params\":{\"fee\":\"The fee which the operator charges for each block.\",\"name\":\"Operator's display name.\",\"ownerAddress\":\"Operator's ethereum address that can collect fees.\",\"publicKey\":\"Operator's public key. Will be used to encrypt secret shares of validators keys.\"}},\"registerValidator(address,bytes,uint32[],bytes[],bytes[])\":{\"details\":\"Registers a new validator.\",\"params\":{\"operatorIds\":\"Operator ids.\",\"ownerAddress\":\"The user's ethereum address that is the owner of the validator.\",\"publicKey\":\"Validator public key.\",\"sharesEncrypted\":\"Encrypted private keys.\",\"sharesPublicKeys\":\"Shares public keys.\"}},\"removeOperator(uint32)\":{\"details\":\"removes an operator.\",\"params\":{\"operatorId\":\"Operator id.\"}},\"removeValidator(bytes)\":{\"details\":\"removes a validator.\",\"params\":{\"publicKey\":\"Validator's public key.\"}},\"updateOperatorFee(uint32,uint64)\":{\"details\":\"Updates an operator fee.\",\"params\":{\"fee\":\"New operator fee.\",\"operatorId\":\"Operator id.\"}},\"updateOperatorScore(uint32,uint32)\":{\"details\":\"Updates an operator fee.\",\"params\":{\"operatorId\":\"Operator id.\",\"score\":\"New score.\"}},\"validators(bytes)\":{\"details\":\"Gets an validator by public key.\",\"params\":{\"publicKey\":\"Validator's public key.\"}},\"validatorsPerOperatorCount(uint32)\":{\"details\":\"Get validators amount per operator.\",\"params\":{\"operatorId\":\"Operator public key\"}}},\"version\":1},\"userdoc\":{\"errors\":{\"ExceedRegisteredOperatorsByAccountLimit()\":[{\"notice\":\"errors \"}]},\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/utils/ISSVRegistry.sol\":\"ISSVRegistry\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":10000000},\"remappings\":[\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\"]},\"sources\":{\"src/utils/ISSVRegistry.sol\":{\"keccak256\":\"0xc43589f0f38f8dcd2b808071bc46162081b6198be4baee9f44d5ff1556ffb10f\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://e4b06e18cb1a32add0e0646ef91013d468df609d50dd66cbd4da4a5417eab6c4\",\"dweb:/ipfs/QmcLF8rKSYg4Mu3SD3WppLjpXJGTW4L6xBXuXU8NSEAV5D\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.17+commit.8df45f5f"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "ExceedRegisteredOperatorsByAccountLimit"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "ExceedValidatorLimit"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "InvalidPublicKeyLength"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "OessDataStructureInvalid"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "OperatorDeleted"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "OperatorNotFound"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "ValidatorAlreadyExists"
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "activeValidatorCount",
+          "outputs": [
+            {
+              "internalType": "uint32",
+              "name": "",
+              "type": "uint32"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "ownerAddress",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "disableOwnerValidators"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "ownerAddress",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "enableOwnerValidators"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint32",
+              "name": "operatorId",
+              "type": "uint32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getOperatorById",
+          "outputs": [
+            {
+              "internalType": "string",
+              "name": "",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+            },
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint32",
+              "name": "operatorId",
+              "type": "uint32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getOperatorFee",
+          "outputs": [
+            {
+              "internalType": "uint64",
+              "name": "",
+              "type": "uint64"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint32",
+              "name": "operatorId",
+              "type": "uint32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getOperatorOwner",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "ownerAddress",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getOperatorsByOwnerAddress",
+          "outputs": [
+            {
+              "internalType": "uint32[]",
+              "name": "",
+              "type": "uint32[]"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes",
+              "name": "validatorPublicKey",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getOperatorsByValidator",
+          "outputs": [
+            {
+              "internalType": "uint32[]",
+              "name": "",
+              "type": "uint32[]"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes",
+              "name": "publicKey",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getValidatorOwner",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "ownerAddress",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getValidatorsByAddress",
+          "outputs": [
+            {
+              "internalType": "bytes[]",
+              "name": "",
+              "type": "bytes[]"
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "initialize"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "ownerAddress",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "isLiquidated",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "ownerAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes",
+              "name": "publicKey",
+              "type": "bytes"
+            },
+            {
+              "internalType": "uint64",
+              "name": "fee",
+              "type": "uint64"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "registerOperator",
+          "outputs": [
+            {
+              "internalType": "uint32",
+              "name": "",
+              "type": "uint32"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "ownerAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes",
+              "name": "publicKey",
+              "type": "bytes"
+            },
+            {
+              "internalType": "uint32[]",
+              "name": "operatorIds",
+              "type": "uint32[]"
+            },
+            {
+              "internalType": "bytes[]",
+              "name": "sharesPublicKeys",
+              "type": "bytes[]"
+            },
+            {
+              "internalType": "bytes[]",
+              "name": "sharesEncrypted",
+              "type": "bytes[]"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "registerValidator"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint32",
+              "name": "operatorId",
+              "type": "uint32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "removeOperator"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes",
+              "name": "publicKey",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "removeValidator"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint32",
+              "name": "operatorId",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "fee",
+              "type": "uint64"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "updateOperatorFee"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint32",
+              "name": "operatorId",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "score",
+              "type": "uint32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "updateOperatorScore"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes",
+              "name": "publicKey",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "validators",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+            },
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint32",
+              "name": "operatorId",
+              "type": "uint32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "validatorsPerOperatorCount",
+          "outputs": [
+            {
+              "internalType": "uint32",
+              "name": "",
+              "type": "uint32"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {
+          "activeValidatorCount()": {
+            "details": "Gets active validator count."
+          },
+          "getOperatorById(uint32)": {
+            "details": "Gets an operator by operator id.",
+            "params": {
+              "operatorId": "Operator id."
+            }
+          },
+          "getOperatorFee(uint32)": {
+            "details": "Gets operator current fee.",
+            "params": {
+              "operatorId": "Operator id."
+            }
+          },
+          "getOperatorOwner(uint32)": {
+            "details": "Gets operator's owner.",
+            "params": {
+              "operatorId": "Operator id."
+            }
+          },
+          "getOperatorsByOwnerAddress(address)": {
+            "details": "Returns operators for owner.",
+            "params": {
+              "ownerAddress": "Owner's address."
+            }
+          },
+          "getOperatorsByValidator(bytes)": {
+            "details": "Gets operators list which are in use by validator.",
+            "params": {
+              "validatorPublicKey": "Validator's public key."
+            }
+          },
+          "getValidatorOwner(bytes)": {
+            "details": "Get validator's owner.",
+            "params": {
+              "publicKey": "Validator's public key."
+            }
+          },
+          "getValidatorsByAddress(address)": {
+            "details": "Gets a validator public keys by owner's address.",
+            "params": {
+              "ownerAddress": "Owner's Address."
+            }
+          },
+          "initialize()": {
+            "details": "Initializes the contract"
+          },
+          "registerOperator(string,address,bytes,uint64)": {
+            "details": "Registers a new operator.",
+            "params": {
+              "fee": "The fee which the operator charges for each block.",
+              "name": "Operator's display name.",
+              "ownerAddress": "Operator's ethereum address that can collect fees.",
+              "publicKey": "Operator's public key. Will be used to encrypt secret shares of validators keys."
+            }
+          },
+          "registerValidator(address,bytes,uint32[],bytes[],bytes[])": {
+            "details": "Registers a new validator.",
+            "params": {
+              "operatorIds": "Operator ids.",
+              "ownerAddress": "The user's ethereum address that is the owner of the validator.",
+              "publicKey": "Validator public key.",
+              "sharesEncrypted": "Encrypted private keys.",
+              "sharesPublicKeys": "Shares public keys."
+            }
+          },
+          "removeOperator(uint32)": {
+            "details": "removes an operator.",
+            "params": {
+              "operatorId": "Operator id."
+            }
+          },
+          "removeValidator(bytes)": {
+            "details": "removes a validator.",
+            "params": {
+              "publicKey": "Validator's public key."
+            }
+          },
+          "updateOperatorFee(uint32,uint64)": {
+            "details": "Updates an operator fee.",
+            "params": {
+              "fee": "New operator fee.",
+              "operatorId": "Operator id."
+            }
+          },
+          "updateOperatorScore(uint32,uint32)": {
+            "details": "Updates an operator fee.",
+            "params": {
+              "operatorId": "Operator id.",
+              "score": "New score."
+            }
+          },
+          "validators(bytes)": {
+            "details": "Gets an validator by public key.",
+            "params": {
+              "publicKey": "Validator's public key."
+            }
+          },
+          "validatorsPerOperatorCount(uint32)": {
+            "details": "Get validators amount per operator.",
+            "params": {
+              "operatorId": "Operator public key"
+            }
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":forge-std/=lib/forge-std/src/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 10000000
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/utils/ISSVRegistry.sol": "ISSVRegistry"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "src/utils/ISSVRegistry.sol": {
+        "keccak256": "0xc43589f0f38f8dcd2b808071bc46162081b6198be4baee9f44d5ff1556ffb10f",
+        "urls": [
+          "bzz-raw://e4b06e18cb1a32add0e0646ef91013d468df609d50dd66cbd4da4a5417eab6c4",
+          "dweb:/ipfs/QmcLF8rKSYg4Mu3SD3WppLjpXJGTW4L6xBXuXU8NSEAV5D"
+        ],
+        "license": "GPL-3.0-or-later"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/utils/ISSVRegistry.sol",
+    "id": 25724,
+    "exportedSymbols": {
+      "ISSVRegistry": [
+        25723
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "81:4785:18",
+    "nodes": [
+      {
+        "id": 25523,
+        "nodeType": "PragmaDirective",
+        "src": "81:23:18",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".2"
+        ]
+      },
+      {
+        "id": 25723,
+        "nodeType": "ContractDefinition",
+        "src": "106:4760:18",
+        "nodes": [
+          {
+            "id": 25530,
+            "nodeType": "StructDefinition",
+            "src": "135:105:18",
+            "nodes": [],
+            "canonicalName": "ISSVRegistry.Oess",
+            "members": [
+              {
+                "constant": false,
+                "id": 25525,
+                "mutability": "mutable",
+                "name": "operatorId",
+                "nameLocation": "164:10:18",
+                "nodeType": "VariableDeclaration",
+                "scope": 25530,
+                "src": "157:17:18",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 25524,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "157:6:18",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 25527,
+                "mutability": "mutable",
+                "name": "sharedPublicKey",
+                "nameLocation": "190:15:18",
+                "nodeType": "VariableDeclaration",
+                "scope": 25530,
+                "src": "184:21:18",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 25526,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "184:5:18",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 25529,
+                "mutability": "mutable",
+                "name": "encryptedKey",
+                "nameLocation": "221:12:18",
+                "nodeType": "VariableDeclaration",
+                "scope": 25530,
+                "src": "215:18:18",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 25528,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "215:5:18",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Oess",
+            "nameLocation": "142:4:18",
+            "scope": 25723,
+            "visibility": "public"
+          },
+          {
+            "id": 25533,
+            "nodeType": "ErrorDefinition",
+            "src": "264:48:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25531,
+              "nodeType": "StructuredDocumentation",
+              "src": "246:13:18",
+              "text": "errors "
+            },
+            "errorSelector": "69765c95",
+            "name": "ExceedRegisteredOperatorsByAccountLimit",
+            "nameLocation": "270:39:18",
+            "parameters": {
+              "id": 25532,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "309:2:18"
+            }
+          },
+          {
+            "id": 25535,
+            "nodeType": "ErrorDefinition",
+            "src": "317:24:18",
+            "nodes": [],
+            "errorSelector": "0f861bc0",
+            "name": "OperatorDeleted",
+            "nameLocation": "323:15:18",
+            "parameters": {
+              "id": 25534,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "338:2:18"
+            }
+          },
+          {
+            "id": 25537,
+            "nodeType": "ErrorDefinition",
+            "src": "346:31:18",
+            "nodes": [],
+            "errorSelector": "8d09a73e",
+            "name": "ValidatorAlreadyExists",
+            "nameLocation": "352:22:18",
+            "parameters": {
+              "id": 25536,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "374:2:18"
+            }
+          },
+          {
+            "id": 25539,
+            "nodeType": "ErrorDefinition",
+            "src": "382:29:18",
+            "nodes": [],
+            "errorSelector": "6df5ab76",
+            "name": "ExceedValidatorLimit",
+            "nameLocation": "388:20:18",
+            "parameters": {
+              "id": 25538,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "408:2:18"
+            }
+          },
+          {
+            "id": 25541,
+            "nodeType": "ErrorDefinition",
+            "src": "416:25:18",
+            "nodes": [],
+            "errorSelector": "ae4207eb",
+            "name": "OperatorNotFound",
+            "nameLocation": "422:16:18",
+            "parameters": {
+              "id": 25540,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "438:2:18"
+            }
+          },
+          {
+            "id": 25543,
+            "nodeType": "ErrorDefinition",
+            "src": "446:31:18",
+            "nodes": [],
+            "errorSelector": "637297a4",
+            "name": "InvalidPublicKeyLength",
+            "nameLocation": "452:22:18",
+            "parameters": {
+              "id": 25542,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "474:2:18"
+            }
+          },
+          {
+            "id": 25545,
+            "nodeType": "ErrorDefinition",
+            "src": "482:33:18",
+            "nodes": [],
+            "errorSelector": "9c920ce0",
+            "name": "OessDataStructureInvalid",
+            "nameLocation": "488:24:18",
+            "parameters": {
+              "id": 25544,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "512:2:18"
+            }
+          },
+          {
+            "id": 25549,
+            "nodeType": "FunctionDefinition",
+            "src": "574:31:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25546,
+              "nodeType": "StructuredDocumentation",
+              "src": "521:48:18",
+              "text": " @dev Initializes the contract"
+            },
+            "functionSelector": "8129fc1c",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "initialize",
+            "nameLocation": "583:10:18",
+            "parameters": {
+              "id": 25547,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "593:2:18"
+            },
+            "returnParameters": {
+              "id": 25548,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "604:0:18"
+            },
+            "scope": 25723,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25563,
+            "nodeType": "FunctionDefinition",
+            "src": "961:134:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25550,
+              "nodeType": "StructuredDocumentation",
+              "src": "611:345:18",
+              "text": " @dev Registers a new operator.\n @param name Operator's display name.\n @param ownerAddress Operator's ethereum address that can collect fees.\n @param publicKey Operator's public key. Will be used to encrypt secret shares of validators keys.\n @param fee The fee which the operator charges for each block."
+            },
+            "functionSelector": "580ee1b8",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "registerOperator",
+            "nameLocation": "970:16:18",
+            "parameters": {
+              "id": 25559,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25552,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "1003:4:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25563,
+                  "src": "987:20:18",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 25551,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "987:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25554,
+                  "mutability": "mutable",
+                  "name": "ownerAddress",
+                  "nameLocation": "1017:12:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25563,
+                  "src": "1009:20:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 25553,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1009:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25556,
+                  "mutability": "mutable",
+                  "name": "publicKey",
+                  "nameLocation": "1046:9:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25563,
+                  "src": "1031:24:18",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 25555,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1031:5:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25558,
+                  "mutability": "mutable",
+                  "name": "fee",
+                  "nameLocation": "1064:3:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25563,
+                  "src": "1057:10:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  },
+                  "typeName": {
+                    "id": 25557,
+                    "name": "uint64",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1057:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint64",
+                      "typeString": "uint64"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "986:82:18"
+            },
+            "returnParameters": {
+              "id": 25562,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25561,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25563,
+                  "src": "1087:6:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 25560,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1087:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1086:8:18"
+            },
+            "scope": 25723,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25569,
+            "nodeType": "FunctionDefinition",
+            "src": "1188:52:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25564,
+              "nodeType": "StructuredDocumentation",
+              "src": "1101:82:18",
+              "text": " @dev removes an operator.\n @param operatorId Operator id."
+            },
+            "functionSelector": "2e1d2f05",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "removeOperator",
+            "nameLocation": "1197:14:18",
+            "parameters": {
+              "id": 25567,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25566,
+                  "mutability": "mutable",
+                  "name": "operatorId",
+                  "nameLocation": "1219:10:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25569,
+                  "src": "1212:17:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 25565,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1212:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1211:19:18"
+            },
+            "returnParameters": {
+              "id": 25568,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1239:0:18"
+            },
+            "scope": 25723,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25577,
+            "nodeType": "FunctionDefinition",
+            "src": "1373:89:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25570,
+              "nodeType": "StructuredDocumentation",
+              "src": "1246:122:18",
+              "text": " @dev Updates an operator fee.\n @param operatorId Operator id.\n @param fee New operator fee."
+            },
+            "functionSelector": "85157361",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateOperatorFee",
+            "nameLocation": "1382:17:18",
+            "parameters": {
+              "id": 25575,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25572,
+                  "mutability": "mutable",
+                  "name": "operatorId",
+                  "nameLocation": "1416:10:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25577,
+                  "src": "1409:17:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 25571,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1409:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25574,
+                  "mutability": "mutable",
+                  "name": "fee",
+                  "nameLocation": "1443:3:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25577,
+                  "src": "1436:10:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  },
+                  "typeName": {
+                    "id": 25573,
+                    "name": "uint64",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1436:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint64",
+                      "typeString": "uint64"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1399:53:18"
+            },
+            "returnParameters": {
+              "id": 25576,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1461:0:18"
+            },
+            "scope": 25723,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25585,
+            "nodeType": "FunctionDefinition",
+            "src": "1590:93:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25578,
+              "nodeType": "StructuredDocumentation",
+              "src": "1468:117:18",
+              "text": " @dev Updates an operator fee.\n @param operatorId Operator id.\n @param score New score."
+            },
+            "functionSelector": "5f10ac30",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateOperatorScore",
+            "nameLocation": "1599:19:18",
+            "parameters": {
+              "id": 25583,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25580,
+                  "mutability": "mutable",
+                  "name": "operatorId",
+                  "nameLocation": "1635:10:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25585,
+                  "src": "1628:17:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 25579,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1628:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25582,
+                  "mutability": "mutable",
+                  "name": "score",
+                  "nameLocation": "1662:5:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25585,
+                  "src": "1655:12:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 25581,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1655:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1618:55:18"
+            },
+            "returnParameters": {
+              "id": 25584,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1682:0:18"
+            },
+            "scope": 25723,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25602,
+            "nodeType": "FunctionDefinition",
+            "src": "2026:230:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25586,
+              "nodeType": "StructuredDocumentation",
+              "src": "1689:332:18",
+              "text": " @dev Registers a new validator.\n @param ownerAddress The user's ethereum address that is the owner of the validator.\n @param publicKey Validator public key.\n @param operatorIds Operator ids.\n @param sharesPublicKeys Shares public keys.\n @param sharesEncrypted Encrypted private keys."
+            },
+            "functionSelector": "9b4ddb5d",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "registerValidator",
+            "nameLocation": "2035:17:18",
+            "parameters": {
+              "id": 25600,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25588,
+                  "mutability": "mutable",
+                  "name": "ownerAddress",
+                  "nameLocation": "2070:12:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25602,
+                  "src": "2062:20:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 25587,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2062:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25590,
+                  "mutability": "mutable",
+                  "name": "publicKey",
+                  "nameLocation": "2107:9:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25602,
+                  "src": "2092:24:18",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 25589,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2092:5:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25593,
+                  "mutability": "mutable",
+                  "name": "operatorIds",
+                  "nameLocation": "2144:11:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25602,
+                  "src": "2126:29:18",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint32_$dyn_calldata_ptr",
+                    "typeString": "uint32[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 25591,
+                      "name": "uint32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "2126:6:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      }
+                    },
+                    "id": 25592,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2126:8:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint32_$dyn_storage_ptr",
+                      "typeString": "uint32[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25596,
+                  "mutability": "mutable",
+                  "name": "sharesPublicKeys",
+                  "nameLocation": "2182:16:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25602,
+                  "src": "2165:33:18",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes_calldata_ptr_$dyn_calldata_ptr",
+                    "typeString": "bytes[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 25594,
+                      "name": "bytes",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "2165:5:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_storage_ptr",
+                        "typeString": "bytes"
+                      }
+                    },
+                    "id": 25595,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2165:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes_storage_$dyn_storage_ptr",
+                      "typeString": "bytes[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25599,
+                  "mutability": "mutable",
+                  "name": "sharesEncrypted",
+                  "nameLocation": "2225:15:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25602,
+                  "src": "2208:32:18",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes_calldata_ptr_$dyn_calldata_ptr",
+                    "typeString": "bytes[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 25597,
+                      "name": "bytes",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "2208:5:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_storage_ptr",
+                        "typeString": "bytes"
+                      }
+                    },
+                    "id": 25598,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2208:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes_storage_$dyn_storage_ptr",
+                      "typeString": "bytes[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2052:194:18"
+            },
+            "returnParameters": {
+              "id": 25601,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2255:0:18"
+            },
+            "scope": 25723,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25608,
+            "nodeType": "FunctionDefinition",
+            "src": "2359:60:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25603,
+              "nodeType": "StructuredDocumentation",
+              "src": "2262:92:18",
+              "text": " @dev removes a validator.\n @param publicKey Validator's public key."
+            },
+            "functionSelector": "b2f569c5",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "removeValidator",
+            "nameLocation": "2368:15:18",
+            "parameters": {
+              "id": 25606,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25605,
+                  "mutability": "mutable",
+                  "name": "publicKey",
+                  "nameLocation": "2399:9:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25608,
+                  "src": "2384:24:18",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 25604,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2384:5:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2383:26:18"
+            },
+            "returnParameters": {
+              "id": 25607,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2418:0:18"
+            },
+            "scope": 25723,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25613,
+            "nodeType": "FunctionDefinition",
+            "src": "2425:62:18",
+            "nodes": [],
+            "functionSelector": "45413bf4",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "enableOwnerValidators",
+            "nameLocation": "2434:21:18",
+            "parameters": {
+              "id": 25611,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25610,
+                  "mutability": "mutable",
+                  "name": "ownerAddress",
+                  "nameLocation": "2464:12:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25613,
+                  "src": "2456:20:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 25609,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2456:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2455:22:18"
+            },
+            "returnParameters": {
+              "id": 25612,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2486:0:18"
+            },
+            "scope": 25723,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25618,
+            "nodeType": "FunctionDefinition",
+            "src": "2493:63:18",
+            "nodes": [],
+            "functionSelector": "27467a18",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "disableOwnerValidators",
+            "nameLocation": "2502:22:18",
+            "parameters": {
+              "id": 25616,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25615,
+                  "mutability": "mutable",
+                  "name": "ownerAddress",
+                  "nameLocation": "2533:12:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25618,
+                  "src": "2525:20:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 25614,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2525:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2524:22:18"
+            },
+            "returnParameters": {
+              "id": 25617,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2555:0:18"
+            },
+            "scope": 25723,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25625,
+            "nodeType": "FunctionDefinition",
+            "src": "2562:73:18",
+            "nodes": [],
+            "functionSelector": "a3b3f606",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isLiquidated",
+            "nameLocation": "2571:12:18",
+            "parameters": {
+              "id": 25621,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25620,
+                  "mutability": "mutable",
+                  "name": "ownerAddress",
+                  "nameLocation": "2592:12:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25625,
+                  "src": "2584:20:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 25619,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2584:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2583:22:18"
+            },
+            "returnParameters": {
+              "id": 25624,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25623,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25625,
+                  "src": "2629:4:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 25622,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2629:4:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2628:6:18"
+            },
+            "scope": 25723,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25645,
+            "nodeType": "FunctionDefinition",
+            "src": "2740:248:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25626,
+              "nodeType": "StructuredDocumentation",
+              "src": "2641:94:18",
+              "text": " @dev Gets an operator by operator id.\n @param operatorId Operator id."
+            },
+            "functionSelector": "0260d443",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getOperatorById",
+            "nameLocation": "2749:15:18",
+            "parameters": {
+              "id": 25629,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25628,
+                  "mutability": "mutable",
+                  "name": "operatorId",
+                  "nameLocation": "2772:10:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25645,
+                  "src": "2765:17:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 25627,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2765:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2764:19:18"
+            },
+            "returnParameters": {
+              "id": 25644,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25631,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25645,
+                  "src": "2836:13:18",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 25630,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2836:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25633,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25645,
+                  "src": "2863:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 25632,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2863:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25635,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25645,
+                  "src": "2884:12:18",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 25634,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2884:5:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25637,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25645,
+                  "src": "2910:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 25636,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2910:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25639,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25645,
+                  "src": "2931:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 25638,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2931:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25641,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25645,
+                  "src": "2952:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 25640,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2952:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25643,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25645,
+                  "src": "2973:4:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 25642,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2973:4:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2822:165:18"
+            },
+            "scope": 25723,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25654,
+            "nodeType": "FunctionDefinition",
+            "src": "3095:114:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25646,
+              "nodeType": "StructuredDocumentation",
+              "src": "2994:96:18",
+              "text": " @dev Returns operators for owner.\n @param ownerAddress Owner's address."
+            },
+            "functionSelector": "0dc1eeff",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getOperatorsByOwnerAddress",
+            "nameLocation": "3104:26:18",
+            "parameters": {
+              "id": 25649,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25648,
+                  "mutability": "mutable",
+                  "name": "ownerAddress",
+                  "nameLocation": "3139:12:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25654,
+                  "src": "3131:20:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 25647,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3131:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3130:22:18"
+            },
+            "returnParameters": {
+              "id": 25653,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25652,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25654,
+                  "src": "3192:15:18",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint32_$dyn_memory_ptr",
+                    "typeString": "uint32[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 25650,
+                      "name": "uint32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "3192:6:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      }
+                    },
+                    "id": 25651,
+                    "nodeType": "ArrayTypeName",
+                    "src": "3192:8:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint32_$dyn_storage_ptr",
+                      "typeString": "uint32[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3191:17:18"
+            },
+            "scope": 25723,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25663,
+            "nodeType": "FunctionDefinition",
+            "src": "3351:124:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25655,
+              "nodeType": "StructuredDocumentation",
+              "src": "3215:131:18",
+              "text": " @dev Gets operators list which are in use by validator.\n @param validatorPublicKey Validator's public key."
+            },
+            "functionSelector": "053e8349",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getOperatorsByValidator",
+            "nameLocation": "3360:23:18",
+            "parameters": {
+              "id": 25658,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25657,
+                  "mutability": "mutable",
+                  "name": "validatorPublicKey",
+                  "nameLocation": "3399:18:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25663,
+                  "src": "3384:33:18",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 25656,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3384:5:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3383:35:18"
+            },
+            "returnParameters": {
+              "id": 25662,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25661,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25663,
+                  "src": "3458:15:18",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint32_$dyn_memory_ptr",
+                    "typeString": "uint32[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 25659,
+                      "name": "uint32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "3458:6:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint32",
+                        "typeString": "uint32"
+                      }
+                    },
+                    "id": 25660,
+                    "nodeType": "ArrayTypeName",
+                    "src": "3458:8:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint32_$dyn_storage_ptr",
+                      "typeString": "uint32[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3457:17:18"
+            },
+            "scope": 25723,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25671,
+            "nodeType": "FunctionDefinition",
+            "src": "3570:77:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25664,
+              "nodeType": "StructuredDocumentation",
+              "src": "3481:84:18",
+              "text": " @dev Gets operator's owner.\n @param operatorId Operator id."
+            },
+            "functionSelector": "e7b21748",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getOperatorOwner",
+            "nameLocation": "3579:16:18",
+            "parameters": {
+              "id": 25667,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25666,
+                  "mutability": "mutable",
+                  "name": "operatorId",
+                  "nameLocation": "3603:10:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25671,
+                  "src": "3596:17:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 25665,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3596:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3595:19:18"
+            },
+            "returnParameters": {
+              "id": 25670,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25669,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25671,
+                  "src": "3638:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 25668,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3638:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3637:9:18"
+            },
+            "scope": 25723,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25679,
+            "nodeType": "FunctionDefinition",
+            "src": "3746:90:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25672,
+              "nodeType": "StructuredDocumentation",
+              "src": "3653:88:18",
+              "text": " @dev Gets operator current fee.\n @param operatorId Operator id."
+            },
+            "functionSelector": "f8f08d7f",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getOperatorFee",
+            "nameLocation": "3755:14:18",
+            "parameters": {
+              "id": 25675,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25674,
+                  "mutability": "mutable",
+                  "name": "operatorId",
+                  "nameLocation": "3777:10:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25679,
+                  "src": "3770:17:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 25673,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3770:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3769:19:18"
+            },
+            "returnParameters": {
+              "id": 25678,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25677,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25679,
+                  "src": "3828:6:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  },
+                  "typeName": {
+                    "id": 25676,
+                    "name": "uint64",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3828:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint64",
+                      "typeString": "uint64"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3827:8:18"
+            },
+            "scope": 25723,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25685,
+            "nodeType": "FunctionDefinition",
+            "src": "3899:63:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25680,
+              "nodeType": "StructuredDocumentation",
+              "src": "3842:52:18",
+              "text": " @dev Gets active validator count."
+            },
+            "functionSelector": "2340e8d3",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "activeValidatorCount",
+            "nameLocation": "3908:20:18",
+            "parameters": {
+              "id": 25681,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3928:2:18"
+            },
+            "returnParameters": {
+              "id": 25684,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25683,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25685,
+                  "src": "3954:6:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 25682,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3954:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3953:8:18"
+            },
+            "scope": 25723,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25697,
+            "nodeType": "FunctionDefinition",
+            "src": "4077:160:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25686,
+              "nodeType": "StructuredDocumentation",
+              "src": "3968:104:18",
+              "text": " @dev Gets an validator by public key.\n @param publicKey Validator's public key."
+            },
+            "functionSelector": "6c36511a",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "validators",
+            "nameLocation": "4086:10:18",
+            "parameters": {
+              "id": 25689,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25688,
+                  "mutability": "mutable",
+                  "name": "publicKey",
+                  "nameLocation": "4112:9:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25697,
+                  "src": "4097:24:18",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 25687,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4097:5:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4096:26:18"
+            },
+            "returnParameters": {
+              "id": 25696,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25691,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25697,
+                  "src": "4175:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 25690,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4175:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25693,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25697,
+                  "src": "4196:12:18",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 25692,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4196:5:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 25695,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25697,
+                  "src": "4222:4:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 25694,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4222:4:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4161:75:18"
+            },
+            "scope": 25723,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25706,
+            "nodeType": "FunctionDefinition",
+            "src": "4364:109:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25698,
+              "nodeType": "StructuredDocumentation",
+              "src": "4243:116:18",
+              "text": " @dev Gets a validator public keys by owner's address.\n @param ownerAddress Owner's Address."
+            },
+            "functionSelector": "0e32066a",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getValidatorsByAddress",
+            "nameLocation": "4373:22:18",
+            "parameters": {
+              "id": 25701,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25700,
+                  "mutability": "mutable",
+                  "name": "ownerAddress",
+                  "nameLocation": "4404:12:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25706,
+                  "src": "4396:20:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 25699,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4396:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4395:22:18"
+            },
+            "returnParameters": {
+              "id": 25705,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25704,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25706,
+                  "src": "4457:14:18",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "bytes[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 25702,
+                      "name": "bytes",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "4457:5:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_storage_ptr",
+                        "typeString": "bytes"
+                      }
+                    },
+                    "id": 25703,
+                    "nodeType": "ArrayTypeName",
+                    "src": "4457:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes_storage_$dyn_storage_ptr",
+                      "typeString": "bytes[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4456:16:18"
+            },
+            "scope": 25723,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25714,
+            "nodeType": "FunctionDefinition",
+            "src": "4578:85:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25707,
+              "nodeType": "StructuredDocumentation",
+              "src": "4479:94:18",
+              "text": " @dev Get validator's owner.\n @param publicKey Validator's public key."
+            },
+            "functionSelector": "c87b3038",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getValidatorOwner",
+            "nameLocation": "4587:17:18",
+            "parameters": {
+              "id": 25710,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25709,
+                  "mutability": "mutable",
+                  "name": "publicKey",
+                  "nameLocation": "4620:9:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25714,
+                  "src": "4605:24:18",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 25708,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4605:5:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4604:26:18"
+            },
+            "returnParameters": {
+              "id": 25713,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25712,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25714,
+                  "src": "4654:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 25711,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4654:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4653:9:18"
+            },
+            "scope": 25723,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 25722,
+            "nodeType": "FunctionDefinition",
+            "src": "4778:86:18",
+            "nodes": [],
+            "documentation": {
+              "id": 25715,
+              "nodeType": "StructuredDocumentation",
+              "src": "4669:104:18",
+              "text": " @dev Get validators amount per operator.\n @param operatorId Operator public key"
+            },
+            "functionSelector": "d379a5f2",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "validatorsPerOperatorCount",
+            "nameLocation": "4787:26:18",
+            "parameters": {
+              "id": 25718,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25717,
+                  "mutability": "mutable",
+                  "name": "operatorId",
+                  "nameLocation": "4821:10:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25722,
+                  "src": "4814:17:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 25716,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4814:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4813:19:18"
+            },
+            "returnParameters": {
+              "id": 25721,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 25720,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25722,
+                  "src": "4856:6:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 25719,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4856:6:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4855:8:18"
+            },
+            "scope": 25723,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ISSVRegistry",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          25723
+        ],
+        "name": "ISSVRegistry",
+        "nameLocation": "116:12:18",
+        "scope": 25724,
+        "usedErrors": [
+          25533,
+          25535,
+          25537,
+          25539,
+          25541,
+          25543,
+          25545
+        ]
+      }
+    ],
+    "license": "GPL-3.0-or-later"
+  },
+  "id": 18
+}

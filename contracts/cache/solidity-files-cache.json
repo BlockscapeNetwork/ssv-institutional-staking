@@ -12,14 +12,14 @@
   },
   "files": {
     "lib/forge-std/lib/ds-test/src/test.sol": {
-      "lastModificationDate": 1666804187410,
+      "lastModificationDate": 1668687832776,
       "contentHash": "962996f0e05d5218857a538a62d7c47e",
       "sourceName": "lib/forge-std/lib/ds-test/src/test.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 200
+            "runs": 10000000
           },
           "metadata": {
             "bytecodeHash": "ipfs",
@@ -52,14 +52,14 @@
       }
     },
     "lib/forge-std/src/Script.sol": {
-      "lastModificationDate": 1666804186347,
+      "lastModificationDate": 1668687832776,
       "contentHash": "571dde8775a6214a03d6772ee330ead5",
       "sourceName": "lib/forge-std/src/Script.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 200
+            "runs": 10000000
           },
           "metadata": {
             "bytecodeHash": "ipfs",
@@ -97,14 +97,14 @@
       }
     },
     "lib/forge-std/src/StdJson.sol": {
-      "lastModificationDate": 1666804186347,
+      "lastModificationDate": 1668687832776,
       "contentHash": "75c782f20a301ab9827060a03da071e4",
       "sourceName": "lib/forge-std/src/StdJson.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 200
+            "runs": 10000000
           },
           "metadata": {
             "bytecodeHash": "ipfs",
@@ -139,14 +139,14 @@
       }
     },
     "lib/forge-std/src/Test.sol": {
-      "lastModificationDate": 1666804186347,
+      "lastModificationDate": 1668687832777,
       "contentHash": "6cab65c53a9548c2428a10697fd06dd1",
       "sourceName": "lib/forge-std/src/Test.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 200
+            "runs": 10000000
           },
           "metadata": {
             "bytecodeHash": "ipfs",
@@ -195,14 +195,14 @@
       }
     },
     "lib/forge-std/src/Vm.sol": {
-      "lastModificationDate": 1666804186347,
+      "lastModificationDate": 1668687832777,
       "contentHash": "bd4bde818b3c57b21e0601277b1d2dac",
       "sourceName": "lib/forge-std/src/Vm.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 200
+            "runs": 10000000
           },
           "metadata": {
             "bytecodeHash": "ipfs",
@@ -235,14 +235,14 @@
       }
     },
     "lib/forge-std/src/console.sol": {
-      "lastModificationDate": 1666804186347,
+      "lastModificationDate": 1668687832777,
       "contentHash": "100b8a33b917da1147740d7ab8b0ded3",
       "sourceName": "lib/forge-std/src/console.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 200
+            "runs": 10000000
           },
           "metadata": {
             "bytecodeHash": "ipfs",
@@ -275,14 +275,14 @@
       }
     },
     "lib/forge-std/src/console2.sol": {
-      "lastModificationDate": 1666804186348,
+      "lastModificationDate": 1668687832778,
       "contentHash": "5df91f8e93efbfcccf68973dc1b74a70",
       "sourceName": "lib/forge-std/src/console2.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 200
+            "runs": 10000000
           },
           "metadata": {
             "bytecodeHash": "ipfs",
@@ -315,14 +315,14 @@
       }
     },
     "lib/openzeppelin-contracts/contracts/access/Ownable.sol": {
-      "lastModificationDate": 1666804406824,
+      "lastModificationDate": 1668687832791,
       "contentHash": "e436cea06129be2c73cda4b1acc848b5",
       "sourceName": "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 200
+            "runs": 10000000
           },
           "metadata": {
             "bytecodeHash": "ipfs",
@@ -357,14 +357,14 @@
       }
     },
     "lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol": {
-      "lastModificationDate": 1666804406838,
+      "lastModificationDate": 1668687832821,
       "contentHash": "8c535ea51494b04d8b067295f200e3e7",
       "sourceName": "lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 200
+            "runs": 10000000
           },
           "metadata": {
             "bytecodeHash": "ipfs",
@@ -396,15 +396,55 @@
         }
       }
     },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": {
+      "lastModificationDate": 1668687832823,
+      "contentHash": "ad7c2d0af148c8f9f097d65deeb4da6b",
+      "sourceName": "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 10000000
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.0",
+      "artifacts": {
+        "IERC20": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "IERC20.sol/IERC20.json"
+        }
+      }
+    },
     "lib/openzeppelin-contracts/contracts/utils/Context.sol": {
-      "lastModificationDate": 1666804406845,
+      "lastModificationDate": 1668687832831,
       "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
       "sourceName": "lib/openzeppelin-contracts/contracts/utils/Context.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 200
+            "runs": 10000000
           },
           "metadata": {
             "bytecodeHash": "ipfs",
@@ -437,14 +477,14 @@
       }
     },
     "lib/openzeppelin-contracts/contracts/utils/Strings.sol": {
-      "lastModificationDate": 1666804406845,
+      "lastModificationDate": 1668687832832,
       "contentHash": "a0c595fbbddc5c8b4f45c5f496ad90ff",
       "sourceName": "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 200
+            "runs": 10000000
           },
           "metadata": {
             "bytecodeHash": "ipfs",
@@ -479,14 +519,14 @@
       }
     },
     "lib/openzeppelin-contracts/contracts/utils/math/Math.sol": {
-      "lastModificationDate": 1666804406846,
+      "lastModificationDate": 1668687832835,
       "contentHash": "44d60ce5beebff2e3958a41e4cfdb984",
       "sourceName": "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 200
+            "runs": 10000000
           },
           "metadata": {
             "bytecodeHash": "ipfs",
@@ -518,15 +558,15 @@
         }
       }
     },
-    "script/EthAllocatorGoerli.s.sol": {
-      "lastModificationDate": 1668596660361,
-      "contentHash": "509803c0aea7ac3c25b95e5ccdd16a17",
-      "sourceName": "script/EthAllocatorGoerli.s.sol",
+    "script/1_InstStaAnvil.s.sol": {
+      "lastModificationDate": 1671453949655,
+      "contentHash": "c8437c1321fc394dc29f5ebd3ff2af5a",
+      "sourceName": "script/1_InstStaAnvil.s.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 200
+            "runs": 10000000
           },
           "metadata": {
             "bytecodeHash": "ipfs",
@@ -558,27 +598,30 @@
         "lib/forge-std/src/console2.sol",
         "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
         "lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
         "lib/openzeppelin-contracts/contracts/utils/Context.sol",
         "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
         "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
-        "src/EthAlloc.sol"
+        "src/InstSta.sol",
+        "src/utils/ISSVNetwork.sol",
+        "src/utils/ISSVRegistry.sol"
       ],
-      "versionRequirement": "^0.8.13",
+      "versionRequirement": "^0.8.15",
       "artifacts": {
-        "EthAllocatorScript": {
-          "0.8.17+commit.8df45f5f.Darwin.appleclang": "EthAllocatorGoerli.s.sol/EthAllocatorScript.json"
+        "InstStaScript": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "1_InstStaAnvil.s.sol/InstStaScript.json"
         }
       }
     },
-    "script/EthAllocatorMainnet.s.sol": {
-      "lastModificationDate": 1668596744638,
-      "contentHash": "4358ac83a93fd0fe36683bd08980a6da",
-      "sourceName": "script/EthAllocatorMainnet.s.sol",
+    "script/2_InstStaGoerli.s.sol": {
+      "lastModificationDate": 1671453947338,
+      "contentHash": "c8437c1321fc394dc29f5ebd3ff2af5a",
+      "sourceName": "script/2_InstStaGoerli.s.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 200
+            "runs": 10000000
           },
           "metadata": {
             "bytecodeHash": "ipfs",
@@ -610,27 +653,85 @@
         "lib/forge-std/src/console2.sol",
         "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
         "lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
         "lib/openzeppelin-contracts/contracts/utils/Context.sol",
         "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
         "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
-        "src/EthAlloc.sol"
+        "src/InstSta.sol",
+        "src/utils/ISSVNetwork.sol",
+        "src/utils/ISSVRegistry.sol"
       ],
-      "versionRequirement": "^0.8.13",
+      "versionRequirement": "^0.8.15",
       "artifacts": {
-        "EthAllocatorScript": {
-          "0.8.17+commit.8df45f5f.Darwin.appleclang": "EthAllocatorMainnet.s.sol/EthAllocatorScript.json"
+        "InstStaScript": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "2_InstStaGoerli.s.sol/InstStaScript.json"
         }
       }
     },
-    "src/EthAlloc.sol": {
-      "lastModificationDate": 1668687490466,
-      "contentHash": "a2ffe77ba681d3f37e77374bf13903bb",
-      "sourceName": "src/EthAlloc.sol",
+    "script/3_InstStaMainnet.s.sol": {
+      "lastModificationDate": 1671453971038,
+      "contentHash": "b36c20a10ffcddc1d49285e2ed7e4b81",
+      "sourceName": "script/3_InstStaMainnet.s.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 200
+            "runs": 10000000
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/forge-std/src/Script.sol",
+        "lib/forge-std/src/StdJson.sol",
+        "lib/forge-std/src/Vm.sol",
+        "lib/forge-std/src/console.sol",
+        "lib/forge-std/src/console2.sol",
+        "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
+        "lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Context.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
+        "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
+        "src/InstSta.sol",
+        "src/utils/ISSVNetwork.sol",
+        "src/utils/ISSVRegistry.sol"
+      ],
+      "versionRequirement": "^0.8.15",
+      "artifacts": {
+        "InstStaScript": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "3_InstStaMainnet.s.sol/InstStaScript.json"
+        }
+      }
+    },
+    "src/InstSta.sol": {
+      "lastModificationDate": 1671451241809,
+      "contentHash": "9154ae601280ebbcf9a5d5cd1111b476",
+      "sourceName": "src/InstSta.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 10000000
           },
           "metadata": {
             "bytecodeHash": "ipfs",
@@ -658,29 +759,115 @@
         "lib/forge-std/src/console.sol",
         "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
         "lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
         "lib/openzeppelin-contracts/contracts/utils/Context.sol",
         "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
-        "lib/openzeppelin-contracts/contracts/utils/math/Math.sol"
+        "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
+        "src/utils/ISSVNetwork.sol",
+        "src/utils/ISSVRegistry.sol"
       ],
       "versionRequirement": ">=0.8.15",
       "artifacts": {
-        "EthAlloc": {
-          "0.8.17+commit.8df45f5f.Darwin.appleclang": "EthAlloc.sol/EthAlloc.json"
-        },
         "IQuadrata": {
-          "0.8.17+commit.8df45f5f.Darwin.appleclang": "EthAlloc.sol/IQuadrata.json"
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "InstSta.sol/IQuadrata.json"
+        },
+        "InstSta": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "InstSta.sol/InstSta.json"
         }
       }
     },
-    "test/EthAlloc.t.sol": {
-      "lastModificationDate": 1668597051679,
-      "contentHash": "d8d354bbd356e3aacffeef8a0678176f",
-      "sourceName": "test/EthAlloc.t.sol",
+    "src/utils/ISSVNetwork.sol": {
+      "lastModificationDate": 1670928277900,
+      "contentHash": "ab31f2150fa85c8beffa082ad2c49f03",
+      "sourceName": "src/utils/ISSVNetwork.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 200
+            "runs": 10000000
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "src/utils/ISSVRegistry.sol"
+      ],
+      "versionRequirement": "^0.8.2",
+      "artifacts": {
+        "ISSVNetwork": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "ISSVNetwork.sol/ISSVNetwork.json"
+        }
+      }
+    },
+    "src/utils/ISSVRegistry.sol": {
+      "lastModificationDate": 1670928253736,
+      "contentHash": "ca86b7076b26b9e274fc7c1cb4707be5",
+      "sourceName": "src/utils/ISSVRegistry.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 10000000
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.2",
+      "artifacts": {
+        "ISSVRegistry": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "ISSVRegistry.sol/ISSVRegistry.json"
+        }
+      }
+    },
+    "test/InstSta.t.sol": {
+      "lastModificationDate": 1671453879623,
+      "contentHash": "36344a317582d05a41ff6e44ebc533a6",
+      "sourceName": "test/InstSta.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 10000000
           },
           "metadata": {
             "bytecodeHash": "ipfs",
@@ -714,15 +901,18 @@
         "lib/forge-std/src/console2.sol",
         "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
         "lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
         "lib/openzeppelin-contracts/contracts/utils/Context.sol",
         "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
         "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
-        "src/EthAlloc.sol"
+        "src/InstSta.sol",
+        "src/utils/ISSVNetwork.sol",
+        "src/utils/ISSVRegistry.sol"
       ],
       "versionRequirement": ">=0.8.15",
       "artifacts": {
-        "EthAllocTest": {
-          "0.8.17+commit.8df45f5f.Darwin.appleclang": "EthAlloc.t.sol/EthAllocTest.json"
+        "InstStaTest": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "InstSta.t.sol/InstStaTest.json"
         }
       }
     }
