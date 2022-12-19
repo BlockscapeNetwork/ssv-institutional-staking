@@ -40,7 +40,6 @@ export class SsvService {
       process.env.API_KEY,
     );
     this.pKey = process.env.PRIVATE_KEY;
-    // '6e8cc7f2229ded17fa35e4ce458034c6e9e19bb6a2d128e01f6b1e0e863fc9ac';
     this.signer = new ethers.Wallet(this.pKey, this.provider);
     this.ssvNetworkContract = new ethers.Contract(
       '0xb9e155e65B5c4D66df28Da8E9a0957f06F11Bc04',
