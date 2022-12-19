@@ -20,13 +20,45 @@ interface IQuadrata {
         returns (uint256);
 }
 
+interface IDepositContract {
+    /// @notice A processed deposit event.
+    event DepositEvent(
+        bytes pubkey,
+        bytes withdrawal_credentials,
+        bytes amount,
+        bytes signature,
+        bytes index
+    );
+
+    /// @notice Submit a Phase 0 DepositData object.
+    /// @param pubkey A BLS12-381 public key.
+    /// @param withdrawal_credentials Commitment to a public key for withdrawals.
+    /// @param signature A BLS12-381 signature.
+    /// @param deposit_data_root The SHA-256 hash of the SSZ-encoded DepositData object.
+    /// Used as a protection against malformed input.
+    function deposit(
+        bytes calldata pubkey,
+        bytes calldata withdrawal_credentials,
+        bytes calldata signature,
+        bytes32 deposit_data_root
+    ) external payable;
+
+    /// @notice Query the current deposit root hash.
+    /// @return The deposit root hash.
+    function get_deposit_root() external view returns (bytes32);
+
+    /// @notice Query the current deposit count.
+    /// @return The deposit count encoded as a little endian 64-bit number.
+    function get_deposit_count() external view returns (bytes memory);
+}
+
 // Start of the contract definition
 contract InstSta is ReentrancyGuard, Ownable {
     address public QUADRATA = address(0);
     address public SSV_TOKEN = address(0);
     address public SSV_ADDRESS = address(0);
+    address public DEPOSIT_ADDRESS = address(0);
     bytes32 public constant is_BUSINESS = keccak256("IS_BUSINESS");
-    bool public allowPubDeposit;
 
     mapping(address => bytes) validatortoStaker;
 
@@ -34,11 +66,13 @@ contract InstSta is ReentrancyGuard, Ownable {
     constructor(
         address _quadrataContract,
         address _ssvToken,
-        address _ssvContract
+        address _ssvContract,
+        address _depositAddress
     ) {
         QUADRATA = _quadrataContract;
         SSV_TOKEN = _ssvToken;
         SSV_ADDRESS = _ssvContract;
+        DEPOSIT_ADDRESS = _depositAddress;
     }
 
     event DepositReceivedStaked(address _sender, bytes _pubkey); // event for when a permanent URI is set
@@ -48,8 +82,6 @@ contract InstSta is ReentrancyGuard, Ownable {
         uint256 _fee,
         uint256 _stakedETH
     ); // event for when a user requests a withdrawal
-    event PoolOpend(bool _value); // event for when a permanent URI is set
-    event PoolClosed(bool _value); // event for when a permanent URI is set
 
     // ssv testing
     function depositSSV(
@@ -57,16 +89,21 @@ contract InstSta is ReentrancyGuard, Ownable {
         uint32[] calldata operatorIds,
         bytes[] calldata sharesPublicKeys,
         bytes[] calldata sharesEncrypted,
+        bytes calldata withdrawal_credentials,
+        bytes calldata signature,
+        bytes32 deposit_data_root,
         uint256 amount
-    ) external payable {
+    ) external payable nonReentrant {
         require(verified(msg.sender), "You are not a verified business yet.");
-        require(
-            allowPubDeposit == true,
-            "Public pool is currently closed. Please wait for the next one."
-        );
         require(
             msg.value == 32 ether,
             "You are trying to deposit more than the current pool can hold. Please wait for the next one or deposit less."
+        );
+        IDepositContract(DEPOSIT_ADDRESS).deposit{value: msg.value}(
+            pubkey,
+            withdrawal_credentials,
+            signature,
+            deposit_data_root
         );
         IERC20(SSV_TOKEN).approve(SSV_ADDRESS, amount);
         ISSVNetwork(SSV_ADDRESS).registerValidator(
@@ -77,25 +114,7 @@ contract InstSta is ReentrancyGuard, Ownable {
             amount
         );
         validatortoStaker[msg.sender] = pubkey;
-        closePoolInternal();
         emit DepositReceivedStaked(msg.sender, pubkey);
-    }
-
-    // functions
-    function openPool() external onlyOwner {
-        require(allowPubDeposit == false, "Public pool already open");
-        allowPubDeposit = true;
-        emit PoolOpend(allowPubDeposit);
-    }
-
-    function closePool() external onlyOwner {
-        allowPubDeposit = false;
-        emit PoolClosed(allowPubDeposit);
-    }
-
-    function closePoolInternal() internal {
-        allowPubDeposit = false;
-        emit PoolClosed(allowPubDeposit);
     }
 
     function verified(address _sender) public view returns (bool) {
@@ -113,20 +132,6 @@ contract InstSta is ReentrancyGuard, Ownable {
 
     function getValidator(address _addr) external view returns (bytes memory) {
         return validatortoStaker[_addr];
-    }
-
-    function withdrawBatch() external onlyOwner {
-        require(
-            !allowPubDeposit,
-            "Public pool is still open. Please close it first."
-        );
-        require(address(this).balance == 32 ether, "Pool not full");
-        payable(owner()).transfer(32 ether);
-    }
-
-    function withdrawAny(uint256 _amount) external onlyOwner {
-        require(_amount <= address(this).balance);
-        payable(owner()).transfer(_amount);
     }
 
     function getBalance() external view returns (uint256) {

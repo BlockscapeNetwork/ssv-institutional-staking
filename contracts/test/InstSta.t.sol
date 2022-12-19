@@ -9,12 +9,10 @@ contract InstStaTest is Test {
     InstSta instSta;
     address internal deployer;
     address internal singleStakerNotVerified = vm.addr(0xDe0);
-    address internal singleStakerVerified = vm.addr(vm.envUint("PRIVATE_KEY"));    
+    address internal singleStakerVerified = vm.addr(vm.envUint("PRIVATE_KEY"));
 
-    bytes internal pubkey =
-        bytes(
-            "0xa1c4aae260616b4e4b434d4a161f6bf4ba4db0c1b78ea39740e21a5425db3e92bf3246f2cb500071e8a8bd7d2fb590f6"
-        );
+    // mockdata - start
+    bytes internal pubkey = "0x8de93220bec0cdefde2c020590823fe83baa393c955bc71c11e45e0aac52dc6ccadc14b21c5a7f07e6460cdb6cde5069";
     uint32[] internal operatorIDs = [
         uint32(42),
         uint32(2),
@@ -52,6 +50,17 @@ contract InstStaTest is Test {
 
     uint256 internal amount = 2 ether;
 
+    bytes internal withdrawal_credentials =
+        "003b0b9704155f6a05386e64053cae49187843c513577b6b5405f4a390212911";
+    bytes internal signature =
+        "893ba71ca91a2af8f86d03a4909ceb901bff4e094d64953817ec8596f7aacabfe1dd971686d1b73ff62c3219f42ad0b30a4b0186fe4d47a2630c00730bda7d8ace52a314fdd6581232f39a3aa8ee23ccc57c77d8f2ff2c78134cdd713497e0b6";
+    bytes32 internal deposit_data_root =
+        keccak256(
+            "12cf3ac2339e3a9eea10f6b2e3f7adfa938c2fd8b28f4a0e1c9462820b54d4ad"
+        );
+
+    // mnock data - end
+
     function setUp() public {
         deployer = vm.addr(0xDe);
         vm.deal(deployer, 100 ether);
@@ -60,7 +69,8 @@ contract InstStaTest is Test {
         instSta = new InstSta(
             0x5C6b81212c0A654B6e247F8DEfeC9a95c63EF954,
             0x3a9f01091C446bdE031E39ea8354647AFef091E7,
-            0xb9e155e65B5c4D66df28Da8E9a0957f06F11Bc04
+            0xb9e155e65B5c4D66df28Da8E9a0957f06F11Bc04,
+            0x07b39F4fDE4A38bACe212b546dAc87C58DfE3fDC
         );
 
         vm.deal(singleStakerNotVerified, 100 ether);
@@ -71,38 +81,41 @@ contract InstStaTest is Test {
 
         //open public pool
         vm.prank(deployer);
-        instSta.openPool();
     }
 
-    // positive testcases
+    // neg testcases
     function testFailRandomsCanCreateValidatorAndWithdraw() public {
         vm.prank(singleStakerNotVerified);
-        instSta.depositSSV{value: 32 ether}(pubkey,
+        instSta.depositSSV{value: 32 ether}(
+            pubkey,
             operatorIDs,
             sharesPublicKeys,
             sharesEncrypted,
-            amount);
+            withdrawal_credentials,
+            signature,
+            deposit_data_root,
+            amount
+        );
         assertEq(instSta.getBalance(), 32 ether);
-
-        vm.prank(deployer);
-        instSta.withdrawBatch();
 
         assertEq(instSta.getBalance(), 0 ether);
     }
 
+    // pos testcases
     function testRandomsCanCreateValidatorAndWithdraw() public {
         vm.prank(singleStakerVerified);
-        instSta.depositSSV{value: 32 ether}(pubkey,
+        instSta.depositSSV{value: 32 ether}(
+            pubkey,
             operatorIDs,
             sharesPublicKeys,
             sharesEncrypted,
-            amount);
+            withdrawal_credentials,
+            signature,
+            deposit_data_root,
+            amount
+        );
         assertEq(instSta.getBalance(), 32 ether);
-
-        vm.prank(deployer);
-        instSta.withdrawBatch();
 
         assertEq(instSta.getBalance(), 0 ether);
     }
-
 }

@@ -15,9 +15,9 @@ contract InstStaScript is Script {
         instSta = new InstSta(
             0xFEB98861425C6d2819c0d0Ee70E45AbcF71b43Da,
             0x9D65fF81a3c488d585bBfb0Bfe3c7707c7917f54,
-            address(0)
+            address(0),
+            0x00000000219ab540356cBB839Cbe05303d7705Fa
         );
-        instSta.openPool();
         vm.stopBroadcast();
     }
 }

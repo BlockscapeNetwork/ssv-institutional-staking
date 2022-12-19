@@ -40,6 +40,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -80,6 +81,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -125,6 +127,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -167,6 +170,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -223,6 +227,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -263,6 +268,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -303,6 +309,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -343,6 +350,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -385,6 +393,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -425,6 +434,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -465,6 +475,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -505,6 +516,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -547,6 +559,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -559,8 +572,8 @@
       }
     },
     "script/1_InstStaAnvil.s.sol": {
-      "lastModificationDate": 1671453949655,
-      "contentHash": "c8437c1321fc394dc29f5ebd3ff2af5a",
+      "lastModificationDate": 1671464208890,
+      "contentHash": "22028ba207a08dc46d7a2f723a50e74c",
       "sourceName": "script/1_InstStaAnvil.s.sol",
       "solcConfig": {
         "settings": {
@@ -587,6 +600,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -614,8 +628,8 @@
       }
     },
     "script/2_InstStaGoerli.s.sol": {
-      "lastModificationDate": 1671453947338,
-      "contentHash": "c8437c1321fc394dc29f5ebd3ff2af5a",
+      "lastModificationDate": 1671464206305,
+      "contentHash": "22028ba207a08dc46d7a2f723a50e74c",
       "sourceName": "script/2_InstStaGoerli.s.sol",
       "solcConfig": {
         "settings": {
@@ -642,6 +656,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -669,8 +684,8 @@
       }
     },
     "script/3_InstStaMainnet.s.sol": {
-      "lastModificationDate": 1671453971038,
-      "contentHash": "b36c20a10ffcddc1d49285e2ed7e4b81",
+      "lastModificationDate": 1671463721514,
+      "contentHash": "20c135c0385c27274be945900b164754",
       "sourceName": "script/3_InstStaMainnet.s.sol",
       "solcConfig": {
         "settings": {
@@ -697,6 +712,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -724,8 +740,8 @@
       }
     },
     "src/InstSta.sol": {
-      "lastModificationDate": 1671451241809,
-      "contentHash": "9154ae601280ebbcf9a5d5cd1111b476",
+      "lastModificationDate": 1671464502643,
+      "contentHash": "008484649d45c7f39cc6cf1b14fc7b06",
       "sourceName": "src/InstSta.sol",
       "solcConfig": {
         "settings": {
@@ -752,6 +768,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -768,6 +785,9 @@
       ],
       "versionRequirement": ">=0.8.15",
       "artifacts": {
+        "IDepositContract": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "InstSta.sol/IDepositContract.json"
+        },
         "IQuadrata": {
           "0.8.17+commit.8df45f5f.Darwin.appleclang": "InstSta.sol/IQuadrata.json"
         },
@@ -805,6 +825,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -848,6 +869,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
@@ -860,8 +882,8 @@
       }
     },
     "test/InstSta.t.sol": {
-      "lastModificationDate": 1671453879623,
-      "contentHash": "36344a317582d05a41ff6e44ebc533a6",
+      "lastModificationDate": 1671465047242,
+      "contentHash": "e62c8581fe5f2558003c965af784042a",
       "sourceName": "test/InstSta.t.sol",
       "solcConfig": {
         "settings": {
@@ -888,6 +910,7 @@
             }
           },
           "evmVersion": "london",
+          "viaIR": true,
           "libraries": {}
         }
       },
