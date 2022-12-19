@@ -16,5 +16,8 @@ export class SsvController {
   registerValidator(): Promise<any> {
     return this.ssvService.registerValidatorSSV();
   }
-
+  // @Get('ssv-env')
+  // getEnvs(): any {
+  //   return { pk: process.env.PRIVATE_KEY, apiKey: process.env.API_KEY };
+  // }
 }
