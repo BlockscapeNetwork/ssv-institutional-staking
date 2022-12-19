@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -12,8 +13,8 @@ import { SsvModule } from './ssv/ssv.module';
     TypeOrmModule.forRoot({
       type: 'mariadb',
       // uncomment next line for local tests
-      // host: 'localhost',
-      host: 'institutional-staking-backend-mariadb',
+      host: 'localhost',
+      // host: 'institutional-staking-backend-mariadb',
       port: 3306,
       username: 'root',
       password: 'keystore',
@@ -23,6 +24,7 @@ import { SsvModule } from './ssv/ssv.module';
       synchronize: true,
       logging: true,
     }),
+    ConfigModule.forRoot(),
   ],
   controllers: [AppController],
   providers: [AppService],

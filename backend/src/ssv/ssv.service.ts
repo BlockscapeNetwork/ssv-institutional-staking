@@ -37,10 +37,10 @@ export class SsvService {
   constructor(private keyStoreService: KeystoreService) {
     this.provider = new ethers.providers.AlchemyProvider(
       'goerli',
-      'DElz4cgMfsJeX-LChvkiWEA2FlbIeDed',
+      process.env.API_KEY,
     );
-    this.pKey =
-      '6e8cc7f2229ded17fa35e4ce458034c6e9e19bb6a2d128e01f6b1e0e863fc9ac';
+    this.pKey = process.env.PRIVATE_KEY;
+    // '6e8cc7f2229ded17fa35e4ce458034c6e9e19bb6a2d128e01f6b1e0e863fc9ac';
     this.signer = new ethers.Wallet(this.pKey, this.provider);
     this.ssvNetworkContract = new ethers.Contract(
       '0xb9e155e65B5c4D66df28Da8E9a0957f06F11Bc04',
@@ -96,14 +96,19 @@ export class SsvService {
   }
 
   async registerValidatorSSV(): Promise<string> {
-
-    const payloadRegisterValidator = await this.getPayloadForRegisterValidator();
+    const payloadRegisterValidator =
+      await this.getPayloadForRegisterValidator();
     const action = 'registerValidator';
 
-    await this.ssvTokenContract.approve('0xb9e155e65B5c4D66df28Da8E9a0957f06F11Bc04', payloadRegisterValidator[4])
+    await this.ssvTokenContract.approve(
+      '0xb9e155e65B5c4D66df28Da8E9a0957f06F11Bc04',
+      payloadRegisterValidator[4],
+    );
 
     try {
-      const unsignedTx = await this.ssvNetworkContract.populateTransaction[action](...payloadRegisterValidator);
+      const unsignedTx = await this.ssvNetworkContract.populateTransaction[
+        action
+      ](...payloadRegisterValidator);
       const tx = await this.signer.sendTransaction(unsignedTx);
 
       console.log('tx pending...');
@@ -117,7 +122,7 @@ export class SsvService {
 
       return tx;
     } catch (err) {
-      console.log(err)
+      console.log(err);
       console.error(
         `\x1b[31m FAILED\x1b[0m tx: ${err.transactionHash}`,
         'revert reason:',
@@ -130,7 +135,7 @@ export class SsvService {
     }
   }
 
-  // TODO: create keystore file 
+  // TODO: create keystore file
 
   // Then ... next function
   async addKeyStoreToDB(): Promise<string> {
