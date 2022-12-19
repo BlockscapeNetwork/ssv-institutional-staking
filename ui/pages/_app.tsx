@@ -8,8 +8,14 @@ import {
   lightTheme,
   darkTheme,
   connectorsForWallets,
-  wallet,
 } from "@rainbow-me/rainbowkit";
+import {
+  injectedWallet,
+  coinbaseWallet,
+  ledgerWallet,
+  metaMaskWallet,
+  walletConnectWallet,
+} from "@rainbow-me/rainbowkit/wallets";
 import {
   Chain,
   configureChains,
@@ -45,12 +51,12 @@ const needsInjectedWalletFallback =
     {
       groupName: 'Suggested',
       wallets: [
-        wallet.metaMask({ chains }),
-        wallet.walletConnect({ chains }),
-        wallet.coinbase({ appName: 'Bountyscape', chains }),
-        wallet.ledger({ chains }),
+        metaMaskWallet({ chains }),
+        walletConnectWallet({ chains }),
+        coinbaseWallet({ appName: 'Bountyscape', chains }),
+        ledgerWallet({ chains }),
         ...(needsInjectedWalletFallback
-          ? [wallet.injected({ chains })]
+          ? [injectedWallet({ chains })]
           : []),
       ],
     },
