@@ -79,7 +79,7 @@ const Staking: NextPage = () => {
     abi: ETHALLOC.abi,
     functionName: "depositEthKYB",
     overrides: {
-      value: ethers.utils.parseEther(stakeAmount || "0"),
+      value: ethers.utils.parseEther("32"),
     },
   });
 
@@ -122,12 +122,14 @@ const Staking: NextPage = () => {
             {/* <div className="text-xm font-bold">Receive <div className="tooltip tooltip-primary " data-tip="swETH is an non-rebasing ERC-20 token. It can be traded on the secondary market. Once  Beacon Chain withdraws are enabled you can exchange your swETH to ETH 1=1."><div className="text-primary">swETH</div></div> and a <div className="tooltip tooltip-primary " data-tip="swNFT is a ERC-721 token and earns the staking APR. It represents your staked ETH on the blockscape validators."><div className="text-primary">swNFT</div></div>.</div> */}
             <div className="card w-96 glass shadow-xl mt-2  justify-items-center">
               <div className="card-body text-center text-xs items-center">
-                Available to stake:{" "}
-                {typeof data === "undefined"
-                  ? "0"
-                  : Number(data?.formatted) | 0}{" "}
-                ETH
-                <label className="input-group">
+                Available: {Number(data?.formatted).toFixed(4)} ETH
+                <img
+                  src={process.env.NEXT_PUBLIC_BASE_PATH + "/ethL.png"}
+                  width="35px"
+                  height="auto"
+                  className="m-2"
+                />
+                {/* <label className="input-group">
                   <span>
                     <img
                       src={process.env.NEXT_PUBLIC_BASE_PATH + "/ethL.png"}
@@ -141,14 +143,14 @@ const Staking: NextPage = () => {
                     className="input input-bordered input-primary w-full max-w-xs"
                     onChange={(e) => setStakeAmount(e.target.value)}
                   />
-                </label>
+                </label> */}
                 {isConnected && verified ? (
                   <button
                     className="btn btn-primary btn-block"
                     onClick={() => write?.()}
                     disabled={!write}
                   >
-                    Stake your ETH
+                    Stake your 32 ETH
                   </button>
                 ) : isConnected && !verified && chain?.name === "Goerli" ? (
                   <Link
