@@ -6,23 +6,9 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('payload-register-validator')
-  getPayloadRegisterValidator(): Promise<any> {
-    return this.appService.getPayloadRegisterValidator();
+  @Get()
+  getHello(): string {
+    return this.appService.getHello();
   }
 
-  @Get('payload-register-validator-cli-pre-generated')
-  getPayloadRegisterValidatorCliPreGenerated(): Promise<any> {
-    return this.appService.getPayloadRegisterValidatorFromCliSplit();
-  }
-
-  @Get('network-fee-ssv')
-  getNetworkFeeSSV(): Promise<any> {
-    return this.appService.getNetworkFeeSSV();
-  }
-
-  @Post('register-validator')
-  registerValidator(): Promise<any> {
-    return this.appService.registerValidatorSSV();
-  }
 }

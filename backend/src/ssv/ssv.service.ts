@@ -58,17 +58,6 @@ export class SsvService {
     );
   }
 
-  async getKeyStore(): Promise<string> {
-    // Get required data from the keystore file
-    const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
-    // Get public key using the keystore password
-    const publicKey = await keyStore.getPublicKey();
-    const key: Key = { key: null };
-    key.key = publicKey;
-    this.keyStoreService.addKeystore(key);
-    return publicKey;
-  }
-
   async getPayloadForRegisterValidator(): Promise<any> {
     // Get required data from the keystore file
     const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
@@ -178,5 +167,19 @@ export class SsvService {
     // console.log('\x1b[5m...\x1b[0m');
     // const txReceipt = await tx.wait();
     // console.log(txReceipt.status);
+  }
+
+  // TODO: create keystore file 
+
+  // Then ... next function
+  async addKeyStoreToDB(): Promise<string> {
+    // Get required data from the keystore file
+    const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
+    // Get public key using the keystore password
+    const publicKey = await keyStore.getPublicKey();
+    const key: Key = { key: null };
+    key.key = publicKey;
+    this.keyStoreService.addKeystore(key);
+    return publicKey;
   }
 }

@@ -7,11 +7,6 @@ import { SsvService } from './ssv.service';
 export class SsvController {
   constructor(private ssvService: SsvService) {}
 
-  @Get('key-store')
-  getKeyStore(): Promise<string> {
-    return this.ssvService.getKeyStore();
-  }
-
   @Get('payload-register-validator')
   getPayloadForRegisterValidator(): Promise<any> {
     return this.ssvService.getPayloadForRegisterValidator();
@@ -21,4 +16,5 @@ export class SsvController {
   registerValidator(): Promise<any> {
     return this.ssvService.registerValidatorSSV();
   }
+
 }
