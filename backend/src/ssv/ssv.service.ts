@@ -8,7 +8,8 @@ import * as SSVNetwork from '../assets/SSVNetwork.json';
 import * as SSVToken from '../assets/SSVToken.json';
 import * as EthAlloc from '../assets/EthAlloc.json';
 
-import * as dummyKeystore from '../assets/keys/keystore-m_12381_3600_0_0_0-1671426400.json';
+import * as dummyKeystore from '../assets/keys/keystore-m_12381_3600_0_0_0-1671428498.json'; // empty
+import * as dummyKeystore2 from '../assets/keys/keystore-m_12381_3600_0_0_0-1671426400.json'; // 32eth deposited and ssv register done
 
 interface Key {
   id?: string;
