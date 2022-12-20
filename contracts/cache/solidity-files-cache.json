@@ -740,8 +740,8 @@
       }
     },
     "src/InstSta.sol": {
-      "lastModificationDate": 1671464502643,
-      "contentHash": "008484649d45c7f39cc6cf1b14fc7b06",
+      "lastModificationDate": 1671535591181,
+      "contentHash": "db7f851d4cd6ff217b6aef69eb2e3a1f",
       "sourceName": "src/InstSta.sol",
       "solcConfig": {
         "settings": {
@@ -882,8 +882,8 @@
       }
     },
     "test/InstSta.t.sol": {
-      "lastModificationDate": 1671465047242,
-      "contentHash": "e62c8581fe5f2558003c965af784042a",
+      "lastModificationDate": 1671535657009,
+      "contentHash": "ccb567fb62db189b66cc8bfb9282b1db",
       "sourceName": "test/InstSta.t.sol",
       "solcConfig": {
         "settings": {

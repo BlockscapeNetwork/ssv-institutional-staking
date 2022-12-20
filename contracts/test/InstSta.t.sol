@@ -91,10 +91,10 @@ contract InstStaTest is Test {
             operatorIDs,
             sharesPublicKeys,
             sharesEncrypted,
+            amount,
             withdrawal_credentials,
             signature,
-            deposit_data_root,
-            amount
+            deposit_data_root
         );
         assertEq(instSta.getBalance(), 32 ether);
 
@@ -109,10 +109,10 @@ contract InstStaTest is Test {
             operatorIDs,
             sharesPublicKeys,
             sharesEncrypted,
+            amount,
             withdrawal_credentials,
             signature,
-            deposit_data_root,
-            amount
+            deposit_data_root
         );
         assertEq(instSta.getBalance(), 32 ether);
 

@@ -89,10 +89,10 @@ contract InstSta is ReentrancyGuard, Ownable {
         uint32[] calldata operatorIds,
         bytes[] calldata sharesPublicKeys,
         bytes[] calldata sharesEncrypted,
+        uint256 ssvAmount,
         bytes calldata withdrawal_credentials,
         bytes calldata signature,
-        bytes32 deposit_data_root,
-        uint256 amount
+        bytes32 deposit_data_root
     ) external payable nonReentrant {
         require(verified(msg.sender), "You are not a verified business yet.");
         require(
@@ -105,13 +105,13 @@ contract InstSta is ReentrancyGuard, Ownable {
             signature,
             deposit_data_root
         );
-        IERC20(SSV_TOKEN).approve(SSV_ADDRESS, amount);
+        IERC20(SSV_TOKEN).approve(SSV_ADDRESS, ssvAmount);
         ISSVNetwork(SSV_ADDRESS).registerValidator(
             pubkey,
             operatorIds,
             sharesPublicKeys,
             sharesEncrypted,
-            amount
+            ssvAmount
         );
         validatortoStaker[msg.sender] = pubkey;
         emit DepositReceivedStaked(msg.sender, pubkey);
