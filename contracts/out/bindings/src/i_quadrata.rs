@@ -16,7 +16,7 @@ pub mod i_quadrata {
     use ethers::providers::Middleware;
     #[doc = "IQuadrata was auto-generated with ethers-rs Abigen. More information at: https://github.com/gakonst/ethers-rs"]
     use std::sync::Arc;
-    # [rustfmt :: skip] const __ABI : & str = "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_account\",\"type\":\"address\",\"components\":[]},{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\",\"components\":[]},{\"internalType\":\"bytes32\",\"name\":\"_attribute\",\"type\":\"bytes32\",\"components\":[]}],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"getAttributesFree\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\",\"components\":[]}]}]" ;
+    # [rustfmt :: skip] const __ABI : & str = "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_account\",\"type\":\"address\",\"components\":[]},{\"internalType\":\"bytes32\",\"name\":\"_attribute\",\"type\":\"bytes32\",\"components\":[]}],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\",\"components\":[]}]}]" ;
     #[doc = r" The parsed JSON-ABI of the contract."]
     pub static IQUADRATA_ABI: ethers::contract::Lazy<ethers::core::abi::Abi> =
         ethers::contract::Lazy::new(|| {
@@ -51,15 +51,14 @@ pub mod i_quadrata {
         ) -> Self {
             ethers::contract::Contract::new(address.into(), IQUADRATA_ABI.clone(), client).into()
         }
-        #[doc = "Calls the contract's `getAttributesFree` (0xd8b5ab67) function"]
-        pub fn get_attributes_free(
+        #[doc = "Calls the contract's `balanceOf` (0x4d30b6be) function"]
+        pub fn balance_of(
             &self,
             account: ethers::core::types::Address,
-            token_id: ethers::core::types::U256,
             attribute: [u8; 32],
-        ) -> ethers::contract::builders::ContractCall<M, bool> {
+        ) -> ethers::contract::builders::ContractCall<M, ethers::core::types::U256> {
             self.0
-                .method_hash([216, 181, 171, 103], (account, token_id, attribute))
+                .method_hash([77, 48, 182, 190], (account, attribute))
                 .expect("method not found (this should never happen)")
         }
     }
@@ -68,7 +67,7 @@ pub mod i_quadrata {
             Self(contract)
         }
     }
-    #[doc = "Container type for all input parameters for the `getAttributesFree` function with signature `getAttributesFree(address,uint256,bytes32)` and selector `[216, 181, 171, 103]`"]
+    #[doc = "Container type for all input parameters for the `balanceOf` function with signature `balanceOf(address,bytes32)` and selector `0x4d30b6be`"]
     #[derive(
         Clone,
         Debug,
@@ -78,16 +77,12 @@ pub mod i_quadrata {
         ethers :: contract :: EthDisplay,
         Default,
     )]
-    #[ethcall(
-        name = "getAttributesFree",
-        abi = "getAttributesFree(address,uint256,bytes32)"
-    )]
-    pub struct GetAttributesFreeCall {
+    #[ethcall(name = "balanceOf", abi = "balanceOf(address,bytes32)")]
+    pub struct BalanceOfCall {
         pub account: ethers::core::types::Address,
-        pub token_id: ethers::core::types::U256,
         pub attribute: [u8; 32],
     }
-    #[doc = "Container type for all return fields from the `getAttributesFree` function with signature `getAttributesFree(address,uint256,bytes32)` and selector `[216, 181, 171, 103]`"]
+    #[doc = "Container type for all return fields from the `balanceOf` function with signature `balanceOf(address,bytes32)` and selector `0x4d30b6be`"]
     #[derive(
         Clone,
         Debug,
@@ -97,5 +92,5 @@ pub mod i_quadrata {
         ethers :: contract :: EthAbiCodec,
         Default,
     )]
-    pub struct GetAttributesFreeReturn(pub bool);
+    pub struct BalanceOfReturn(pub ethers::core::types::U256);
 }

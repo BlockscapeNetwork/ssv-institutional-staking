@@ -5,6 +5,7 @@ libs = ['lib']
 solc-version = "0.8.17"
 optimizer = true
 optimizer-runs = 10_000_000
+via-ir = true
 
 [rpc_endpoints]
 goerli = "${GOERLI_RPC_URL}"

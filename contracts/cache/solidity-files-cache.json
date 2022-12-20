@@ -572,7 +572,7 @@
       }
     },
     "script/1_InstStaAnvil.s.sol": {
-      "lastModificationDate": 1671464208890,
+      "lastModificationDate": 1671537045674,
       "contentHash": "22028ba207a08dc46d7a2f723a50e74c",
       "sourceName": "script/1_InstStaAnvil.s.sol",
       "solcConfig": {
@@ -628,7 +628,7 @@
       }
     },
     "script/2_InstStaGoerli.s.sol": {
-      "lastModificationDate": 1671464206305,
+      "lastModificationDate": 1671537045674,
       "contentHash": "22028ba207a08dc46d7a2f723a50e74c",
       "sourceName": "script/2_InstStaGoerli.s.sol",
       "solcConfig": {
@@ -684,7 +684,7 @@
       }
     },
     "script/3_InstStaMainnet.s.sol": {
-      "lastModificationDate": 1671463721514,
+      "lastModificationDate": 1671537045674,
       "contentHash": "20c135c0385c27274be945900b164754",
       "sourceName": "script/3_InstStaMainnet.s.sol",
       "solcConfig": {
@@ -740,7 +740,7 @@
       }
     },
     "src/InstSta.sol": {
-      "lastModificationDate": 1671535591181,
+      "lastModificationDate": 1671537045675,
       "contentHash": "db7f851d4cd6ff217b6aef69eb2e3a1f",
       "sourceName": "src/InstSta.sol",
       "solcConfig": {
@@ -796,17 +796,10 @@
         }
       }
     },
-<<<<<<< HEAD
     "src/utils/ISSVNetwork.sol": {
-      "lastModificationDate": 1670928277900,
+      "lastModificationDate": 1671537045675,
       "contentHash": "ab31f2150fa85c8beffa082ad2c49f03",
       "sourceName": "src/utils/ISSVNetwork.sol",
-=======
-    "test/EthAlloc.t.sol": {
-      "lastModificationDate": 1671175741376,
-      "contentHash": "3df2558f5410b31fa7879850d40134ea",
-      "sourceName": "test/EthAlloc.t.sol",
->>>>>>> e64afccdd94eed7ab983543affb0d1eb59ab6ab8
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -848,7 +841,7 @@
       }
     },
     "src/utils/ISSVRegistry.sol": {
-      "lastModificationDate": 1670928253736,
+      "lastModificationDate": 1671537045675,
       "contentHash": "ca86b7076b26b9e274fc7c1cb4707be5",
       "sourceName": "src/utils/ISSVRegistry.sol",
       "solcConfig": {
@@ -889,7 +882,7 @@
       }
     },
     "test/InstSta.t.sol": {
-      "lastModificationDate": 1671535657009,
+      "lastModificationDate": 1671537045675,
       "contentHash": "ccb567fb62db189b66cc8bfb9282b1db",
       "sourceName": "test/InstSta.t.sol",
       "solcConfig": {

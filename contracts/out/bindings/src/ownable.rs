@@ -109,7 +109,7 @@ pub mod ownable {
         #[ethevent(indexed)]
         pub new_owner: ethers::core::types::Address,
     }
-    #[doc = "Container type for all input parameters for the `owner` function with signature `owner()` and selector `[141, 165, 203, 91]`"]
+    #[doc = "Container type for all input parameters for the `owner` function with signature `owner()` and selector `0x8da5cb5b`"]
     #[derive(
         Clone,
         Debug,
@@ -121,7 +121,7 @@ pub mod ownable {
     )]
     #[ethcall(name = "owner", abi = "owner()")]
     pub struct OwnerCall;
-    #[doc = "Container type for all input parameters for the `renounceOwnership` function with signature `renounceOwnership()` and selector `[113, 80, 24, 166]`"]
+    #[doc = "Container type for all input parameters for the `renounceOwnership` function with signature `renounceOwnership()` and selector `0x715018a6`"]
     #[derive(
         Clone,
         Debug,
@@ -133,7 +133,7 @@ pub mod ownable {
     )]
     #[ethcall(name = "renounceOwnership", abi = "renounceOwnership()")]
     pub struct RenounceOwnershipCall;
-    #[doc = "Container type for all input parameters for the `transferOwnership` function with signature `transferOwnership(address)` and selector `[242, 253, 227, 139]`"]
+    #[doc = "Container type for all input parameters for the `transferOwnership` function with signature `transferOwnership(address)` and selector `0xf2fde38b`"]
     #[derive(
         Clone,
         Debug,
@@ -207,7 +207,7 @@ pub mod ownable {
             OwnableCalls::TransferOwnership(var)
         }
     }
-    #[doc = "Container type for all return fields from the `owner` function with signature `owner()` and selector `[141, 165, 203, 91]`"]
+    #[doc = "Container type for all return fields from the `owner` function with signature `owner()` and selector `0x8da5cb5b`"]
     #[derive(
         Clone,
         Debug,

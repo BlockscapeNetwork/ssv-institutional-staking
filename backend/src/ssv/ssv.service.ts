@@ -7,6 +7,7 @@ import { Encryption, EthereumKeyStore, Threshold } from 'ssv-keys';
 import * as SSVNetwork from '../assets/SSVNetwork.json';
 import * as SSVToken from '../assets/SSVToken.json';
 import * as EthAlloc from '../assets/EthAlloc.json';
+import * as InstSta from '../assets/InstSta.json';
 
 import * as dummyKeystore from '../assets/keys/keystore-m_12381_3600_0_0_0-1671428498.json'; // empty
 import * as dummyKeystore2 from '../assets/keys/keystore-m_12381_3600_0_0_0-1671426400.json'; // 32eth deposited and ssv register done
@@ -31,6 +32,7 @@ export class SsvService {
   ssvNetworkContract;
   ssvTokenContract;
   ethAllocContract;
+  instStaContract;
   pKey;
   signer;
 
@@ -54,6 +56,11 @@ export class SsvService {
     this.ethAllocContract = new ethers.Contract(
       '0xf235770a3eb1ff6bfdf06defd0ebcb66a6865da9',
       EthAlloc.abi,
+      this.signer,
+    );
+    this.instStaContract = new ethers.Contract(
+      '0x1be7f99c19f4740ddac5c1352ea46fcb07cdb69d',
+      InstSta.abi,
       this.signer,
     );
   }
@@ -94,6 +101,54 @@ export class SsvService {
     ];
   }
 
+
+// - new func all in one
+async getPayload(): Promise<any> {
+  // Get required data from the keystore file
+  const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
+  const thresholdInstance = new Threshold();
+  // Get public key using the keystore password
+  const privateKey = await keyStore.getPrivateKey(keyStorePW);
+  const threshold = await thresholdInstance.create(privateKey, operatorIds);
+  let shares = new Encryption(operators, threshold.shares).encrypt();
+  // Loop through the operators RSA keys and format them as base64
+  shares = shares.map((share) => {
+    share.operatorPublicKey = encode(share.operatorPublicKey);
+    // Return the operator key and KeyShares (sharePublicKey & shareEncrypted)
+    return share;
+  });
+  const web3 = new Web3();
+  // Get all the public keys from the shares
+  const sharesPublicKeys = shares.map((share) => share.publicKey);
+  // Get all the private keys from the shares and encode them as ABI parameters
+  const sharesEncrypted = shares.map((share) =>
+    web3.eth.abi.encodeParameter('string', share.privateKey),
+  );
+
+  // Token amount (liquidation collateral and operational runway balance to be funded)
+  const tokenAmount = web3.utils.toBN(21342395400000000000).toString();
+  const operatorIdsArray = Array.from(operatorIds);
+
+  // Return all the needed params to build a transaction payload - deposit contract
+  const withdrawal_credentials = "";
+  const signature = "";
+  const deposit_data_root = "";
+
+  // Return all the needed params to build a transaction payload
+  return [
+    threshold.validatorPublicKey,
+    operatorIdsArray,
+    sharesPublicKeys,
+    sharesEncrypted,
+    tokenAmount,
+    withdrawal_credentials,
+    signature,
+    deposit_data_root,
+  ];
+}
+// - new func all in one
+
+
   async registerValidatorSSV(): Promise<string> {
     const payloadRegisterValidator =
       await this.getPayloadForRegisterValidator();
@@ -133,6 +188,42 @@ export class SsvService {
       );
     }
   }
+
+  async registerDepositSSV(): Promise<string> {
+    const payloadRegisterValidator =
+      await this.registerValidatorSSV();
+    const action = 'depositSSV';
+
+    try {
+      const unsignedTx = await this.instStaContract.populateTransaction[
+        action
+      ](...payloadRegisterValidator);
+      const tx = await this.signer.sendTransaction(unsignedTx);
+
+      console.log('tx pending...');
+      console.log('\x1b[5m...\x1b[0m');
+      const txReceipt = await tx.wait();
+      console.log(txReceipt.status);
+
+      console.log(
+        `\x1b[32m Success\x1b[0m Created Validator ${payloadRegisterValidator[0]}`,
+      );
+
+      return tx;
+    } catch (err) {
+      console.log(err);
+      console.error(
+        `\x1b[31m FAILED\x1b[0m tx: ${err.transactionHash}`,
+        'revert reason:',
+        err.reason,
+      );
+      throw new HttpException(
+        `Error:`,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
+
 
   // TODO: create keystore file
 
