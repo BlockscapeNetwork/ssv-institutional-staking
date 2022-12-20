@@ -7,18 +7,17 @@ import { SsvService } from './ssv.service';
 export class SsvController {
   constructor(private ssvService: SsvService) {}
 
-  @Get('key-store')
-  getKeyStore(): Promise<string> {
-    return this.ssvService.getKeyStore();
-  }
+  // @Get('payload-register-validator')
+  // getPayloadForRegisterValidator(): Promise<any> {
+  //   return this.ssvService.getPayloadForRegisterValidator();
+  // }
 
-  @Get('payload-register-validator')
-  getPayloadForRegisterValidator(): Promise<any> {
-    return this.ssvService.getPayloadForRegisterValidator();
-  }
-
-  @Post('register-validator')
+  @Post('register-institutional-validator')
   registerValidator(): Promise<any> {
     return this.ssvService.registerValidatorSSV();
   }
+  // @Get('ssv-env')
+  // getEnvs(): any {
+  //   return { pk: process.env.PRIVATE_KEY, apiKey: process.env.API_KEY };
+  // }
 }

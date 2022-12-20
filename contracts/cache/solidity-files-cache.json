@@ -796,10 +796,17 @@
         }
       }
     },
+<<<<<<< HEAD
     "src/utils/ISSVNetwork.sol": {
       "lastModificationDate": 1670928277900,
       "contentHash": "ab31f2150fa85c8beffa082ad2c49f03",
       "sourceName": "src/utils/ISSVNetwork.sol",
+=======
+    "test/EthAlloc.t.sol": {
+      "lastModificationDate": 1671175741376,
+      "contentHash": "3df2558f5410b31fa7879850d40134ea",
+      "sourceName": "test/EthAlloc.t.sol",
+>>>>>>> e64afccdd94eed7ab983543affb0d1eb59ab6ab8
       "solcConfig": {
         "settings": {
           "optimizer": {
