@@ -59,7 +59,7 @@ export class SsvService {
       this.signer,
     );
     this.instStaContract = new ethers.Contract(
-      '0x1be7f99c19f4740ddac5c1352ea46fcb07cdb69d',
+      '0xf16c26a48b705d502843de6d51be4673513ae54b',
       InstSta.abi,
       this.signer,
     );
@@ -149,18 +149,21 @@ async getPayload(): Promise<any> {
 // - new func all in one
 
 
+// needs to be tested !!!! 
   async registerValidatorSSV(): Promise<string> {
     const payloadRegisterValidator =
       await this.getPayloadForRegisterValidator();
-    const action = 'registerValidator';
+    //const action = 'registerValidator';
+    const action = 'depositTestSSV';
 
-    await this.ssvTokenContract.approve(
-      '0xb9e155e65B5c4D66df28Da8E9a0957f06F11Bc04',
-      payloadRegisterValidator[4],
-    );
+    // await this.ssvTokenContract.approve(
+    //   '0xb9e155e65B5c4D66df28Da8E9a0957f06F11Bc04',
+    //   payloadRegisterValidator[4],
+    // );
 
     try {
-      const unsignedTx = await this.ssvNetworkContract.populateTransaction[
+      //const unsignedTx = await this.ssvNetworkContract.populateTransaction[
+        const unsignedTx = await this.instStaContract.populateTransaction[
         action
       ](...payloadRegisterValidator);
       const tx = await this.signer.sendTransaction(unsignedTx);

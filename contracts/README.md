@@ -3,7 +3,7 @@
 
 ## Getting started
 ### Goerli
-Contract Address: 0x1be7f99c19f4740ddac5c1352ea46fcb07cdb69d
+Contract Address: 0x286e3133e98908c19614d0f6cb62baed13d3692a
 
 ```
 tbd

@@ -25,45 +25,14 @@
       "additionalContracts": []
     }
   ],
-  "receipts": [
-    {
-      "transactionHash": "0x70bf18d9fc08e3c3260308d5494069cea4213b0fcdba3e006ab3dac556b9cd9d",
-      "transactionIndex": "0x2",
-      "blockHash": "0xaacfd2ce75c50c861e5add7a83a5403ace5cfe4563fce3ab5f9263896605f767",
-      "blockNumber": "0x7ca9a1",
-      "from": "0x8dCe9c6b41Ea2177A8605396f282F273BF962280",
-      "to": null,
-      "cumulativeGasUsed": "0x324e3d",
-      "gasUsed": "0x15ebea",
-      "contractAddress": "0xF16C26A48b705d502843dE6d51bE4673513ae54B",
-      "logs": [
-        {
-          "address": "0xF16C26A48b705d502843dE6d51bE4673513ae54B",
-          "topics": [
-            "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
-            "0x0000000000000000000000000000000000000000000000000000000000000000",
-            "0x0000000000000000000000008dce9c6b41ea2177a8605396f282f273bf962280"
-          ],
-          "data": "0x",
-          "blockHash": "0xaacfd2ce75c50c861e5add7a83a5403ace5cfe4563fce3ab5f9263896605f767",
-          "blockNumber": "0x7ca9a1",
-          "transactionHash": "0x70bf18d9fc08e3c3260308d5494069cea4213b0fcdba3e006ab3dac556b9cd9d",
-          "transactionIndex": "0x2",
-          "logIndex": "0x2",
-          "removed": false
-        }
-      ],
-      "status": "0x1",
-      "logsBloom": "0x00000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000800000000100000000000000000000000000000001000000000000000000000000000000000000020000000000000000000800000400000000000000004000000000400000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000000020000000000000000000000000000000000000000000000000000000000000000000",
-      "type": "0x2",
-      "effectiveGasPrice": "0xb2f5a1fc"
-    }
-  ],
+  "receipts": [],
   "libraries": [],
-  "pending": [],
+  "pending": [
+    "0x70bf18d9fc08e3c3260308d5494069cea4213b0fcdba3e006ab3dac556b9cd9d"
+  ],
   "path": "/Users/flo/Dev/ssv-institutional-staking/contracts/broadcast/1_InstStaAnvil.s.sol/5/run-latest.json",
   "returns": {},
-  "timestamp": 1671552157,
+  "timestamp": 1671552124,
   "chain": 5,
   "multi": false,
   "commit": "fdfec2a9"

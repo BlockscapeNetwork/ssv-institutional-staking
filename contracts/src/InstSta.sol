@@ -117,6 +117,31 @@ contract InstSta is ReentrancyGuard, Ownable {
         emit DepositReceivedStaked(msg.sender, pubkey);
     }
 
+
+    function depositTestSSV(
+        bytes calldata pubkey,
+        uint32[] calldata operatorIds,
+        bytes[] calldata sharesPublicKeys,
+        bytes[] calldata sharesEncrypted,
+        uint256 ssvAmount
+    ) external payable nonReentrant {
+        require(verified(msg.sender), "You are not a verified business yet.");
+        // require(
+        //     msg.value == 32 ether,
+        //     "You are trying to deposit more than the current pool can hold. Please wait for the next one or deposit less."
+        // );
+        IERC20(SSV_TOKEN).approve(SSV_ADDRESS, ssvAmount);
+        ISSVNetwork(SSV_ADDRESS).registerValidator(
+            pubkey,
+            operatorIds,
+            sharesPublicKeys,
+            sharesEncrypted,
+            ssvAmount
+        );
+        validatortoStaker[msg.sender] = pubkey;
+        emit DepositReceivedStaked(msg.sender, pubkey);
+    }
+
     function verified(address _sender) public view returns (bool) {
         uint256 rslt = IQuadrata(QUADRATA).balanceOf(_sender, is_BUSINESS);
         if (rslt >= 1) {
