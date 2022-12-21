@@ -10,6 +10,13 @@ import "openzeppelin-contracts/utils/Strings.sol";
 import "openzeppelin-contracts/token/ERC20/IERC20.sol";
 import "./utils/ISSVNetwork.sol";
 
+// ! This contract is not meant to be used in production.
+// ? Need to figure out how to handle upgrades in foundry.
+// import "openzeppelin-contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
+// import "openzeppelin-contracts-upgradeable/access/OwnableUpgradeable.sol";
+// import "openzeppelin-contracts-upgradeable/utils/StringsUpgradeable.sol";
+// import "openzeppelin-contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
+
 import {console} from "forge-std/console.sol"; // foundry testing only
 
 // Interface for the KYB contract powered by Quadrata: https://quadrata.com/
