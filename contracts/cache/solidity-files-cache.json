@@ -740,8 +740,8 @@
       }
     },
     "src/InstSta.sol": {
-      "lastModificationDate": 1671552098054,
-      "contentHash": "2b5137ff053ad217a44ae9dc1cb4c5e9",
+      "lastModificationDate": 1671625239663,
+      "contentHash": "64ec3de757ccfdabc1e3ba7a3b2bfca0",
       "sourceName": "src/InstSta.sol",
       "solcConfig": {
         "settings": {

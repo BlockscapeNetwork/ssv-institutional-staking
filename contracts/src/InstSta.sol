@@ -61,6 +61,8 @@ contract InstSta is ReentrancyGuard, Ownable {
     bytes32 public constant is_BUSINESS = keccak256("IS_BUSINESS");
 
     mapping(address => bytes) validatortoStaker;
+    mapping(address => bool) stakerDeposited;
+    mapping(address => bool) stakerStaked;
 
     // Initialize the contract with the address of the Quadrata KYB contract
     constructor(
@@ -76,6 +78,10 @@ contract InstSta is ReentrancyGuard, Ownable {
     }
 
     event DepositReceivedStaked(address _sender, bytes _pubkey); // event for when a permanent URI is set
+
+    event DepositReceived(address _sender); // event for when a permanent URI is set
+    event DepositStaked(address _sender); // event for when a permanent URI is set
+
     event UserRequestedWithdrawal(
         uint256 _tokenID,
         address _user,
@@ -97,7 +103,7 @@ contract InstSta is ReentrancyGuard, Ownable {
         require(verified(msg.sender), "You are not a verified business yet.");
         require(
             msg.value == 32 ether,
-            "You are trying to deposit more than the current pool can hold. Please wait for the next one or deposit less."
+            "You need to deposit 32 ETH."
         );
         IDepositContract(DEPOSIT_ADDRESS).deposit{value: msg.value}(
             pubkey,
@@ -116,7 +122,6 @@ contract InstSta is ReentrancyGuard, Ownable {
         validatortoStaker[msg.sender] = pubkey;
         emit DepositReceivedStaked(msg.sender, pubkey);
     }
-
 
     function depositTestSSV(
         bytes calldata pubkey,
@@ -140,6 +145,60 @@ contract InstSta is ReentrancyGuard, Ownable {
         );
         validatortoStaker[msg.sender] = pubkey;
         emit DepositReceivedStaked(msg.sender, pubkey);
+    }
+
+
+
+
+
+    function depositIntoMultiSig() external payable nonReentrant {
+        // require(
+        //     msg.value == 32 ether,
+        //     "You are trying to deposit more than the current pool can hold. Please wait for the next one or deposit less."
+        // );
+        stakerDeposited[msg.sender] = true;
+        emit DepositReceived(msg.sender);
+    }
+    // needs to be only owner later on !!!!!
+    function depositTestSSVMultiSig(
+        bytes calldata pubkey,
+        uint32[] calldata operatorIds,
+        bytes[] calldata sharesPublicKeys,
+        bytes[] calldata sharesEncrypted,
+        uint256 ssvAmount
+    ) external payable nonReentrant returns (bool, bytes memory) {
+        require(verified(msg.sender), "You are not a verified business yet.");
+        require(
+            stakerDeposited[msg.sender],
+            "You have not deposited into the multisig yet."
+        );
+        require(
+            !stakerStaked[msg.sender],
+            "You have already staked your deposit."
+        );
+        stakerStaked[msg.sender] = true;
+
+        // (bool successApprove, bytes memory dataApprove) = address(SSV_TOKEN).delegatecall(
+        //     abi.encodeWithSignature(
+        //         "approve(address, uint256)",
+        //         SSV_ADDRESS,
+        //         ssvAmount
+        //     )
+        // );
+
+        (bool successRegister, bytes memory dataRegister) = address(SSV_ADDRESS).delegatecall(
+            abi.encodeWithSignature(
+                "registerValidator(bytes, unit32[], bytes[],  bytes[], uint256)",
+                pubkey,
+                operatorIds,
+                sharesPublicKeys,
+                sharesEncrypted,
+                ssvAmount
+            )
+        );
+        validatortoStaker[msg.sender] = pubkey;
+        emit DepositReceivedStaked(msg.sender, pubkey);
+        return (successRegister, dataRegister);
     }
 
     function verified(address _sender) public view returns (bool) {
