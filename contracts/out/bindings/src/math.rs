@@ -25,7 +25,7 @@ pub mod math {
     #[doc = r" Bytecode of the #name contract"]
     pub static MATH_BYTECODE: ethers::contract::Lazy<ethers::core::types::Bytes> =
         ethers::contract::Lazy::new(|| {
-            "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220a6fab76aae89ea456d9bfddb4874ad2235bd7cb6aac6c9aadfece318425bf5c164736f6c63430008110033" . parse () . expect ("invalid bytecode")
+            "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220541ea3cae98a9e9de4504118268409cf47cb558fc10e225ffd00c839055117cc64736f6c63430008110033" . parse () . expect ("invalid bytecode")
         });
     pub struct Math<M>(ethers::contract::Contract<M>);
     impl<M> Clone for Math<M> {

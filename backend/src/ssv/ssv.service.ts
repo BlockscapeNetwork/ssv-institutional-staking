@@ -8,9 +8,22 @@ import * as SSVNetwork from '../assets/SSVNetwork.json';
 import * as SSVToken from '../assets/SSVToken.json';
 import * as EthAlloc from '../assets/EthAlloc.json';
 import * as InstSta from '../assets/InstSta.json';
+import fs from 'fs';
+import path from 'path';
 
-import * as dummyKeystore from '../assets/keys/keystore-m_12381_3600_0_0_0-1671428498.json'; // empty
-import * as dummyKeystore2 from '../assets/keys/keystore-m_12381_3600_0_0_0-1671622163.json'; // 32eth deposited and ssv register done
+import * as dummyKeystore1 from '../assets/keys/1.json'; // 32eth deposited and ssv register done
+import * as dummyKeystore2 from '../assets/keys/2.json'; // 32eth deposited and ssv register done
+import * as dummyKeystore3 from '../assets/keys/3.json'; // 32eth deposited and ssv register done
+import * as dummyKeystore4 from '../assets/keys/4.json'; // 32eth deposited and ssv register done
+import * as dummyKeystore5 from '../assets/keys/5.json'; // 32eth deposited and ssv register done
+import * as dummyKeystore6 from '../assets/keys/6.json'; // 32eth deposited and ssv register done
+import * as dummyKeystore7 from '../assets/keys/7.json'; // 32eth deposited and ssv register done
+import * as dummyKeystore8 from '../assets/keys/8.json'; // 32eth deposited and ssv register done
+import * as dummyKeystore9 from '../assets/keys/9.json'; // 32eth deposited and ssv register done
+import * as dummyKeystore10 from '../assets/keys/10.json'; // 32eth deposited and ssv register done
+import * as dummyKeystore11 from '../assets/keys/11.json'; // 32eth deposited and ssv register done
+import * as dummyKeystore12 from '../assets/keys/12.json'; // 32eth deposited and ssv register done
+
 
 interface Key {
   id?: string;
@@ -67,11 +80,16 @@ export class SsvService {
 
   async getPayloadForRegisterValidator(): Promise<any> {
     // Get required data from the keystore file
-    const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore2));
+   
+    const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore9));
+    console.log('keyStore', keyStore);
+
     const thresholdInstance = new Threshold();
     // Get public key using the keystore password
     const privateKey = await keyStore.getPrivateKey(keyStorePW);
     const threshold = await thresholdInstance.create(privateKey, operatorIds);
+    console.log('keyStore', keyStore);
+    console.log('privateKey', privateKey);
     let shares = new Encryption(operators, threshold.shares).encrypt();
     // Loop through the operators RSA keys and format them as base64
     shares = shares.map((share) => {
@@ -102,59 +120,77 @@ export class SsvService {
   }
 
 
-// - new func all in one
-async getPayload(): Promise<any> {
-  // Get required data from the keystore file
-  const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
-  const thresholdInstance = new Threshold();
-  // Get public key using the keystore password
-  const privateKey = await keyStore.getPrivateKey(keyStorePW);
-  const threshold = await thresholdInstance.create(privateKey, operatorIds);
-  let shares = new Encryption(operators, threshold.shares).encrypt();
-  // Loop through the operators RSA keys and format them as base64
-  shares = shares.map((share) => {
-    share.operatorPublicKey = encode(share.operatorPublicKey);
-    // Return the operator key and KeyShares (sharePublicKey & shareEncrypted)
-    return share;
-  });
-  const web3 = new Web3();
-  // Get all the public keys from the shares
-  const sharesPublicKeys = shares.map((share) => share.publicKey);
-  // Get all the private keys from the shares and encode them as ABI parameters
-  const sharesEncrypted = shares.map((share) =>
-    web3.eth.abi.encodeParameter('string', share.privateKey),
-  );
+  // - new func all in one 
+  async getPayload(): Promise<any> {
+    // Get required data from the keystore file
+    const textpath = path.join(__dirname, '../assets/keys/latest.txt');
+    const i = fs.readFileSync(textpath).toString();
+    const jsonpath = path.join(__dirname, '../assets/keys/' + i + '.json');
+    const dummyKeystore = fs.readFileSync(jsonpath).toString();
 
-  // Token amount (liquidation collateral and operational runway balance to be funded)
-  const tokenAmount = web3.utils.toBN(21342395400000000000).toString();
-  const operatorIdsArray = Array.from(operatorIds);
+    const keyStore = new EthereumKeyStore(dummyKeystore);
+    console.log('keyStore', keyStore);
+    const thresholdInstance = new Threshold();
+    // Get public key using the keystore password
+    const privateKey = await keyStore.getPrivateKey(keyStorePW);
+    console.log('keyStore', keyStore);
+    console.log('privateKey', privateKey);
+    const threshold = await thresholdInstance.create(privateKey, operatorIds);
+    let shares = new Encryption(operators, threshold.shares).encrypt();
+    // Loop through the operators RSA keys and format them as base64
+    shares = shares.map((share) => {
+      share.operatorPublicKey = encode(share.operatorPublicKey);
+      // Return the operator key and KeyShares (sharePublicKey & shareEncrypted)
+      return share;
+    });
+    const web3 = new Web3();
+    // Get all the public keys from the shares
+    const sharesPublicKeys = shares.map((share) => share.publicKey);
+    // Get all the private keys from the shares and encode them as ABI parameters
+    const sharesEncrypted = shares.map((share) =>
+      web3.eth.abi.encodeParameter('string', share.privateKey),
+    );
 
-  // Return all the needed params to build a transaction payload - deposit contract
-  const withdrawal_credentials = "";
-  const signature = "";
-  const deposit_data_root = "";
+    // Token amount (liquidation collateral and operational runway balance to be funded)
+    const tokenAmount = web3.utils.toBN(21342395400000000000).toString();
+    const operatorIdsArray = Array.from(operatorIds);
 
-  // Return all the needed params to build a transaction payload
-  return [
-    threshold.validatorPublicKey,
-    operatorIdsArray,
-    sharesPublicKeys,
-    sharesEncrypted,
-    tokenAmount,
-    withdrawal_credentials,
-    signature,
-    deposit_data_root,
-  ];
-}
-// - new func all in one
+    // Return all the needed params to build a transaction payload - deposit contract
+    const withdrawal_credentials = "";
+    const signature = "";
+    const deposit_data_root = "";
+
+    const newI = Number(i) + Number(1);
 
 
-// needs to be tested !!!! 
+    fs.writeFile(textpath, String(newI), err => {
+      if (err) {
+        console.error(err);
+      }
+      // file written successfully
+    });
+
+    // Return all the needed params to build a transaction payload
+    return [
+      threshold.validatorPublicKey,
+      operatorIdsArray,
+      sharesPublicKeys,
+      sharesEncrypted,
+      tokenAmount,
+      withdrawal_credentials,
+      signature,
+      deposit_data_root,
+    ];
+  }
+  // - new func all in one
+
+
+  // needs to be tested !!!! 
   async registerValidatorSSV(): Promise<string> {
-    
+
     const payloadRegisterValidator =
       await this.getPayloadForRegisterValidator();
-   // const action = 'registerValidator';
+    // const action = 'registerValidator';
     const action = 'depositTestSSVMultiSig';
 
     await this.instStaContract.depositIntoMultiSig();
@@ -169,7 +205,7 @@ async getPayload(): Promise<any> {
 
     try {
       // const unsignedTx = await this.ssvNetworkContract.populateTransaction[
-       const unsignedTx = await this.instStaContract.populateTransaction[
+      const unsignedTx = await this.instStaContract.populateTransaction[
         action
       ](...payloadRegisterValidator);
 
@@ -243,7 +279,8 @@ async getPayload(): Promise<any> {
   // Then ... next function
   async addKeyStoreToDB(): Promise<string> {
     // Get required data from the keystore file
-    const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
+    const i = 1;
+    const keyStore = new EthereumKeyStore(JSON.stringify(eval("dummyKeystore" + i)));
     // Get public key using the keystore password
     const publicKey = await keyStore.getPublicKey();
     const key: Key = { key: null };

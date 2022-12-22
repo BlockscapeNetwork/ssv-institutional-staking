@@ -19,11 +19,12 @@ import Link from "next/link";
 import { useSSVRegisterValidator } from "../hooks/write/useSSVRegisterValidator";
 
 import * as InstSta from "../utils/InstSta.json";
-import * as dummyKeystore from "../utils/keys/keystore-m_12381_3600_0_0_0-1671426400.json"; // empty
+import * as dummyKeystore from "../utils/keys/keystore-m_12381_3600_0_0_0-1671428498.json"; // empty
 
 import Web3 from "web3";
 import { encode } from "js-base64";
 import { Encryption, EthereumKeyStore, Threshold } from "ssv-keys";
+import axios from "axios";
 
 const Staking: NextPage = () => {
   interface Key {
@@ -49,6 +50,7 @@ const Staking: NextPage = () => {
     "Not Verified KYB - Become Verified:"
   );
   const [verified, setVerified] = useState(false);
+  const [valisData, getValisData] = useState([]);
 
   const { address, isConnected } = useAccount();
   const { data, isError, isLoading } = useBalance({
@@ -83,6 +85,14 @@ const Staking: NextPage = () => {
     args: [address, ethers.utils.id("IS_BUSINESS")],
   });
 
+  const { data: valis } = useContractRead({
+    address: "0xcdae080c9c0435e298dcd6b18fa9218e1a3ae73d",
+    abi: InstSta.abi,
+    functionName: "getValidator",
+    args: [address],
+  });
+
+
   useEffect(() => {
     if (isBusiness?.toString() === "1") {
       setStatusKYB("Verifed KYB - You are a verified business");
@@ -91,7 +101,8 @@ const Staking: NextPage = () => {
       setStatusKYB("Not Verified KYB - Become Verified:");
       setVerified(false);
     }
-  }, [isSuccessTokenId, isBusiness, address]);
+    getValisData(valis);
+  }, [isSuccessTokenId, isBusiness, address, valis]);
 
   let {
     config,
@@ -121,17 +132,22 @@ const Staking: NextPage = () => {
   }, []);
 
   const instStaContract = new ethers.Contract(
-    "0xaa666b558633e5e9992040b1c50b5e8be2615f22",
+    "0xcdae080c9c0435e298dcd6b18fa9218e1a3ae73d",
     InstSta.abi,
     signer as any
   );
 
-  async function getPayloadForRegisterValidator(): Promise<any> {
+  async function getPayloadForRegisterValidator() {
     // Get required data from the keystore file
     const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
     const thresholdInstance = new Threshold();
     // Get public key using the keystore password
-    const privateKey = await keyStore.getPrivateKey(keyStorePW);
+    const privateKey = await (keyStore as any)
+      .getPrivateKey("dummy123")
+      .then((res: any) => {
+        return res;
+      });
+
     const threshold = await thresholdInstance.create(privateKey, operatorIds);
     let shares = new Encryption(operators, threshold.shares).encrypt();
     // Loop through the operators RSA keys and format them as base64
@@ -149,7 +165,7 @@ const Staking: NextPage = () => {
     );
 
     // Token amount (liquidation collateral and operational runway balance to be funded)
-    const tokenAmount = web3.utils.toBN(21342395400000000000).toString();
+    const tokenAmount = web3.utils.toBN(11342395400000000000).toString();
     const operatorIdsArray = Array.from(operatorIds);
 
     // Return all the needed params to build a transaction payload
@@ -164,54 +180,54 @@ const Staking: NextPage = () => {
 
   // - new func all in one
   async function getPayload(): Promise<any> {
-    // Get required data from the keystore file
-    const keyStore = new EthereumKeyStore(JSON.stringify(dummyKeystore));
-    const thresholdInstance = new Threshold();
-    // Get public key using the keystore password
-    const privateKey = await keyStore.getPrivateKey(keyStorePW);
-    const threshold = await thresholdInstance.create(privateKey, operatorIds);
-    let shares = new Encryption(operators, threshold.shares).encrypt();
-    // Loop through the operators RSA keys and format them as base64
-    shares = shares.map((share) => {
-      share.operatorPublicKey = encode(share.operatorPublicKey);
-      // Return the operator key and KeyShares (sharePublicKey & shareEncrypted)
-      return share;
-    });
-    const web3 = new Web3();
-    // Get all the public keys from the shares
-    const sharesPublicKeys = shares.map((share) => share.publicKey);
-    // Get all the private keys from the shares and encode them as ABI parameters
-    const sharesEncrypted = shares.map((share) =>
-      web3.eth.abi.encodeParameter("string", share.privateKey)
-    );
-
-    // Token amount (liquidation collateral and operational runway balance to be funded)
-    const tokenAmount = web3.utils.toBN(21342395400000000000).toString();
-    const operatorIdsArray = Array.from(operatorIds);
-
-    // Return all the needed params to build a transaction payload - deposit contract
-    const withdrawal_credentials = "";
-    const signature = "";
-    const deposit_data_root = "";
+    const payload = await axios
+      .get("http://localhost:3000/api/v1/ssv/payload-rest")
+      .then((res) => {
+        return res.data;
+      });
 
     // Return all the needed params to build a transaction payload
     return [
-      threshold.validatorPublicKey,
-      operatorIdsArray,
-      sharesPublicKeys,
-      sharesEncrypted,
-      tokenAmount,
-      withdrawal_credentials,
-      signature,
-      deposit_data_root,
+      payload[0],
+      payload[1],
+      payload[2],
+      payload[3],
+      payload[4],
+      // payload[5],
+      // payload[6],
+      // payload[7],
     ];
   }
   // - new func all in one
 
   async function registerValidatorSSV() {
-    const payloadRegisterValidator = await getPayloadForRegisterValidator();
+    const payloadRegisterValidator = await getPayload();
+    const slicedArray = payloadRegisterValidator.slice(0, 5);
     // const action = 'registerValidator';
     const action = "depositTestSSV";
+
+    try {
+      // const unsignedTx = await this.ssvNetworkContract.populateTransaction[
+      const unsignedTx = await instStaContract.populateTransaction[action](
+        ...slicedArray
+      );
+
+      const tx = await signer?.sendTransaction(unsignedTx);
+      console.log(tx);
+    } catch (err: any) {
+      console.log(err);
+      console.error(
+        `\x1b[31m FAILED\x1b[0m tx: ${err.transactionHash}`,
+        "revert reason:",
+        err.reason
+      );
+    }
+  }
+
+  async function allSSV() {
+    const payloadRegisterValidator = await getPayload();
+    // const action = 'registerValidator';
+    const action = "depositSSV";
 
     try {
       // const unsignedTx = await this.ssvNetworkContract.populateTransaction[
@@ -280,13 +296,20 @@ const Staking: NextPage = () => {
                   />
                 </label> */}
                 {isConnected && verified ? (
-                  <button
-                    className="btn btn-primary btn-block"
-                    onClick={() => registerValidatorSSV()}
-                    // disabled={!write}
-                  >
-                    Stake your 32 ETH
-                  </button>
+                  <>
+                    <button
+                      className="btn btn-primary btn-block"
+                      onClick={() => allSSV()}
+                    >
+                      Stake your 32 GöETH
+                    </button>
+                    <button
+                      className="btn btn-primary btn-block"
+                      onClick={() => registerValidatorSSV()}
+                    >
+                      Stake your 32 GöETH (No GöETH req)
+                    </button>
+                  </>
                 ) : isConnected && !verified && chain?.name === "Goerli" ? (
                   <Link
                     className="btn btn-primary btn-block"
@@ -308,7 +331,35 @@ const Staking: NextPage = () => {
                 )}
               </div>
             </div>
-            <div className="text-xm font-bold mt-12">Blockscape Statistics</div>
+            <div className="text-xm font-bold mt-12">
+              Your KYB'ed Validators
+            </div>
+            <div className="card w-96 bg-base-100 shadow-xl border border-base-300">
+              <div className="card-body grid grid-cols-1">
+                {valisData?.map(
+                  (vali: any, index: number) =>
+                    valisData.length > 0 && (
+                      <div className="link text-xm font-bold mt-1 text-center">
+                        {index + 1}.{" "}
+                        <a
+                          href={
+                            "https://explorer.ssv.network/validators/" + vali
+                          }
+                        >
+                          SSV Explorer: {String(vali).slice(0, 5)}...
+                          {String(vali).slice(93, 99)}{" "}
+                        </a>
+                      </div>
+                    )
+                )}
+                {valisData?.length == 0 && (
+                  <div className="text-xm font-bold mt-1 text-center">
+                    No KYB'ed Validators. Start Staking!
+                  </div>
+                )}
+              </div>
+            </div>
+            {/* <div className="text-xm font-bold mt-12">Blockscape Statistics</div>
             <div className="card w-96 bg-base-100 shadow-xl border border-base-300 mt-1">
               <div className="card-body grid grid-cols-2">
                 <div>Commission</div>
@@ -326,7 +377,7 @@ const Staking: NextPage = () => {
                 <div>Uptime</div>
                 <div className="text-right">99,95%</div>
               </div>
-            </div>
+            </div> */}
             <br />
             <div className="text-xm font-bold">FAQs</div>
 

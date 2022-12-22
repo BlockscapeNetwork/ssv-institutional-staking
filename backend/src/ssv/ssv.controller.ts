@@ -12,6 +12,11 @@ export class SsvController {
     return this.ssvService.getPayloadForRegisterValidator();
   }
 
+  @Get('payload-rest')
+  getPayload(): Promise<any> {
+    return this.ssvService.getPayload();
+  }
+
   @Post('register-institutional-validator')
   registerValidator(): Promise<any> {
     return this.ssvService.registerValidatorSSV();

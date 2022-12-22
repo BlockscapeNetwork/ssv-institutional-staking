@@ -473,7 +473,7 @@
     "validators(bytes)": "6c36511a",
     "validatorsPerOperatorCount(uint32)": "d379a5f2"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"ExceedRegisteredOperatorsByAccountLimit\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ExceedValidatorLimit\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidPublicKeyLength\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OessDataStructureInvalid\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OperatorDeleted\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OperatorNotFound\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ValidatorAlreadyExists\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"activeValidatorCount\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"}],\"name\":\"disableOwnerValidators\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"}],\"name\":\"enableOwnerValidators\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"}],\"name\":\"getOperatorById\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"}],\"name\":\"getOperatorFee\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"}],\"name\":\"getOperatorOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"}],\"name\":\"getOperatorsByOwnerAddress\",\"outputs\":[{\"internalType\":\"uint32[]\",\"name\":\"\",\"type\":\"uint32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"validatorPublicKey\",\"type\":\"bytes\"}],\"name\":\"getOperatorsByValidator\",\"outputs\":[{\"internalType\":\"uint32[]\",\"name\":\"\",\"type\":\"uint32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"getValidatorOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"}],\"name\":\"getValidatorsByAddress\",\"outputs\":[{\"internalType\":\"bytes[]\",\"name\":\"\",\"type\":\"bytes[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"}],\"name\":\"isLiquidated\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"},{\"internalType\":\"uint64\",\"name\":\"fee\",\"type\":\"uint64\"}],\"name\":\"registerOperator\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"},{\"internalType\":\"uint32[]\",\"name\":\"operatorIds\",\"type\":\"uint32[]\"},{\"internalType\":\"bytes[]\",\"name\":\"sharesPublicKeys\",\"type\":\"bytes[]\"},{\"internalType\":\"bytes[]\",\"name\":\"sharesEncrypted\",\"type\":\"bytes[]\"}],\"name\":\"registerValidator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"}],\"name\":\"removeOperator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"removeValidator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"},{\"internalType\":\"uint64\",\"name\":\"fee\",\"type\":\"uint64\"}],\"name\":\"updateOperatorFee\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"score\",\"type\":\"uint32\"}],\"name\":\"updateOperatorScore\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"validators\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"}],\"name\":\"validatorsPerOperatorCount\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"activeValidatorCount()\":{\"details\":\"Gets active validator count.\"},\"getOperatorById(uint32)\":{\"details\":\"Gets an operator by operator id.\",\"params\":{\"operatorId\":\"Operator id.\"}},\"getOperatorFee(uint32)\":{\"details\":\"Gets operator current fee.\",\"params\":{\"operatorId\":\"Operator id.\"}},\"getOperatorOwner(uint32)\":{\"details\":\"Gets operator's owner.\",\"params\":{\"operatorId\":\"Operator id.\"}},\"getOperatorsByOwnerAddress(address)\":{\"details\":\"Returns operators for owner.\",\"params\":{\"ownerAddress\":\"Owner's address.\"}},\"getOperatorsByValidator(bytes)\":{\"details\":\"Gets operators list which are in use by validator.\",\"params\":{\"validatorPublicKey\":\"Validator's public key.\"}},\"getValidatorOwner(bytes)\":{\"details\":\"Get validator's owner.\",\"params\":{\"publicKey\":\"Validator's public key.\"}},\"getValidatorsByAddress(address)\":{\"details\":\"Gets a validator public keys by owner's address.\",\"params\":{\"ownerAddress\":\"Owner's Address.\"}},\"initialize()\":{\"details\":\"Initializes the contract\"},\"registerOperator(string,address,bytes,uint64)\":{\"details\":\"Registers a new operator.\",\"params\":{\"fee\":\"The fee which the operator charges for each block.\",\"name\":\"Operator's display name.\",\"ownerAddress\":\"Operator's ethereum address that can collect fees.\",\"publicKey\":\"Operator's public key. Will be used to encrypt secret shares of validators keys.\"}},\"registerValidator(address,bytes,uint32[],bytes[],bytes[])\":{\"details\":\"Registers a new validator.\",\"params\":{\"operatorIds\":\"Operator ids.\",\"ownerAddress\":\"The user's ethereum address that is the owner of the validator.\",\"publicKey\":\"Validator public key.\",\"sharesEncrypted\":\"Encrypted private keys.\",\"sharesPublicKeys\":\"Shares public keys.\"}},\"removeOperator(uint32)\":{\"details\":\"removes an operator.\",\"params\":{\"operatorId\":\"Operator id.\"}},\"removeValidator(bytes)\":{\"details\":\"removes a validator.\",\"params\":{\"publicKey\":\"Validator's public key.\"}},\"updateOperatorFee(uint32,uint64)\":{\"details\":\"Updates an operator fee.\",\"params\":{\"fee\":\"New operator fee.\",\"operatorId\":\"Operator id.\"}},\"updateOperatorScore(uint32,uint32)\":{\"details\":\"Updates an operator fee.\",\"params\":{\"operatorId\":\"Operator id.\",\"score\":\"New score.\"}},\"validators(bytes)\":{\"details\":\"Gets an validator by public key.\",\"params\":{\"publicKey\":\"Validator's public key.\"}},\"validatorsPerOperatorCount(uint32)\":{\"details\":\"Get validators amount per operator.\",\"params\":{\"operatorId\":\"Operator public key\"}}},\"version\":1},\"userdoc\":{\"errors\":{\"ExceedRegisteredOperatorsByAccountLimit()\":[{\"notice\":\"errors \"}]},\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/utils/ISSVRegistry.sol\":\"ISSVRegistry\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":10000000},\"remappings\":[\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\"],\"viaIR\":true},\"sources\":{\"src/utils/ISSVRegistry.sol\":{\"keccak256\":\"0xc43589f0f38f8dcd2b808071bc46162081b6198be4baee9f44d5ff1556ffb10f\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://e4b06e18cb1a32add0e0646ef91013d468df609d50dd66cbd4da4a5417eab6c4\",\"dweb:/ipfs/QmcLF8rKSYg4Mu3SD3WppLjpXJGTW4L6xBXuXU8NSEAV5D\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"ExceedRegisteredOperatorsByAccountLimit\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ExceedValidatorLimit\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidPublicKeyLength\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OessDataStructureInvalid\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OperatorDeleted\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OperatorNotFound\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ValidatorAlreadyExists\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"activeValidatorCount\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"}],\"name\":\"disableOwnerValidators\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"}],\"name\":\"enableOwnerValidators\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"}],\"name\":\"getOperatorById\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"}],\"name\":\"getOperatorFee\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"}],\"name\":\"getOperatorOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"}],\"name\":\"getOperatorsByOwnerAddress\",\"outputs\":[{\"internalType\":\"uint32[]\",\"name\":\"\",\"type\":\"uint32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"validatorPublicKey\",\"type\":\"bytes\"}],\"name\":\"getOperatorsByValidator\",\"outputs\":[{\"internalType\":\"uint32[]\",\"name\":\"\",\"type\":\"uint32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"getValidatorOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"}],\"name\":\"getValidatorsByAddress\",\"outputs\":[{\"internalType\":\"bytes[]\",\"name\":\"\",\"type\":\"bytes[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"}],\"name\":\"isLiquidated\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"},{\"internalType\":\"uint64\",\"name\":\"fee\",\"type\":\"uint64\"}],\"name\":\"registerOperator\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"},{\"internalType\":\"uint32[]\",\"name\":\"operatorIds\",\"type\":\"uint32[]\"},{\"internalType\":\"bytes[]\",\"name\":\"sharesPublicKeys\",\"type\":\"bytes[]\"},{\"internalType\":\"bytes[]\",\"name\":\"sharesEncrypted\",\"type\":\"bytes[]\"}],\"name\":\"registerValidator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"}],\"name\":\"removeOperator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"removeValidator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"},{\"internalType\":\"uint64\",\"name\":\"fee\",\"type\":\"uint64\"}],\"name\":\"updateOperatorFee\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"score\",\"type\":\"uint32\"}],\"name\":\"updateOperatorScore\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"validators\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"operatorId\",\"type\":\"uint32\"}],\"name\":\"validatorsPerOperatorCount\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"activeValidatorCount()\":{\"details\":\"Gets active validator count.\"},\"getOperatorById(uint32)\":{\"details\":\"Gets an operator by operator id.\",\"params\":{\"operatorId\":\"Operator id.\"}},\"getOperatorFee(uint32)\":{\"details\":\"Gets operator current fee.\",\"params\":{\"operatorId\":\"Operator id.\"}},\"getOperatorOwner(uint32)\":{\"details\":\"Gets operator's owner.\",\"params\":{\"operatorId\":\"Operator id.\"}},\"getOperatorsByOwnerAddress(address)\":{\"details\":\"Returns operators for owner.\",\"params\":{\"ownerAddress\":\"Owner's address.\"}},\"getOperatorsByValidator(bytes)\":{\"details\":\"Gets operators list which are in use by validator.\",\"params\":{\"validatorPublicKey\":\"Validator's public key.\"}},\"getValidatorOwner(bytes)\":{\"details\":\"Get validator's owner.\",\"params\":{\"publicKey\":\"Validator's public key.\"}},\"getValidatorsByAddress(address)\":{\"details\":\"Gets a validator public keys by owner's address.\",\"params\":{\"ownerAddress\":\"Owner's Address.\"}},\"initialize()\":{\"details\":\"Initializes the contract\"},\"registerOperator(string,address,bytes,uint64)\":{\"details\":\"Registers a new operator.\",\"params\":{\"fee\":\"The fee which the operator charges for each block.\",\"name\":\"Operator's display name.\",\"ownerAddress\":\"Operator's ethereum address that can collect fees.\",\"publicKey\":\"Operator's public key. Will be used to encrypt secret shares of validators keys.\"}},\"registerValidator(address,bytes,uint32[],bytes[],bytes[])\":{\"details\":\"Registers a new validator.\",\"params\":{\"operatorIds\":\"Operator ids.\",\"ownerAddress\":\"The user's ethereum address that is the owner of the validator.\",\"publicKey\":\"Validator public key.\",\"sharesEncrypted\":\"Encrypted private keys.\",\"sharesPublicKeys\":\"Shares public keys.\"}},\"removeOperator(uint32)\":{\"details\":\"removes an operator.\",\"params\":{\"operatorId\":\"Operator id.\"}},\"removeValidator(bytes)\":{\"details\":\"removes a validator.\",\"params\":{\"publicKey\":\"Validator's public key.\"}},\"updateOperatorFee(uint32,uint64)\":{\"details\":\"Updates an operator fee.\",\"params\":{\"fee\":\"New operator fee.\",\"operatorId\":\"Operator id.\"}},\"updateOperatorScore(uint32,uint32)\":{\"details\":\"Updates an operator fee.\",\"params\":{\"operatorId\":\"Operator id.\",\"score\":\"New score.\"}},\"validators(bytes)\":{\"details\":\"Gets an validator by public key.\",\"params\":{\"publicKey\":\"Validator's public key.\"}},\"validatorsPerOperatorCount(uint32)\":{\"details\":\"Get validators amount per operator.\",\"params\":{\"operatorId\":\"Operator public key\"}}},\"version\":1},\"userdoc\":{\"errors\":{\"ExceedRegisteredOperatorsByAccountLimit()\":[{\"notice\":\"errors \"}]},\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/utils/ISSVRegistry.sol\":\"ISSVRegistry\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":10000000},\"remappings\":[\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\"],\"viaIR\":true},\"sources\":{\"src/utils/ISSVRegistry.sol\":{\"keccak256\":\"0xc43589f0f38f8dcd2b808071bc46162081b6198be4baee9f44d5ff1556ffb10f\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://e4b06e18cb1a32add0e0646ef91013d468df609d50dd66cbd4da4a5417eab6c4\",\"dweb:/ipfs/QmcLF8rKSYg4Mu3SD3WppLjpXJGTW4L6xBXuXU8NSEAV5D\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.8.17+commit.8df45f5f"
@@ -1035,6 +1035,7 @@
       "remappings": [
         ":ds-test/=lib/forge-std/lib/ds-test/src/",
         ":forge-std/=lib/forge-std/src/",
+        ":openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
         ":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/"
       ],
       "optimizer": {
@@ -1064,17 +1065,17 @@
   },
   "ast": {
     "absolutePath": "src/utils/ISSVRegistry.sol",
-    "id": 25881,
+    "id": 25864,
     "exportedSymbols": {
       "ISSVRegistry": [
-        25880
+        25863
       ]
     },
     "nodeType": "SourceUnit",
     "src": "81:4785:18",
     "nodes": [
       {
-        "id": 25680,
+        "id": 25663,
         "nodeType": "PragmaDirective",
         "src": "81:23:18",
         "nodes": [],
@@ -1086,12 +1087,12 @@
         ]
       },
       {
-        "id": 25880,
+        "id": 25863,
         "nodeType": "ContractDefinition",
         "src": "106:4760:18",
         "nodes": [
           {
-            "id": 25687,
+            "id": 25670,
             "nodeType": "StructDefinition",
             "src": "135:105:18",
             "nodes": [],
@@ -1099,12 +1100,12 @@
             "members": [
               {
                 "constant": false,
-                "id": 25682,
+                "id": 25665,
                 "mutability": "mutable",
                 "name": "operatorId",
                 "nameLocation": "164:10:18",
                 "nodeType": "VariableDeclaration",
-                "scope": 25687,
+                "scope": 25670,
                 "src": "157:17:18",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -1113,7 +1114,7 @@
                   "typeString": "uint32"
                 },
                 "typeName": {
-                  "id": 25681,
+                  "id": 25664,
                   "name": "uint32",
                   "nodeType": "ElementaryTypeName",
                   "src": "157:6:18",
@@ -1126,12 +1127,12 @@
               },
               {
                 "constant": false,
-                "id": 25684,
+                "id": 25667,
                 "mutability": "mutable",
                 "name": "sharedPublicKey",
                 "nameLocation": "190:15:18",
                 "nodeType": "VariableDeclaration",
-                "scope": 25687,
+                "scope": 25670,
                 "src": "184:21:18",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -1140,7 +1141,7 @@
                   "typeString": "bytes"
                 },
                 "typeName": {
-                  "id": 25683,
+                  "id": 25666,
                   "name": "bytes",
                   "nodeType": "ElementaryTypeName",
                   "src": "184:5:18",
@@ -1153,12 +1154,12 @@
               },
               {
                 "constant": false,
-                "id": 25686,
+                "id": 25669,
                 "mutability": "mutable",
                 "name": "encryptedKey",
                 "nameLocation": "221:12:18",
                 "nodeType": "VariableDeclaration",
-                "scope": 25687,
+                "scope": 25670,
                 "src": "215:18:18",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -1167,7 +1168,7 @@
                   "typeString": "bytes"
                 },
                 "typeName": {
-                  "id": 25685,
+                  "id": 25668,
                   "name": "bytes",
                   "nodeType": "ElementaryTypeName",
                   "src": "215:5:18",
@@ -1181,16 +1182,16 @@
             ],
             "name": "Oess",
             "nameLocation": "142:4:18",
-            "scope": 25880,
+            "scope": 25863,
             "visibility": "public"
           },
           {
-            "id": 25690,
+            "id": 25673,
             "nodeType": "ErrorDefinition",
             "src": "264:48:18",
             "nodes": [],
             "documentation": {
-              "id": 25688,
+              "id": 25671,
               "nodeType": "StructuredDocumentation",
               "src": "246:13:18",
               "text": "errors "
@@ -1199,14 +1200,14 @@
             "name": "ExceedRegisteredOperatorsByAccountLimit",
             "nameLocation": "270:39:18",
             "parameters": {
-              "id": 25689,
+              "id": 25672,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "309:2:18"
             }
           },
           {
-            "id": 25692,
+            "id": 25675,
             "nodeType": "ErrorDefinition",
             "src": "317:24:18",
             "nodes": [],
@@ -1214,14 +1215,14 @@
             "name": "OperatorDeleted",
             "nameLocation": "323:15:18",
             "parameters": {
-              "id": 25691,
+              "id": 25674,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "338:2:18"
             }
           },
           {
-            "id": 25694,
+            "id": 25677,
             "nodeType": "ErrorDefinition",
             "src": "346:31:18",
             "nodes": [],
@@ -1229,14 +1230,14 @@
             "name": "ValidatorAlreadyExists",
             "nameLocation": "352:22:18",
             "parameters": {
-              "id": 25693,
+              "id": 25676,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "374:2:18"
             }
           },
           {
-            "id": 25696,
+            "id": 25679,
             "nodeType": "ErrorDefinition",
             "src": "382:29:18",
             "nodes": [],
@@ -1244,14 +1245,14 @@
             "name": "ExceedValidatorLimit",
             "nameLocation": "388:20:18",
             "parameters": {
-              "id": 25695,
+              "id": 25678,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "408:2:18"
             }
           },
           {
-            "id": 25698,
+            "id": 25681,
             "nodeType": "ErrorDefinition",
             "src": "416:25:18",
             "nodes": [],
@@ -1259,14 +1260,14 @@
             "name": "OperatorNotFound",
             "nameLocation": "422:16:18",
             "parameters": {
-              "id": 25697,
+              "id": 25680,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "438:2:18"
             }
           },
           {
-            "id": 25700,
+            "id": 25683,
             "nodeType": "ErrorDefinition",
             "src": "446:31:18",
             "nodes": [],
@@ -1274,14 +1275,14 @@
             "name": "InvalidPublicKeyLength",
             "nameLocation": "452:22:18",
             "parameters": {
-              "id": 25699,
+              "id": 25682,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "474:2:18"
             }
           },
           {
-            "id": 25702,
+            "id": 25685,
             "nodeType": "ErrorDefinition",
             "src": "482:33:18",
             "nodes": [],
@@ -1289,19 +1290,19 @@
             "name": "OessDataStructureInvalid",
             "nameLocation": "488:24:18",
             "parameters": {
-              "id": 25701,
+              "id": 25684,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "512:2:18"
             }
           },
           {
-            "id": 25706,
+            "id": 25689,
             "nodeType": "FunctionDefinition",
             "src": "574:31:18",
             "nodes": [],
             "documentation": {
-              "id": 25703,
+              "id": 25686,
               "nodeType": "StructuredDocumentation",
               "src": "521:48:18",
               "text": " @dev Initializes the contract"
@@ -1313,29 +1314,29 @@
             "name": "initialize",
             "nameLocation": "583:10:18",
             "parameters": {
-              "id": 25704,
+              "id": 25687,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "593:2:18"
             },
             "returnParameters": {
-              "id": 25705,
+              "id": 25688,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "604:0:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25720,
+            "id": 25703,
             "nodeType": "FunctionDefinition",
             "src": "961:134:18",
             "nodes": [],
             "documentation": {
-              "id": 25707,
+              "id": 25690,
               "nodeType": "StructuredDocumentation",
               "src": "611:345:18",
               "text": " @dev Registers a new operator.\n @param name Operator's display name.\n @param ownerAddress Operator's ethereum address that can collect fees.\n @param publicKey Operator's public key. Will be used to encrypt secret shares of validators keys.\n @param fee The fee which the operator charges for each block."
@@ -1347,17 +1348,17 @@
             "name": "registerOperator",
             "nameLocation": "970:16:18",
             "parameters": {
-              "id": 25716,
+              "id": 25699,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25709,
+                  "id": 25692,
                   "mutability": "mutable",
                   "name": "name",
                   "nameLocation": "1003:4:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25720,
+                  "scope": 25703,
                   "src": "987:20:18",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -1366,7 +1367,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 25708,
+                    "id": 25691,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "987:6:18",
@@ -1379,12 +1380,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25711,
+                  "id": 25694,
                   "mutability": "mutable",
                   "name": "ownerAddress",
                   "nameLocation": "1017:12:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25720,
+                  "scope": 25703,
                   "src": "1009:20:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1393,7 +1394,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 25710,
+                    "id": 25693,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1009:7:18",
@@ -1407,12 +1408,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25713,
+                  "id": 25696,
                   "mutability": "mutable",
                   "name": "publicKey",
                   "nameLocation": "1046:9:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25720,
+                  "scope": 25703,
                   "src": "1031:24:18",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -1421,7 +1422,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 25712,
+                    "id": 25695,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "1031:5:18",
@@ -1434,12 +1435,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25715,
+                  "id": 25698,
                   "mutability": "mutable",
                   "name": "fee",
                   "nameLocation": "1064:3:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25720,
+                  "scope": 25703,
                   "src": "1057:10:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1448,7 +1449,7 @@
                     "typeString": "uint64"
                   },
                   "typeName": {
-                    "id": 25714,
+                    "id": 25697,
                     "name": "uint64",
                     "nodeType": "ElementaryTypeName",
                     "src": "1057:6:18",
@@ -1463,17 +1464,17 @@
               "src": "986:82:18"
             },
             "returnParameters": {
-              "id": 25719,
+              "id": 25702,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25718,
+                  "id": 25701,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25720,
+                  "scope": 25703,
                   "src": "1087:6:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1482,7 +1483,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 25717,
+                    "id": 25700,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "1087:6:18",
@@ -1496,18 +1497,18 @@
               ],
               "src": "1086:8:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25726,
+            "id": 25709,
             "nodeType": "FunctionDefinition",
             "src": "1188:52:18",
             "nodes": [],
             "documentation": {
-              "id": 25721,
+              "id": 25704,
               "nodeType": "StructuredDocumentation",
               "src": "1101:82:18",
               "text": " @dev removes an operator.\n @param operatorId Operator id."
@@ -1519,17 +1520,17 @@
             "name": "removeOperator",
             "nameLocation": "1197:14:18",
             "parameters": {
-              "id": 25724,
+              "id": 25707,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25723,
+                  "id": 25706,
                   "mutability": "mutable",
                   "name": "operatorId",
                   "nameLocation": "1219:10:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25726,
+                  "scope": 25709,
                   "src": "1212:17:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1538,7 +1539,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 25722,
+                    "id": 25705,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "1212:6:18",
@@ -1553,23 +1554,23 @@
               "src": "1211:19:18"
             },
             "returnParameters": {
-              "id": 25725,
+              "id": 25708,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1239:0:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25734,
+            "id": 25717,
             "nodeType": "FunctionDefinition",
             "src": "1373:89:18",
             "nodes": [],
             "documentation": {
-              "id": 25727,
+              "id": 25710,
               "nodeType": "StructuredDocumentation",
               "src": "1246:122:18",
               "text": " @dev Updates an operator fee.\n @param operatorId Operator id.\n @param fee New operator fee."
@@ -1581,17 +1582,17 @@
             "name": "updateOperatorFee",
             "nameLocation": "1382:17:18",
             "parameters": {
-              "id": 25732,
+              "id": 25715,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25729,
+                  "id": 25712,
                   "mutability": "mutable",
                   "name": "operatorId",
                   "nameLocation": "1416:10:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25734,
+                  "scope": 25717,
                   "src": "1409:17:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1600,7 +1601,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 25728,
+                    "id": 25711,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "1409:6:18",
@@ -1613,12 +1614,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25731,
+                  "id": 25714,
                   "mutability": "mutable",
                   "name": "fee",
                   "nameLocation": "1443:3:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25734,
+                  "scope": 25717,
                   "src": "1436:10:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1627,7 +1628,7 @@
                     "typeString": "uint64"
                   },
                   "typeName": {
-                    "id": 25730,
+                    "id": 25713,
                     "name": "uint64",
                     "nodeType": "ElementaryTypeName",
                     "src": "1436:6:18",
@@ -1642,23 +1643,23 @@
               "src": "1399:53:18"
             },
             "returnParameters": {
-              "id": 25733,
+              "id": 25716,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1461:0:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25742,
+            "id": 25725,
             "nodeType": "FunctionDefinition",
             "src": "1590:93:18",
             "nodes": [],
             "documentation": {
-              "id": 25735,
+              "id": 25718,
               "nodeType": "StructuredDocumentation",
               "src": "1468:117:18",
               "text": " @dev Updates an operator fee.\n @param operatorId Operator id.\n @param score New score."
@@ -1670,17 +1671,17 @@
             "name": "updateOperatorScore",
             "nameLocation": "1599:19:18",
             "parameters": {
-              "id": 25740,
+              "id": 25723,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25737,
+                  "id": 25720,
                   "mutability": "mutable",
                   "name": "operatorId",
                   "nameLocation": "1635:10:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25742,
+                  "scope": 25725,
                   "src": "1628:17:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1689,7 +1690,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 25736,
+                    "id": 25719,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "1628:6:18",
@@ -1702,12 +1703,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25739,
+                  "id": 25722,
                   "mutability": "mutable",
                   "name": "score",
                   "nameLocation": "1662:5:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25742,
+                  "scope": 25725,
                   "src": "1655:12:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1716,7 +1717,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 25738,
+                    "id": 25721,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "1655:6:18",
@@ -1731,23 +1732,23 @@
               "src": "1618:55:18"
             },
             "returnParameters": {
-              "id": 25741,
+              "id": 25724,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1682:0:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25759,
+            "id": 25742,
             "nodeType": "FunctionDefinition",
             "src": "2026:230:18",
             "nodes": [],
             "documentation": {
-              "id": 25743,
+              "id": 25726,
               "nodeType": "StructuredDocumentation",
               "src": "1689:332:18",
               "text": " @dev Registers a new validator.\n @param ownerAddress The user's ethereum address that is the owner of the validator.\n @param publicKey Validator public key.\n @param operatorIds Operator ids.\n @param sharesPublicKeys Shares public keys.\n @param sharesEncrypted Encrypted private keys."
@@ -1759,17 +1760,17 @@
             "name": "registerValidator",
             "nameLocation": "2035:17:18",
             "parameters": {
-              "id": 25757,
+              "id": 25740,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25745,
+                  "id": 25728,
                   "mutability": "mutable",
                   "name": "ownerAddress",
                   "nameLocation": "2070:12:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25759,
+                  "scope": 25742,
                   "src": "2062:20:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1778,7 +1779,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 25744,
+                    "id": 25727,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2062:7:18",
@@ -1792,12 +1793,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25747,
+                  "id": 25730,
                   "mutability": "mutable",
                   "name": "publicKey",
                   "nameLocation": "2107:9:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25759,
+                  "scope": 25742,
                   "src": "2092:24:18",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -1806,7 +1807,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 25746,
+                    "id": 25729,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "2092:5:18",
@@ -1819,12 +1820,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25750,
+                  "id": 25733,
                   "mutability": "mutable",
                   "name": "operatorIds",
                   "nameLocation": "2144:11:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25759,
+                  "scope": 25742,
                   "src": "2126:29:18",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -1834,7 +1835,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 25748,
+                      "id": 25731,
                       "name": "uint32",
                       "nodeType": "ElementaryTypeName",
                       "src": "2126:6:18",
@@ -1843,7 +1844,7 @@
                         "typeString": "uint32"
                       }
                     },
-                    "id": 25749,
+                    "id": 25732,
                     "nodeType": "ArrayTypeName",
                     "src": "2126:8:18",
                     "typeDescriptions": {
@@ -1855,12 +1856,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25753,
+                  "id": 25736,
                   "mutability": "mutable",
                   "name": "sharesPublicKeys",
                   "nameLocation": "2182:16:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25759,
+                  "scope": 25742,
                   "src": "2165:33:18",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -1870,7 +1871,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 25751,
+                      "id": 25734,
                       "name": "bytes",
                       "nodeType": "ElementaryTypeName",
                       "src": "2165:5:18",
@@ -1879,7 +1880,7 @@
                         "typeString": "bytes"
                       }
                     },
-                    "id": 25752,
+                    "id": 25735,
                     "nodeType": "ArrayTypeName",
                     "src": "2165:7:18",
                     "typeDescriptions": {
@@ -1891,12 +1892,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25756,
+                  "id": 25739,
                   "mutability": "mutable",
                   "name": "sharesEncrypted",
                   "nameLocation": "2225:15:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25759,
+                  "scope": 25742,
                   "src": "2208:32:18",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -1906,7 +1907,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 25754,
+                      "id": 25737,
                       "name": "bytes",
                       "nodeType": "ElementaryTypeName",
                       "src": "2208:5:18",
@@ -1915,7 +1916,7 @@
                         "typeString": "bytes"
                       }
                     },
-                    "id": 25755,
+                    "id": 25738,
                     "nodeType": "ArrayTypeName",
                     "src": "2208:7:18",
                     "typeDescriptions": {
@@ -1929,23 +1930,23 @@
               "src": "2052:194:18"
             },
             "returnParameters": {
-              "id": 25758,
+              "id": 25741,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2255:0:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25765,
+            "id": 25748,
             "nodeType": "FunctionDefinition",
             "src": "2359:60:18",
             "nodes": [],
             "documentation": {
-              "id": 25760,
+              "id": 25743,
               "nodeType": "StructuredDocumentation",
               "src": "2262:92:18",
               "text": " @dev removes a validator.\n @param publicKey Validator's public key."
@@ -1957,17 +1958,17 @@
             "name": "removeValidator",
             "nameLocation": "2368:15:18",
             "parameters": {
-              "id": 25763,
+              "id": 25746,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25762,
+                  "id": 25745,
                   "mutability": "mutable",
                   "name": "publicKey",
                   "nameLocation": "2399:9:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25765,
+                  "scope": 25748,
                   "src": "2384:24:18",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -1976,7 +1977,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 25761,
+                    "id": 25744,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "2384:5:18",
@@ -1991,18 +1992,18 @@
               "src": "2383:26:18"
             },
             "returnParameters": {
-              "id": 25764,
+              "id": 25747,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2418:0:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25770,
+            "id": 25753,
             "nodeType": "FunctionDefinition",
             "src": "2425:62:18",
             "nodes": [],
@@ -2013,17 +2014,17 @@
             "name": "enableOwnerValidators",
             "nameLocation": "2434:21:18",
             "parameters": {
-              "id": 25768,
+              "id": 25751,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25767,
+                  "id": 25750,
                   "mutability": "mutable",
                   "name": "ownerAddress",
                   "nameLocation": "2464:12:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25770,
+                  "scope": 25753,
                   "src": "2456:20:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2032,7 +2033,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 25766,
+                    "id": 25749,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2456:7:18",
@@ -2048,18 +2049,18 @@
               "src": "2455:22:18"
             },
             "returnParameters": {
-              "id": 25769,
+              "id": 25752,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2486:0:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25775,
+            "id": 25758,
             "nodeType": "FunctionDefinition",
             "src": "2493:63:18",
             "nodes": [],
@@ -2070,17 +2071,17 @@
             "name": "disableOwnerValidators",
             "nameLocation": "2502:22:18",
             "parameters": {
-              "id": 25773,
+              "id": 25756,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25772,
+                  "id": 25755,
                   "mutability": "mutable",
                   "name": "ownerAddress",
                   "nameLocation": "2533:12:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25775,
+                  "scope": 25758,
                   "src": "2525:20:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2089,7 +2090,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 25771,
+                    "id": 25754,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2525:7:18",
@@ -2105,18 +2106,18 @@
               "src": "2524:22:18"
             },
             "returnParameters": {
-              "id": 25774,
+              "id": 25757,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2555:0:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25782,
+            "id": 25765,
             "nodeType": "FunctionDefinition",
             "src": "2562:73:18",
             "nodes": [],
@@ -2127,17 +2128,17 @@
             "name": "isLiquidated",
             "nameLocation": "2571:12:18",
             "parameters": {
-              "id": 25778,
+              "id": 25761,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25777,
+                  "id": 25760,
                   "mutability": "mutable",
                   "name": "ownerAddress",
                   "nameLocation": "2592:12:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25782,
+                  "scope": 25765,
                   "src": "2584:20:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2146,7 +2147,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 25776,
+                    "id": 25759,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2584:7:18",
@@ -2162,17 +2163,17 @@
               "src": "2583:22:18"
             },
             "returnParameters": {
-              "id": 25781,
+              "id": 25764,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25780,
+                  "id": 25763,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25782,
+                  "scope": 25765,
                   "src": "2629:4:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2181,7 +2182,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 25779,
+                    "id": 25762,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "2629:4:18",
@@ -2195,18 +2196,18 @@
               ],
               "src": "2628:6:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25802,
+            "id": 25785,
             "nodeType": "FunctionDefinition",
             "src": "2740:248:18",
             "nodes": [],
             "documentation": {
-              "id": 25783,
+              "id": 25766,
               "nodeType": "StructuredDocumentation",
               "src": "2641:94:18",
               "text": " @dev Gets an operator by operator id.\n @param operatorId Operator id."
@@ -2218,17 +2219,17 @@
             "name": "getOperatorById",
             "nameLocation": "2749:15:18",
             "parameters": {
-              "id": 25786,
+              "id": 25769,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25785,
+                  "id": 25768,
                   "mutability": "mutable",
                   "name": "operatorId",
                   "nameLocation": "2772:10:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25802,
+                  "scope": 25785,
                   "src": "2765:17:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2237,7 +2238,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 25784,
+                    "id": 25767,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "2765:6:18",
@@ -2252,17 +2253,17 @@
               "src": "2764:19:18"
             },
             "returnParameters": {
-              "id": 25801,
+              "id": 25784,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25788,
+                  "id": 25771,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25802,
+                  "scope": 25785,
                   "src": "2836:13:18",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -2271,7 +2272,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 25787,
+                    "id": 25770,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "2836:6:18",
@@ -2284,12 +2285,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25790,
+                  "id": 25773,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25802,
+                  "scope": 25785,
                   "src": "2863:7:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2298,7 +2299,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 25789,
+                    "id": 25772,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2863:7:18",
@@ -2312,12 +2313,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25792,
+                  "id": 25775,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25802,
+                  "scope": 25785,
                   "src": "2884:12:18",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -2326,7 +2327,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 25791,
+                    "id": 25774,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "2884:5:18",
@@ -2339,12 +2340,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25794,
+                  "id": 25777,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25802,
+                  "scope": 25785,
                   "src": "2910:7:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2353,7 +2354,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 25793,
+                    "id": 25776,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "2910:7:18",
@@ -2366,12 +2367,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25796,
+                  "id": 25779,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25802,
+                  "scope": 25785,
                   "src": "2931:7:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2380,7 +2381,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 25795,
+                    "id": 25778,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "2931:7:18",
@@ -2393,12 +2394,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25798,
+                  "id": 25781,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25802,
+                  "scope": 25785,
                   "src": "2952:7:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2407,7 +2408,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 25797,
+                    "id": 25780,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "2952:7:18",
@@ -2420,12 +2421,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25800,
+                  "id": 25783,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25802,
+                  "scope": 25785,
                   "src": "2973:4:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2434,7 +2435,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 25799,
+                    "id": 25782,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "2973:4:18",
@@ -2448,18 +2449,18 @@
               ],
               "src": "2822:165:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25811,
+            "id": 25794,
             "nodeType": "FunctionDefinition",
             "src": "3095:114:18",
             "nodes": [],
             "documentation": {
-              "id": 25803,
+              "id": 25786,
               "nodeType": "StructuredDocumentation",
               "src": "2994:96:18",
               "text": " @dev Returns operators for owner.\n @param ownerAddress Owner's address."
@@ -2471,17 +2472,17 @@
             "name": "getOperatorsByOwnerAddress",
             "nameLocation": "3104:26:18",
             "parameters": {
-              "id": 25806,
+              "id": 25789,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25805,
+                  "id": 25788,
                   "mutability": "mutable",
                   "name": "ownerAddress",
                   "nameLocation": "3139:12:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25811,
+                  "scope": 25794,
                   "src": "3131:20:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2490,7 +2491,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 25804,
+                    "id": 25787,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "3131:7:18",
@@ -2506,17 +2507,17 @@
               "src": "3130:22:18"
             },
             "returnParameters": {
-              "id": 25810,
+              "id": 25793,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25809,
+                  "id": 25792,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25811,
+                  "scope": 25794,
                   "src": "3192:15:18",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -2526,7 +2527,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 25807,
+                      "id": 25790,
                       "name": "uint32",
                       "nodeType": "ElementaryTypeName",
                       "src": "3192:6:18",
@@ -2535,7 +2536,7 @@
                         "typeString": "uint32"
                       }
                     },
-                    "id": 25808,
+                    "id": 25791,
                     "nodeType": "ArrayTypeName",
                     "src": "3192:8:18",
                     "typeDescriptions": {
@@ -2548,18 +2549,18 @@
               ],
               "src": "3191:17:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25820,
+            "id": 25803,
             "nodeType": "FunctionDefinition",
             "src": "3351:124:18",
             "nodes": [],
             "documentation": {
-              "id": 25812,
+              "id": 25795,
               "nodeType": "StructuredDocumentation",
               "src": "3215:131:18",
               "text": " @dev Gets operators list which are in use by validator.\n @param validatorPublicKey Validator's public key."
@@ -2571,17 +2572,17 @@
             "name": "getOperatorsByValidator",
             "nameLocation": "3360:23:18",
             "parameters": {
-              "id": 25815,
+              "id": 25798,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25814,
+                  "id": 25797,
                   "mutability": "mutable",
                   "name": "validatorPublicKey",
                   "nameLocation": "3399:18:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25820,
+                  "scope": 25803,
                   "src": "3384:33:18",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -2590,7 +2591,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 25813,
+                    "id": 25796,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "3384:5:18",
@@ -2605,17 +2606,17 @@
               "src": "3383:35:18"
             },
             "returnParameters": {
-              "id": 25819,
+              "id": 25802,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25818,
+                  "id": 25801,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25820,
+                  "scope": 25803,
                   "src": "3458:15:18",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -2625,7 +2626,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 25816,
+                      "id": 25799,
                       "name": "uint32",
                       "nodeType": "ElementaryTypeName",
                       "src": "3458:6:18",
@@ -2634,7 +2635,7 @@
                         "typeString": "uint32"
                       }
                     },
-                    "id": 25817,
+                    "id": 25800,
                     "nodeType": "ArrayTypeName",
                     "src": "3458:8:18",
                     "typeDescriptions": {
@@ -2647,18 +2648,18 @@
               ],
               "src": "3457:17:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25828,
+            "id": 25811,
             "nodeType": "FunctionDefinition",
             "src": "3570:77:18",
             "nodes": [],
             "documentation": {
-              "id": 25821,
+              "id": 25804,
               "nodeType": "StructuredDocumentation",
               "src": "3481:84:18",
               "text": " @dev Gets operator's owner.\n @param operatorId Operator id."
@@ -2670,17 +2671,17 @@
             "name": "getOperatorOwner",
             "nameLocation": "3579:16:18",
             "parameters": {
-              "id": 25824,
+              "id": 25807,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25823,
+                  "id": 25806,
                   "mutability": "mutable",
                   "name": "operatorId",
                   "nameLocation": "3603:10:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25828,
+                  "scope": 25811,
                   "src": "3596:17:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2689,7 +2690,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 25822,
+                    "id": 25805,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "3596:6:18",
@@ -2704,17 +2705,17 @@
               "src": "3595:19:18"
             },
             "returnParameters": {
-              "id": 25827,
+              "id": 25810,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25826,
+                  "id": 25809,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25828,
+                  "scope": 25811,
                   "src": "3638:7:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2723,7 +2724,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 25825,
+                    "id": 25808,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "3638:7:18",
@@ -2738,18 +2739,18 @@
               ],
               "src": "3637:9:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25836,
+            "id": 25819,
             "nodeType": "FunctionDefinition",
             "src": "3746:90:18",
             "nodes": [],
             "documentation": {
-              "id": 25829,
+              "id": 25812,
               "nodeType": "StructuredDocumentation",
               "src": "3653:88:18",
               "text": " @dev Gets operator current fee.\n @param operatorId Operator id."
@@ -2761,17 +2762,17 @@
             "name": "getOperatorFee",
             "nameLocation": "3755:14:18",
             "parameters": {
-              "id": 25832,
+              "id": 25815,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25831,
+                  "id": 25814,
                   "mutability": "mutable",
                   "name": "operatorId",
                   "nameLocation": "3777:10:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25836,
+                  "scope": 25819,
                   "src": "3770:17:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2780,7 +2781,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 25830,
+                    "id": 25813,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "3770:6:18",
@@ -2795,17 +2796,17 @@
               "src": "3769:19:18"
             },
             "returnParameters": {
-              "id": 25835,
+              "id": 25818,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25834,
+                  "id": 25817,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25836,
+                  "scope": 25819,
                   "src": "3828:6:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2814,7 +2815,7 @@
                     "typeString": "uint64"
                   },
                   "typeName": {
-                    "id": 25833,
+                    "id": 25816,
                     "name": "uint64",
                     "nodeType": "ElementaryTypeName",
                     "src": "3828:6:18",
@@ -2828,18 +2829,18 @@
               ],
               "src": "3827:8:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25842,
+            "id": 25825,
             "nodeType": "FunctionDefinition",
             "src": "3899:63:18",
             "nodes": [],
             "documentation": {
-              "id": 25837,
+              "id": 25820,
               "nodeType": "StructuredDocumentation",
               "src": "3842:52:18",
               "text": " @dev Gets active validator count."
@@ -2851,23 +2852,23 @@
             "name": "activeValidatorCount",
             "nameLocation": "3908:20:18",
             "parameters": {
-              "id": 25838,
+              "id": 25821,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "3928:2:18"
             },
             "returnParameters": {
-              "id": 25841,
+              "id": 25824,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25840,
+                  "id": 25823,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25842,
+                  "scope": 25825,
                   "src": "3954:6:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2876,7 +2877,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 25839,
+                    "id": 25822,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "3954:6:18",
@@ -2890,18 +2891,18 @@
               ],
               "src": "3953:8:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25854,
+            "id": 25837,
             "nodeType": "FunctionDefinition",
             "src": "4077:160:18",
             "nodes": [],
             "documentation": {
-              "id": 25843,
+              "id": 25826,
               "nodeType": "StructuredDocumentation",
               "src": "3968:104:18",
               "text": " @dev Gets an validator by public key.\n @param publicKey Validator's public key."
@@ -2913,17 +2914,17 @@
             "name": "validators",
             "nameLocation": "4086:10:18",
             "parameters": {
-              "id": 25846,
+              "id": 25829,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25845,
+                  "id": 25828,
                   "mutability": "mutable",
                   "name": "publicKey",
                   "nameLocation": "4112:9:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25854,
+                  "scope": 25837,
                   "src": "4097:24:18",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -2932,7 +2933,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 25844,
+                    "id": 25827,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "4097:5:18",
@@ -2947,17 +2948,17 @@
               "src": "4096:26:18"
             },
             "returnParameters": {
-              "id": 25853,
+              "id": 25836,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25848,
+                  "id": 25831,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25854,
+                  "scope": 25837,
                   "src": "4175:7:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2966,7 +2967,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 25847,
+                    "id": 25830,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "4175:7:18",
@@ -2980,12 +2981,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25850,
+                  "id": 25833,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25854,
+                  "scope": 25837,
                   "src": "4196:12:18",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -2994,7 +2995,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 25849,
+                    "id": 25832,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "4196:5:18",
@@ -3007,12 +3008,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 25852,
+                  "id": 25835,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25854,
+                  "scope": 25837,
                   "src": "4222:4:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3021,7 +3022,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 25851,
+                    "id": 25834,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "4222:4:18",
@@ -3035,18 +3036,18 @@
               ],
               "src": "4161:75:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25863,
+            "id": 25846,
             "nodeType": "FunctionDefinition",
             "src": "4364:109:18",
             "nodes": [],
             "documentation": {
-              "id": 25855,
+              "id": 25838,
               "nodeType": "StructuredDocumentation",
               "src": "4243:116:18",
               "text": " @dev Gets a validator public keys by owner's address.\n @param ownerAddress Owner's Address."
@@ -3058,17 +3059,17 @@
             "name": "getValidatorsByAddress",
             "nameLocation": "4373:22:18",
             "parameters": {
-              "id": 25858,
+              "id": 25841,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25857,
+                  "id": 25840,
                   "mutability": "mutable",
                   "name": "ownerAddress",
                   "nameLocation": "4404:12:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25863,
+                  "scope": 25846,
                   "src": "4396:20:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3077,7 +3078,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 25856,
+                    "id": 25839,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "4396:7:18",
@@ -3093,17 +3094,17 @@
               "src": "4395:22:18"
             },
             "returnParameters": {
-              "id": 25862,
+              "id": 25845,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25861,
+                  "id": 25844,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25863,
+                  "scope": 25846,
                   "src": "4457:14:18",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -3113,7 +3114,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 25859,
+                      "id": 25842,
                       "name": "bytes",
                       "nodeType": "ElementaryTypeName",
                       "src": "4457:5:18",
@@ -3122,7 +3123,7 @@
                         "typeString": "bytes"
                       }
                     },
-                    "id": 25860,
+                    "id": 25843,
                     "nodeType": "ArrayTypeName",
                     "src": "4457:7:18",
                     "typeDescriptions": {
@@ -3135,18 +3136,18 @@
               ],
               "src": "4456:16:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25871,
+            "id": 25854,
             "nodeType": "FunctionDefinition",
             "src": "4578:85:18",
             "nodes": [],
             "documentation": {
-              "id": 25864,
+              "id": 25847,
               "nodeType": "StructuredDocumentation",
               "src": "4479:94:18",
               "text": " @dev Get validator's owner.\n @param publicKey Validator's public key."
@@ -3158,17 +3159,17 @@
             "name": "getValidatorOwner",
             "nameLocation": "4587:17:18",
             "parameters": {
-              "id": 25867,
+              "id": 25850,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25866,
+                  "id": 25849,
                   "mutability": "mutable",
                   "name": "publicKey",
                   "nameLocation": "4620:9:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25871,
+                  "scope": 25854,
                   "src": "4605:24:18",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -3177,7 +3178,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 25865,
+                    "id": 25848,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "4605:5:18",
@@ -3192,17 +3193,17 @@
               "src": "4604:26:18"
             },
             "returnParameters": {
-              "id": 25870,
+              "id": 25853,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25869,
+                  "id": 25852,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25871,
+                  "scope": 25854,
                   "src": "4654:7:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3211,7 +3212,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 25868,
+                    "id": 25851,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "4654:7:18",
@@ -3226,18 +3227,18 @@
               ],
               "src": "4653:9:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 25879,
+            "id": 25862,
             "nodeType": "FunctionDefinition",
             "src": "4778:86:18",
             "nodes": [],
             "documentation": {
-              "id": 25872,
+              "id": 25855,
               "nodeType": "StructuredDocumentation",
               "src": "4669:104:18",
               "text": " @dev Get validators amount per operator.\n @param operatorId Operator public key"
@@ -3249,17 +3250,17 @@
             "name": "validatorsPerOperatorCount",
             "nameLocation": "4787:26:18",
             "parameters": {
-              "id": 25875,
+              "id": 25858,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25874,
+                  "id": 25857,
                   "mutability": "mutable",
                   "name": "operatorId",
                   "nameLocation": "4821:10:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25879,
+                  "scope": 25862,
                   "src": "4814:17:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3268,7 +3269,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 25873,
+                    "id": 25856,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "4814:6:18",
@@ -3283,17 +3284,17 @@
               "src": "4813:19:18"
             },
             "returnParameters": {
-              "id": 25878,
+              "id": 25861,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 25877,
+                  "id": 25860,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 25879,
+                  "scope": 25862,
                   "src": "4856:6:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3302,7 +3303,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 25876,
+                    "id": 25859,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "4856:6:18",
@@ -3316,7 +3317,7 @@
               ],
               "src": "4855:8:18"
             },
-            "scope": 25880,
+            "scope": 25863,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -3329,19 +3330,19 @@
         "contractKind": "interface",
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          25880
+          25863
         ],
         "name": "ISSVRegistry",
         "nameLocation": "116:12:18",
-        "scope": 25881,
+        "scope": 25864,
         "usedErrors": [
-          25690,
-          25692,
-          25694,
-          25696,
-          25698,
-          25700,
-          25702
+          25673,
+          25675,
+          25677,
+          25679,
+          25681,
+          25683,
+          25685
         ]
       }
     ],

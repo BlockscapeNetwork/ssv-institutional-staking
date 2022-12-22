@@ -67,7 +67,7 @@ contract InstSta is ReentrancyGuard, Ownable {
     address public DEPOSIT_ADDRESS = address(0);
     bytes32 public constant is_BUSINESS = keccak256("IS_BUSINESS");
 
-    mapping(address => bytes) validatortoStaker;
+    mapping(address => bytes[]) validatortoStaker;
     mapping(address => bool) stakerDeposited;
     mapping(address => bool) stakerStaked;
 
@@ -126,7 +126,7 @@ contract InstSta is ReentrancyGuard, Ownable {
             sharesEncrypted,
             ssvAmount
         );
-        validatortoStaker[msg.sender] = pubkey;
+        validatortoStaker[msg.sender].push(pubkey);
         emit DepositReceivedStaked(msg.sender, pubkey);
     }
 
@@ -150,7 +150,7 @@ contract InstSta is ReentrancyGuard, Ownable {
             sharesEncrypted,
             ssvAmount
         );
-        validatortoStaker[msg.sender] = pubkey;
+        validatortoStaker[msg.sender].push(pubkey);
         emit DepositReceivedStaked(msg.sender, pubkey);
     }
 
@@ -203,7 +203,7 @@ contract InstSta is ReentrancyGuard, Ownable {
                 ssvAmount
             )
         );
-        validatortoStaker[msg.sender] = pubkey;
+        validatortoStaker[msg.sender].push(pubkey);
         emit DepositReceivedStaked(msg.sender, pubkey);
         return (successRegister, dataRegister);
     }
@@ -217,11 +217,11 @@ contract InstSta is ReentrancyGuard, Ownable {
         }
     }
 
-    function getValidatorSelf() external view returns (bytes memory) {
+    function getValidatorSelf() external view returns (bytes[] memory) {
         return validatortoStaker[msg.sender];
     }
 
-    function getValidator(address _addr) external view returns (bytes memory) {
+    function getValidator(address _addr) external view returns (bytes[] memory) {
         return validatortoStaker[_addr];
     }
 
