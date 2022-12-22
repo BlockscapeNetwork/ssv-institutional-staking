@@ -52,7 +52,7 @@ export class SsvService {
   constructor(private keyStoreService: KeystoreService) {
     this.provider = new ethers.providers.AlchemyProvider(
       'goerli',
-      process.env.API_KEY,
+      'DElz4cgMfsJeX-LChvkiWEA2FlbIeDed',
     );
     this.pKey = process.env.PRIVATE_KEY;
     this.signer = new ethers.Wallet(this.pKey, this.provider);
