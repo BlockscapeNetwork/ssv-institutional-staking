@@ -572,8 +572,8 @@
       }
     },
     "script/1_InstStaAnvil.s.sol": {
-      "lastModificationDate": 1671537045674,
-      "contentHash": "22028ba207a08dc46d7a2f723a50e74c",
+      "lastModificationDate": 1672837290834,
+      "contentHash": "340893fcee76f4669aada94dd7eda6cd",
       "sourceName": "script/1_InstStaAnvil.s.sol",
       "solcConfig": {
         "settings": {
@@ -740,8 +740,8 @@
       }
     },
     "src/InstSta.sol": {
-      "lastModificationDate": 1671707909043,
-      "contentHash": "2160efb04e71efbee19a1cae523ccaad",
+      "lastModificationDate": 1672844785815,
+      "contentHash": "cb94a3ef951355f79e183e70a417bf40",
       "sourceName": "src/InstSta.sol",
       "solcConfig": {
         "settings": {
@@ -882,8 +882,8 @@
       }
     },
     "test/InstSta.t.sol": {
-      "lastModificationDate": 1671537045675,
-      "contentHash": "ccb567fb62db189b66cc8bfb9282b1db",
+      "lastModificationDate": 1672837445984,
+      "contentHash": "d06ab84d842525231a0ea04897a0a14e",
       "sourceName": "test/InstSta.t.sol",
       "solcConfig": {
         "settings": {
@@ -934,8 +934,8 @@
       ],
       "versionRequirement": ">=0.8.15",
       "artifacts": {
-        "InstStaTest": {
-          "0.8.17+commit.8df45f5f.Darwin.appleclang": "InstSta.t.sol/InstStaTest.json"
+        "InstSta.t": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "InstSta.t.sol/InstSta.t.json"
         }
       }
     }

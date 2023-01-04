@@ -84,20 +84,103 @@ contract InstSta is ReentrancyGuard, Ownable {
         DEPOSIT_ADDRESS = _depositAddress;
     }
 
-    event DepositReceivedStaked(address _sender, bytes _pubkey); // event for when a permanent URI is set
+    event DepositReceivedStaked(address _sender, bytes _pubkey); // event for when Deposit is received and staked
 
-    event DepositReceived(address _sender); // event for when a permanent URI is set
-    event DepositStaked(address _sender); // event for when a permanent URI is set
+    event DepositReceived(address indexed _sender); // event for when a deposit is received
+    event DepositReceivedTest(address indexed _sender); // event for when a deposit is received - test without actual deposit
 
-    event UserRequestedWithdrawal(
-        uint256 _tokenID,
-        address _user,
-        uint256 _fee,
-        uint256 _stakedETH
-    ); // event for when a user requests a withdrawal
+    event DepositStaked(address _sender); // event for when a deposit is staked & also for test deposit 
+
+    // event UserRequestedWithdrawal(
+    //     uint256 _tokenID,
+    //     address _user,
+    //     uint256 _fee,
+    //     uint256 _stakedETH
+    // ); // event for when a user requests a withdrawal
 
     // ssv testing
-    function depositSSV(
+    // function depositSSV(
+    //     bytes calldata pubkey,
+    //     uint32[] calldata operatorIds,
+    //     bytes[] calldata sharesPublicKeys,
+    //     bytes[] calldata sharesEncrypted,
+    //     uint256 ssvAmount,
+    //     bytes calldata withdrawal_credentials,
+    //     bytes calldata signature,
+    //     bytes32 deposit_data_root
+    // ) external payable nonReentrant {
+    //     require(verified(msg.sender), "You are not a verified business yet.");
+    //     require(
+    //         msg.value == 32 ether,
+    //         "You need to deposit 32 ETH."
+    //     );
+    //     IDepositContract(DEPOSIT_ADDRESS).deposit{value: msg.value}(
+    //         pubkey,
+    //         withdrawal_credentials,
+    //         signature,
+    //         deposit_data_root
+    //     );
+    //     IERC20(SSV_TOKEN).approve(SSV_ADDRESS, ssvAmount);
+    //     ISSVNetwork(SSV_ADDRESS).registerValidator(
+    //         pubkey,
+    //         operatorIds,
+    //         sharesPublicKeys,
+    //         sharesEncrypted,
+    //         ssvAmount
+    //     );
+    //     validatortoStaker[msg.sender].push(pubkey);
+    //     emit DepositReceivedStaked(msg.sender, pubkey);
+    // }
+
+    // function depositTestSSV(
+    //     bytes calldata pubkey,
+    //     uint32[] calldata operatorIds,
+    //     bytes[] calldata sharesPublicKeys,
+    //     bytes[] calldata sharesEncrypted,
+    //     uint256 ssvAmount
+    // ) external payable nonReentrant {
+    //     require(verified(msg.sender), "You are not a verified business yet.");
+    //     // require(
+    //     //     msg.value == 32 ether,
+    //     //     "You are trying to deposit more than the current pool can hold. Please wait for the next one or deposit less."
+    //     // );
+    //     IERC20(SSV_TOKEN).approve(SSV_ADDRESS, ssvAmount);
+    //     ISSVNetwork(SSV_ADDRESS).registerValidator(
+    //         pubkey,
+    //         operatorIds,
+    //         sharesPublicKeys,
+    //         sharesEncrypted,
+    //         ssvAmount
+    //     );
+    //     validatortoStaker[msg.sender].push(pubkey);
+    //     emit DepositReceivedStaked(msg.sender, pubkey);
+    // }
+   
+
+    // function to check if the user is verified by Quadrata & deposit 32 ETH to the contract to become which triggers an event in the backend
+    function depositIntoContract() external payable nonReentrant {
+        require(verified(msg.sender), "You are not a verified business yet.");
+        require(
+            msg.value == 32 ether,
+            "You are trying to deposit more than the current pool can hold. Please wait for the next one or deposit less."
+        );
+        stakerDeposited[msg.sender] = true;
+        emit DepositReceived(msg.sender);
+    }
+
+    // function with no desposit requirement to check if the user is verified by Quadrata & trigger an event in the backend
+     function depositIntoContractTest() external payable nonReentrant {
+        require(verified(msg.sender), "You are not a verified business yet.");
+        // require(
+        //     msg.value == 32 ether,
+        //     "You are trying to deposit more than the current pool can hold. Please wait for the next one or deposit less."
+        // );
+        stakerDeposited[msg.sender] = true;
+        emit DepositReceivedTest(msg.sender);
+    }
+
+    function createSSV(
+        address _staker,
         bytes calldata pubkey,
         uint32[] calldata operatorIds,
         bytes[] calldata sharesPublicKeys,
@@ -106,13 +189,13 @@ contract InstSta is ReentrancyGuard, Ownable {
         bytes calldata withdrawal_credentials,
         bytes calldata signature,
         bytes32 deposit_data_root
-    ) external payable nonReentrant {
-        require(verified(msg.sender), "You are not a verified business yet.");
+    ) external payable nonReentrant onlyOwner{
+        require(stakerDeposited[_staker], "Staker did not deposit ETH yet.");
         require(
-            msg.value == 32 ether,
-            "You need to deposit 32 ETH."
+            address(this).balance >= 32 ether,
+            "Not enought ETH."
         );
-        IDepositContract(DEPOSIT_ADDRESS).deposit{value: msg.value}(
+        IDepositContract(DEPOSIT_ADDRESS).deposit{value: 32 ether}(
             pubkey,
             withdrawal_credentials,
             signature,
@@ -126,21 +209,31 @@ contract InstSta is ReentrancyGuard, Ownable {
             sharesEncrypted,
             ssvAmount
         );
-        validatortoStaker[msg.sender].push(pubkey);
-        emit DepositReceivedStaked(msg.sender, pubkey);
+        validatortoStaker[_staker].push(pubkey);
+        emit DepositReceivedStaked(_staker, pubkey);
     }
 
-    function depositTestSSV(
+    function createSSVTest(
+        address _staker,
         bytes calldata pubkey,
         uint32[] calldata operatorIds,
         bytes[] calldata sharesPublicKeys,
         bytes[] calldata sharesEncrypted,
         uint256 ssvAmount
-    ) external payable nonReentrant {
-        require(verified(msg.sender), "You are not a verified business yet.");
+        // bytes calldata withdrawal_credentials,
+        // bytes calldata signature,
+        // bytes32 deposit_data_root
+    ) external payable nonReentrant onlyOwner{
+        require(stakerDeposited[_staker], "Staker did not deposit ETH yet.");
         // require(
-        //     msg.value == 32 ether,
-        //     "You are trying to deposit more than the current pool can hold. Please wait for the next one or deposit less."
+        //     address(this).balance >= 32 ether,
+        //     "Not enought ETH."
+        // );
+        // IDepositContract(DEPOSIT_ADDRESS).deposit{value: 32 ether}(
+        //     pubkey,
+        //     withdrawal_credentials,
+        //     signature,
+        //     deposit_data_root
         // );
         IERC20(SSV_TOKEN).approve(SSV_ADDRESS, ssvAmount);
         ISSVNetwork(SSV_ADDRESS).registerValidator(
@@ -150,71 +243,13 @@ contract InstSta is ReentrancyGuard, Ownable {
             sharesEncrypted,
             ssvAmount
         );
-        validatortoStaker[msg.sender].push(pubkey);
-        emit DepositReceivedStaked(msg.sender, pubkey);
-    }
-
-
-
-
-
-    function depositIntoMultiSig() external payable nonReentrant {
-        // require(
-        //     msg.value == 32 ether,
-        //     "You are trying to deposit more than the current pool can hold. Please wait for the next one or deposit less."
-        // );
-        stakerDeposited[msg.sender] = true;
-        emit DepositReceived(msg.sender);
-    }
-    // needs to be only owner later on !!!!!
-    function depositTestSSVMultiSig(
-        bytes calldata pubkey,
-        uint32[] calldata operatorIds,
-        bytes[] calldata sharesPublicKeys,
-        bytes[] calldata sharesEncrypted,
-        uint256 ssvAmount
-    ) external payable nonReentrant returns (bool, bytes memory) {
-        require(verified(msg.sender), "You are not a verified business yet.");
-        require(
-            stakerDeposited[msg.sender],
-            "You have not deposited into the multisig yet."
-        );
-        require(
-            !stakerStaked[msg.sender],
-            "You have already staked your deposit."
-        );
-        stakerStaked[msg.sender] = true;
-
-        // (bool successApprove, bytes memory dataApprove) = address(SSV_TOKEN).delegatecall(
-        //     abi.encodeWithSignature(
-        //         "approve(address, uint256)",
-        //         SSV_ADDRESS,
-        //         ssvAmount
-        //     )
-        // );
-
-        (bool successRegister, bytes memory dataRegister) = address(SSV_ADDRESS).delegatecall(
-            abi.encodeWithSignature(
-                "registerValidator(bytes, unit32[], bytes[],  bytes[], uint256)",
-                pubkey,
-                operatorIds,
-                sharesPublicKeys,
-                sharesEncrypted,
-                ssvAmount
-            )
-        );
-        validatortoStaker[msg.sender].push(pubkey);
-        emit DepositReceivedStaked(msg.sender, pubkey);
-        return (successRegister, dataRegister);
+        validatortoStaker[_staker].push(pubkey);
+        emit DepositReceivedStaked(_staker, pubkey);
     }
 
     function verified(address _sender) public view returns (bool) {
         uint256 rslt = IQuadrata(QUADRATA).balanceOf(_sender, is_BUSINESS);
-        if (rslt >= 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return (rslt >= 1);
     }
 
     function getValidatorSelf() external view returns (bytes[] memory) {

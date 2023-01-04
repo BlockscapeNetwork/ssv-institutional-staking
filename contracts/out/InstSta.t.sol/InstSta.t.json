@@ -1,0 +1,136 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "test/InstSta.t.sol",
+    "id": 25813,
+    "exportedSymbols": {
+      "DSTest": [
+        1786
+      ],
+      "InstSta": [
+        25112
+      ],
+      "Script": [
+        2049
+      ],
+      "StdStorage": [
+        5077
+      ],
+      "Test": [
+        4979
+      ],
+      "Vm": [
+        7098
+      ],
+      "console": [
+        15162
+      ],
+      "console2": [
+        23226
+      ],
+      "stdError": [
+        5049
+      ],
+      "stdJson": [
+        2409
+      ],
+      "stdMath": [
+        6318
+      ],
+      "stdStorage": [
+        6179
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "39:9485:19",
+    "nodes": [
+      {
+        "id": 25807,
+        "nodeType": "PragmaDirective",
+        "src": "39:25:19",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".15"
+        ]
+      },
+      {
+        "id": 25808,
+        "nodeType": "ImportDirective",
+        "src": "66:28:19",
+        "nodes": [],
+        "absolutePath": "lib/forge-std/src/Test.sol",
+        "file": "forge-std/Test.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 25813,
+        "sourceUnit": 6319,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 25810,
+        "nodeType": "ImportDirective",
+        "src": "95:46:19",
+        "nodes": [],
+        "absolutePath": "lib/forge-std/src/console.sol",
+        "file": "forge-std/console.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 25813,
+        "sourceUnit": 15163,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 25809,
+              "name": "console",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 15162,
+              "src": "103:7:19",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 25812,
+        "nodeType": "ImportDirective",
+        "src": "142:43:19",
+        "nodes": [],
+        "absolutePath": "src/InstSta.sol",
+        "file": "../src/InstSta.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 25813,
+        "sourceUnit": 25113,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 25811,
+              "name": "InstSta",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 25112,
+              "src": "150:7:19",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      }
+    ],
+    "license": "UNLICENSED"
+  },
+  "id": 19
+}

@@ -59,7 +59,7 @@ const Staking: NextPage = () => {
 
   const contractAddr =
     chain?.name === "Goerli"
-      ? "0x79c0dd6ae93abae714b2bec35565456140f707e1"
+      ? "0x4df6bc72527e380b8bc845451bb70d68fc5d4f0f"
       : chain?.name === "Mainnet"
       ? "0xe0C8df4270F4342132ec333F6048cb703E7A9c77"
       : "0x0000000000000000000000000000000000000000";
@@ -86,7 +86,7 @@ const Staking: NextPage = () => {
   });
 
   const { data: valis } = useContractRead({
-    address: "0xcdae080c9c0435e298dcd6b18fa9218e1a3ae73d",
+    address: "0x4df6bc72527e380b8bc845451bb70d68fc5d4f0f",
     abi: InstSta.abi,
     functionName: "getValidator",
     args: [address],
@@ -110,12 +110,9 @@ const Staking: NextPage = () => {
     isError: isPrepareError,
     isSuccess: prepareSuccess,
   } = usePrepareContractWrite({
-    address: contractAddr,
-    abi: ETHALLOC.abi,
-    functionName: "depositEthKYB",
-    overrides: {
-      value: ethers.utils.parseEther("32"),
-    },
+    address: "0x4df6bc72527e380b8bc845451bb70d68fc5d4f0f",
+    abi: InstSta.abi,
+    functionName: "depositIntoContractTest",
   });
 
   const {
@@ -123,8 +120,10 @@ const Staking: NextPage = () => {
     isLoading: writeisLoading,
     isSuccess,
     error: writeError,
-    write,
+    write: writeContract,
   } = useContractWrite(config);
+
+  
 
   const [showChild, setShowChild] = useState(false);
   useEffect(() => {
@@ -132,7 +131,7 @@ const Staking: NextPage = () => {
   }, []);
 
   const instStaContract = new ethers.Contract(
-    "0xcdae080c9c0435e298dcd6b18fa9218e1a3ae73d",
+    "0x4df6bc72527e380b8bc845451bb70d68fc5d4f0f",
     InstSta.abi,
     signer as any
   );
@@ -308,6 +307,12 @@ const Staking: NextPage = () => {
                       onClick={() => registerValidatorSSV()}
                     >
                       Stake your 32 GöETH (No GöETH req)
+                    </button>
+                    <button
+                      className="btn btn-primary btn-block"
+                      onClick={() => writeContract?.()}
+                    >
+                      NEW Stake your 32 GöETH (No GöETH req)
                     </button>
                   </>
                 ) : isConnected && !verified && chain?.name === "Goerli" ? (

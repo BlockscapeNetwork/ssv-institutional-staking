@@ -10,7 +10,7 @@ contract InstStaScript is Script {
     function setUp() public {}
 
     function run() public {
-        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY_NORMI");
+        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         vm.startBroadcast(deployerPrivateKey);
         instSta = new InstSta(
             0x5C6b81212c0A654B6e247F8DEfeC9a95c63EF954,
