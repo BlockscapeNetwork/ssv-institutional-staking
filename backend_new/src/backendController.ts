@@ -60,8 +60,6 @@ interface IdepositData {
   version: number;
 }
 
-console.log(process.env);
-
 console.log("Hot Wallet Validator Address: " + wallet.address);
 // The address from the deployment contract
 const contractAddress: string =
@@ -88,35 +86,31 @@ const keyStorePW = '${process.env.PASSPHRASE}';
 /// Create SSV Validator (testing no deposit data)
 (async () => {
 
-  // Listen for the DepositReceived event
-  const filterDepositReceived = contract.filters.DepositReceivedTest();
-
   console.log("Waiting for DepositReceivedTest event...");
 
-  // provider.on(filterDepositReceived, async () => {
+
+  // Listen for the DepositReceived event
+  //const filterDepositReceived = contract.filters.DepositReceivedTest(_sender);
+  contract.on("DepositReceivedTest", async (_sender) => {
     console.log("DepositReceivedTest event received!");
-    console.log(filterDepositReceived);
 
     try {
-
-
       const exec = promisify(require('child_process').exec)
 
       let account: number = Number(fs.readFileSync('./keystore.json', 'utf8'));
 
       await exec(`./ethdo account create --account="Vali/${account}" --wallet-passphrase="${process.env.WALLET_PASSPHRASE}" --passphrase="${process.env.PASSPHRASE}" --allow-weak-passphrases`);
 
-      const depositData: IdepositData = JSON.parse(await (await
+      const depositData: IdepositData = JSON.parse(await(await
         exec(`./ethdo validator depositdata --validatoraccount 'Vali/${account}' --withdrawalaccount 'Vali/${account}' --depositvalue='32 Ether' --account 'Vali/${account}' --passphrase '${process.env.PASSPHRASE}' --launchpad --forkversion 00001020`)).stdout.trim())[0];
 
 
       const thresholdInstance = new Threshold();
 
-      const privateKey = await (await exec(`./ethdo account key --account=Vali/${account} --passphrase=${process.env.PASSPHRASE}`)).stdout.trim().split('0x')[1];
+      const privateKey = await(await exec(`./ethdo account key --account=Vali/${account} --passphrase=${process.env.PASSPHRASE}`)).stdout.trim().split('0x')[1];
 
       account = account + 1;
       fs.writeFileSync('./keystore.json', String(account));
-      console.log(privateKey, 'privateKey');
 
       const threshold = await thresholdInstance.create(privateKey, operatorIds);
 
@@ -148,7 +142,7 @@ const keyStorePW = '${process.env.PASSPHRASE}';
       // Get the deposit data root from the depositData file
       const deposit_data_root = depositData.deposit_data_root;
 
-      const staker = await signer.getAddress(); // needs to be changed to the staker address
+      const staker = await _sender;
 
       // Return all the needed params to build a transaction payload
       const ssvData = [
@@ -163,66 +157,48 @@ const keyStorePW = '${process.env.PASSPHRASE}';
         // deposit_data_root,
       ];
 
-      // console.log(ssvData, 'ssvData');
-
       const unsignedTx = await instStaContract.populateTransaction[
         "createSSVTest"
       ](...ssvData);
-
-
-      console.log(unsignedTx, 'unsignedTx');
-
       const tx = await signer.sendTransaction(unsignedTx);
-
       console.log(tx, 'tx');
-      // const txReceipt = await tx.wait();
-      //   console.log(txReceipt.status);
-
-
-
-      // Call the createSSV function
-
+    
 
     } catch (error) {
       console.log(error);
       return false;
     }
-  // });
+
+  });
 })();
 
 /// Create SSV Validator
 (async () => {
 
-  // Listen for the DepositReceived event
-  const filterDepositReceived = contract.filters.DepositReceived();
-
   console.log("Waiting for DepositReceived event...");
 
-  provider.on(filterDepositReceived, async () => {
+  // Listen for the DepositReceived event
+  //const filterDepositReceived = contract.filters.DepositReceivedTest(_sender);
+  contract.on("DepositReceived", async (_sender) => {
     console.log("DepositReceived event received!");
-    console.log(filterDepositReceived);
 
     try {
-
-
       const exec = promisify(require('child_process').exec)
 
       let account: number = Number(fs.readFileSync('./keystore2.json', 'utf8'));
 
-      await exec(`./ethdo account create --account="Vali/${account}" --wallet-passphrase="${process.env.WALLET_PASSPHRASE}" --passphrase="${process.env.PASSPHRASE}"`);
+      await exec(`./ethdo account create --account="Vali/${account}" --wallet-passphrase="${process.env.WALLET_PASSPHRASE}" --passphrase="${process.env.PASSPHRASE}" --allow-weak-passphrases`);
 
-      const depositData: IdepositData = JSON.parse(await (await
+      const depositData: IdepositData = JSON.parse(await(await
         exec(`./ethdo validator depositdata --validatoraccount 'Vali/${account}' --withdrawalaccount 'Vali/${account}' --depositvalue='32 Ether' --account 'Vali/${account}' --passphrase '${process.env.PASSPHRASE}' --launchpad --forkversion 00001020`)).stdout.trim())[0];
 
 
       const thresholdInstance = new Threshold();
 
-      const privateKey = await (await exec(`./ethdo account key --account=Vali/${account} --passphrase=${process.env.PASSPHRASE}`)).stdout.trim().split('0x')[1];
-
+      const privateKey = await(await exec(`./ethdo account key --account=Vali/${account} --passphrase=${process.env.PASSPHRASE}`)).stdout.trim().split('0x')[1];
 
       account = account + 1;
       fs.writeFileSync('./keystore2.json', String(account));
-      console.log(privateKey, 'privateKey');
 
       const threshold = await thresholdInstance.create(privateKey, operatorIds);
 
@@ -254,7 +230,7 @@ const keyStorePW = '${process.env.PASSPHRASE}';
       // Get the deposit data root from the depositData file
       const deposit_data_root = depositData.deposit_data_root;
 
-      const staker = await signer.getAddress(); // needs to be changed to the staker address
+      const staker = await _sender;
 
       // Return all the needed params to build a transaction payload
       const ssvData = [
@@ -269,29 +245,17 @@ const keyStorePW = '${process.env.PASSPHRASE}';
         deposit_data_root,
       ];
 
-      // console.log(ssvData, 'ssvData');
-
       const unsignedTx = await instStaContract.populateTransaction[
         "createSSV"
       ](...ssvData);
-
-
-      console.log(unsignedTx, 'unsignedTx');
-
       const tx = await signer.sendTransaction(unsignedTx);
-
       console.log(tx, 'tx');
-      // const txReceipt = await tx.wait();
-      //   console.log(txReceipt.status);
-
-
-
-      // Call the createSSV function
-
+    
 
     } catch (error) {
       console.log(error);
       return false;
     }
+
   });
 })();

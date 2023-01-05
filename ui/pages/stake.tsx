@@ -102,13 +102,15 @@ const Staking: NextPage = () => {
       setVerified(false);
     }
     getValisData(valis);
+
+    console.log("valis ejklfgheköwjgbfwejk", valis);
   }, [isSuccessTokenId, isBusiness, address, valis]);
 
   let {
-    config,
-    error: prepareError,
-    isError: isPrepareError,
-    isSuccess: prepareSuccess,
+    config:configTest,
+    error: prepareError1,
+    isError: isPrepareError1,
+    isSuccess: prepareSuccess1,
   } = usePrepareContractWrite({
     address: "0x12f8172983d4622ddCaAE7c1f2b91FFB8455f9c0",
     abi: InstSta.abi,
@@ -116,11 +118,29 @@ const Staking: NextPage = () => {
   });
 
   const {
-    data: result,
-    isLoading: writeisLoading,
+    data: result1,
+    isLoading: writeisLoading1,
     isSuccess,
-    error: writeError,
-    write: writeContract,
+    error: writeError1,
+    write: writeContract1,
+  } = useContractWrite(configTest);
+
+  let {
+    config,
+    error: prepareError2,
+    isError: isPrepareError2,
+    isSuccess: prepareSuccess2,
+  } = usePrepareContractWrite({
+    address: "0x12f8172983d4622ddCaAE7c1f2b91FFB8455f9c0",
+    abi: InstSta.abi,
+    functionName: "depositIntoContractTest",
+  });
+
+  const {
+    data: result2,
+    isLoading: writeisLoading2,
+    error: writeError2,
+    write: writeContract2,
   } = useContractWrite(config);
 
 
@@ -310,7 +330,7 @@ const Staking: NextPage = () => {
                     </button>
                     <button
                       className="btn btn-primary btn-block"
-                      onClick={() => writeContract?.()}
+                      onClick={() => writeContract1?.()}
                     >
                       NEW Stake your 32 GöETH (No GöETH req)
                     </button>
@@ -341,6 +361,7 @@ const Staking: NextPage = () => {
             </div>
             <div className="card w-96 bg-base-100 shadow-xl border border-base-300">
               <div className="card-body grid grid-cols-1">
+                {console.log(valisData)}
                 {valisData?.map(
                   (vali: any, index: number) =>
                     valisData.length > 0 && (
