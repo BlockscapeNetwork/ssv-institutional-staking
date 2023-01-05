@@ -25,6 +25,7 @@ import {
   useNetwork,
 } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
+import { alchemyProvider } from "wagmi/providers/alchemy";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import Router from "next/router";
@@ -36,31 +37,30 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 const { chains, provider, webSocketProvider } = configureChains(
   [chain.mainnet, chain.goerli],
-  [publicProvider()]
+  [
+    alchemyProvider({ apiKey: "RxmEEiEXADEuk-354664iWpPKwAvbq-L" }),
+    publicProvider(),
+  ]
 );
 
-
-
 const needsInjectedWalletFallback =
-  typeof window !== 'undefined' &&
+  typeof window !== "undefined" &&
   window.ethereum &&
   !window.ethereum.isMetaMask &&
   !window.ethereum.isCoinbaseWallet;
 
-  const connectors = connectorsForWallets([
-    {
-      groupName: 'Suggested',
-      wallets: [
-        metaMaskWallet({ chains }),
-        walletConnectWallet({ chains }),
-        coinbaseWallet({ appName: 'Bountyscape', chains }),
-        ledgerWallet({ chains }),
-        ...(needsInjectedWalletFallback
-          ? [injectedWallet({ chains })]
-          : []),
-      ],
-    },
-  ]);
+const connectors = connectorsForWallets([
+  {
+    groupName: "Suggested",
+    wallets: [
+      metaMaskWallet({ chains }),
+      walletConnectWallet({ chains }),
+      coinbaseWallet({ appName: "Bountyscape", chains }),
+      ledgerWallet({ chains }),
+      ...(needsInjectedWalletFallback ? [injectedWallet({ chains })] : []),
+    ],
+  },
+]);
 
 const wagmiClient = createClient({
   autoConnect: true,
@@ -127,10 +127,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     onSelectMode(
       document.body.getAttribute("data-theme")?.match("garden")
-        ? lightTheme({ accentColor: "#E79132" })  
+        ? lightTheme({ accentColor: "#E79132" })
         : darkTheme({ accentColor: "#E79132" })
     );
-
 
     return () => {
       window
@@ -138,9 +137,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         .removeEventListener("change", () => {});
     };
   }, []);
-
-
-  
 
   const [showChild, setShowChild] = useState(false);
   useEffect(() => {
@@ -180,7 +176,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ApolloProvider client={client}>
           <WagmiConfig client={wagmiClient}>
             <RainbowKitProvider
-            modalSize="compact"
+              modalSize="compact"
               chains={chains}
               theme={{
                 lightMode: lightTheme({ accentColor: "#E79132" }),

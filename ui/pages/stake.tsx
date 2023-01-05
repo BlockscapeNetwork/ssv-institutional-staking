@@ -50,7 +50,7 @@ const Staking: NextPage = () => {
     "Not Verified KYB - Become Verified:"
   );
   const [verified, setVerified] = useState(false);
-  const [valisData, getValisData] = useState([]);
+  const [valisData, getValisData] = useState<any>([]);
 
   const { address, isConnected } = useAccount();
   const { data, isError, isLoading } = useBalance({
@@ -84,14 +84,18 @@ const Staking: NextPage = () => {
     functionName: "balanceOf",
     args: [address, ethers.utils.id("IS_BUSINESS")],
   });
+  // console.log("addr:", address);
 
-  const { data: valis } = useContractRead({
+  const fetchValis = useContractRead({
     address: "0x12f8172983d4622ddCaAE7c1f2b91FFB8455f9c0",
     abi: InstSta.abi,
     functionName: "getValidator",
     args: [address],
+    onSuccess(data) {
+      console.log("Valis:", data);
+      getValisData(data);
+    },
   });
-
 
   useEffect(() => {
     if (isBusiness?.toString() === "1") {
@@ -101,13 +105,13 @@ const Staking: NextPage = () => {
       setStatusKYB("Not Verified KYB - Become Verified:");
       setVerified(false);
     }
-    getValisData(valis);
+    // getValisData(valis);
 
-    console.log("valis ejklfgheköwjgbfwejk", valis);
-  }, [isSuccessTokenId, isBusiness, address, valis]);
+    // console.log("valis ejklfgheköwjgbfwejk", valis);
+  }, [isSuccessTokenId, isBusiness, address]);
 
   let {
-    config:configTest,
+    config: configTest,
     error: prepareError1,
     isError: isPrepareError1,
     isSuccess: prepareSuccess1,
@@ -143,13 +147,11 @@ const Staking: NextPage = () => {
     write: writeContract2,
   } = useContractWrite(config);
 
-
-
   const [showChild, setShowChild] = useState(false);
   useEffect(() => {
     setShowChild(true);
   }, []);
-
+  // console.log(fetchedValis);
   const instStaContract = new ethers.Contract(
     "0x12f8172983d4622ddCaAE7c1f2b91FFB8455f9c0",
     InstSta.abi,
@@ -361,11 +363,14 @@ const Staking: NextPage = () => {
             </div>
             <div className="card w-96 bg-base-100 shadow-xl border border-base-300">
               <div className="card-body grid grid-cols-1">
-                {console.log(valisData)}
+                {/* {console.log(valisData)} */}
                 {valisData?.map(
                   (vali: any, index: number) =>
                     valisData.length > 0 && (
-                      <div className="link text-xm font-bold mt-1 text-center">
+                      <div
+                        className="link text-xm font-bold mt-1 text-center"
+                        key={index}
+                      >
                         {index + 1}.{" "}
                         <a
                           href={
