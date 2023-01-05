@@ -318,23 +318,18 @@ const Staking: NextPage = () => {
                 </label> */}
                 {isConnected && verified ? (
                   <>
+                   
                     <button
                       className="btn btn-primary btn-block"
-                      onClick={() => allSSV()}
-                    >
-                      Stake your 32 GöETH
-                    </button>
-                    <button
-                      className="btn btn-primary btn-block"
-                      onClick={() => registerValidatorSSV()}
+                      onClick={() => writeContract1?.()}
                     >
                       Stake your 32 GöETH (No GöETH req)
                     </button>
                     <button
                       className="btn btn-primary btn-block"
-                      onClick={() => writeContract1?.()}
+                      onClick={() => writeContract2?.()}
                     >
-                      NEW Stake your 32 GöETH (No GöETH req)
+                      Stake your 32 GöETH 
                     </button>
                   </>
                 ) : isConnected && !verified && chain?.name === "Goerli" ? (
