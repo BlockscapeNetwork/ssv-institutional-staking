@@ -59,7 +59,7 @@ const Staking: NextPage = () => {
 
   const contractAddr =
     chain?.name === "Goerli"
-      ? "0x4df6bc72527e380b8bc845451bb70d68fc5d4f0f"
+      ? "0x12f8172983d4622ddCaAE7c1f2b91FFB8455f9c0"
       : chain?.name === "Mainnet"
       ? "0xe0C8df4270F4342132ec333F6048cb703E7A9c77"
       : "0x0000000000000000000000000000000000000000";
@@ -86,7 +86,7 @@ const Staking: NextPage = () => {
   });
 
   const { data: valis } = useContractRead({
-    address: "0x4df6bc72527e380b8bc845451bb70d68fc5d4f0f",
+    address: "0x12f8172983d4622ddCaAE7c1f2b91FFB8455f9c0",
     abi: InstSta.abi,
     functionName: "getValidator",
     args: [address],
@@ -110,7 +110,7 @@ const Staking: NextPage = () => {
     isError: isPrepareError,
     isSuccess: prepareSuccess,
   } = usePrepareContractWrite({
-    address: "0x4df6bc72527e380b8bc845451bb70d68fc5d4f0f",
+    address: "0x12f8172983d4622ddCaAE7c1f2b91FFB8455f9c0",
     abi: InstSta.abi,
     functionName: "depositIntoContractTest",
   });
@@ -123,7 +123,7 @@ const Staking: NextPage = () => {
     write: writeContract,
   } = useContractWrite(config);
 
-  
+
 
   const [showChild, setShowChild] = useState(false);
   useEffect(() => {
@@ -131,7 +131,7 @@ const Staking: NextPage = () => {
   }, []);
 
   const instStaContract = new ethers.Contract(
-    "0x4df6bc72527e380b8bc845451bb70d68fc5d4f0f",
+    "0x12f8172983d4622ddCaAE7c1f2b91FFB8455f9c0",
     InstSta.abi,
     signer as any
   );

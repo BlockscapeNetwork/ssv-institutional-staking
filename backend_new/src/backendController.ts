@@ -7,8 +7,10 @@ import { encode } from 'js-base64';
 import { Encryption, EthereumKeyStore, Threshold } from 'ssv-keys';
 
 
-import { } from 'dotenv/config'
+import * as dotenv from 'dotenv'
 import { promisify } from "util";
+
+dotenv.config()
 
 console.log(`
  _     _            _                                                                                                                                   
@@ -25,8 +27,9 @@ const abi: ethers.ContractInterface = instSta.abi;
 // Connect to Goerli
 const provider: ethers.providers.JsonRpcProvider =
   new ethers.providers.JsonRpcProvider(
-    "http://apps.test.blockscape.network:8545"
-    // "http://localhost:8888" //-- local testnet
+    "https://goerli.infura.io/v3/c4fe7eca7f744d1d83fc99a06ed38c2a"
+    //"http://apps.test.blockscape.network:8545"
+    //"http://127.0.0.1:8888"   //-- local testnet
   );
 // Load the wallet to deploy the contract with
 const privateKey: string =
@@ -34,7 +37,14 @@ const privateKey: string =
   "0x47d2c5b88f212c3448f097b24a8e218e2382547e2f3119f9579d13cd995065f3";
 // Create a wallet instance
 const wallet: ethers.Wallet = new ethers.Wallet(privateKey, provider);
-const signer = wallet.connect(provider);
+
+
+const signer = new ethers.Wallet(privateKey, provider);
+const instStaContract = new ethers.Contract(
+  '0x12f8172983d4622ddCaAE7c1f2b91FFB8455f9c0',
+  abi,
+  signer,
+);
 
 interface IdepositData {
 
@@ -50,18 +60,20 @@ interface IdepositData {
   version: number;
 }
 
+console.log(process.env);
+
 console.log("Hot Wallet Validator Address: " + wallet.address);
 // The address from the deployment contract
 const contractAddress: string =
   //? - local testnet
-  "0x4df6bc72527e380b8bc845451bb70d68fc5d4f0f";
+  "0x12f8172983d4622ddCaAE7c1f2b91FFB8455f9c0";
 //"0x233fe613b8692a8fb9532d1268d7a922b2811f72";
 
 // Create a contract instance
 const contract: ethers.Contract = new ethers.Contract(
-  contractAddress,
+  "0x12f8172983d4622ddCaAE7c1f2b91FFB8455f9c0",
   abi,
-  wallet
+  signer
 );
 
 const operators = [
@@ -71,99 +83,215 @@ const operators = [
   'LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBelRDZ1hLeStWRitvOFNIdFVwT1YKcXNDSDJHSVhOUkJtS0Ixb251aUE2TnBFK3crOXFMQllQUjdDZ0p4eWxMYWFvYnNVNWhKd001K2ZKcGF3OU9XbApzSU40MGtRNU1JaXY3SVFBTUtiSnZuNmFwYWZGYXJFTjA3WjJUN2VVWDU1RWJwSC9lRXZDUzB4WjV3dklCTTJQCnpKSU5TYlVUNHR5MTNDZkFZOE5IOWcybFdiS3AzVUtuMTZpcmRMcWFmd0tjUTNtaG90K3NBSE52NTdaNWdZS3IKUGY0Q0F4b0oyT0FEVlRYUGxuOXluOGhiU084ajZJOTVHYWxiWk9lZTdGR3FMNmYrVnJrZXBLMEU5K2VFSkJTVwpoeURxcjg4dEFydlB1VWNhUEltMll0dG5sTS9pRGJNNDNnWXRHOEV1bTAvMEZZZGY5dmtJeTRZK2VmaGdPVmluCnB3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K',
 ];
 const operatorIds = [91, 2, 9, 83];
-const keyStorePW = 'dummy123';
+const keyStorePW = '${process.env.PASSPHRASE}';
 
-/// Create SSV Validator
+/// Create SSV Validator (testing no deposit data)
 (async () => {
 
   // Listen for the DepositReceived event
   const filterDepositReceived = contract.filters.DepositReceivedTest();
 
-  console.log("Waiting for DepositReceived event...");
+  console.log("Waiting for DepositReceivedTest event...");
 
   // provider.on(filterDepositReceived, async () => {
-  console.log("DepositReceived event received!");
-  console.log(filterDepositReceived);
+    console.log("DepositReceivedTest event received!");
+    console.log(filterDepositReceived);
 
-  try {
-
-    // Get required data from the keystore file
-
-    const exec = promisify(require('child_process').exec)
-
-    const depositData: IdepositData = JSON.parse(await (await
-      exec("./ethdo validator depositdata --validatoraccount 'Vali/Operations' --withdrawalaccount 'Vali/Operations' --depositvalue='32 Ether' --account 'Vali/Operations' --passphrase 'dummy123'")).stdout.trim())[0];
-
-    const keyStoreFile = JSON.parse(fs.readFileSync('./keystore.json', 'utf8'));  // question is how to do this better with ethdo/dirk
-
-    const keyStore = new EthereumKeyStore(JSON.stringify(keyStoreFile));
-
-    const thresholdInstance = new Threshold();
-    // Get public key using the keystore password
-    const privateKey = await keyStore.getPrivateKey(keyStorePW);
-    const threshold = await thresholdInstance.create(privateKey, operatorIds);
-
-    let shares = new Encryption(operators, threshold.shares).encrypt();
-
-    // Loop through the operators RSA keys and format them as base64
-    shares = shares.map((share) => {
-      share.operatorPublicKey = encode(share.operatorPublicKey);
-      // Return the operator key and KeyShares (sharePublicKey & shareEncrypted)
-      return share;
-    });
+    try {
 
 
-    const web3 = new Web3();
-    //Get all the public keys from the shares
-    const sharesPublicKeys = shares.map((share) => share.publicKey);
-    // Get all the private keys from the shares and encode them as ABI parameters
-    const sharesEncrypted = shares.map((share) =>
-      web3.eth.abi.encodeParameter('string', share.privateKey),
-    );
+      const exec = promisify(require('child_process').exec)
 
-    // Token amount (liquidation collateral and operational runway balance to be funded)
-    const tokenAmount = web3.utils.toBN(21342395400000000000).toString();
-    const operatorIdsArray = Array.from(operatorIds);
+      let account: number = Number(fs.readFileSync('./keystore.json', 'utf8'));
 
-    // Get the withdrawal credentials from the depositData file
-    const withdrawal_credentials = depositData.withdrawal_credentials;
-    // Get the signature from the depositData file
-    const signature = depositData.signature;
-    // Get the deposit data root from the depositData file
-    const deposit_data_root = depositData.deposit_data_root;
+      await exec(`./ethdo account create --account="Vali/${account}" --wallet-passphrase="${process.env.WALLET_PASSPHRASE}" --passphrase="${process.env.PASSPHRASE}" --allow-weak-passphrases`);
 
-    const staker = await signer.getAddress(); // needs to be changed to the staker address
-
-    // Return all the needed params to build a transaction payload
-    const ssvData = [
-      staker,
-      threshold.validatorPublicKey,
-      operatorIdsArray,
-      sharesPublicKeys,
-      sharesEncrypted,
-      tokenAmount,
-      // withdrawal_credentials,
-      // signature,
-      // deposit_data_root,
-    ];
-
-    console.log(ssvData, 'ssvData');
-
-    const unsignedTx = await contract.populateTransaction[
-      "createSSVTest"
-    ](...ssvData);
-
-    const tx = await signer.sendTransaction(unsignedTx);
-    console.log(tx, 'tx');
+      const depositData: IdepositData = JSON.parse(await (await
+        exec(`./ethdo validator depositdata --validatoraccount 'Vali/${account}' --withdrawalaccount 'Vali/${account}' --depositvalue='32 Ether' --account 'Vali/${account}' --passphrase '${process.env.PASSPHRASE}' --launchpad --forkversion 00001020`)).stdout.trim())[0];
 
 
-    // Call the createSSV function
+      const thresholdInstance = new Threshold();
+
+      const privateKey = await (await exec(`./ethdo account key --account=Vali/${account} --passphrase=${process.env.PASSPHRASE}`)).stdout.trim().split('0x')[1];
+
+      account = account + 1;
+      fs.writeFileSync('./keystore.json', String(account));
+      console.log(privateKey, 'privateKey');
+
+      const threshold = await thresholdInstance.create(privateKey, operatorIds);
+
+      let shares = new Encryption(operators, threshold.shares).encrypt();
+
+      // Loop through the operators RSA keys and format them as base64
+      shares = shares.map((share) => {
+        share.operatorPublicKey = encode(share.operatorPublicKey);
+        // Return the operator key and KeyShares (sharePublicKey & shareEncrypted)
+        return share;
+      });
+
+      const web3 = new Web3();
+      //Get all the public keys from the shares
+      const sharesPublicKeys = shares.map((share) => share.publicKey);
+      // Get all the private keys from the shares and encode them as ABI parameters
+      const sharesEncrypted = shares.map((share) =>
+        web3.eth.abi.encodeParameter('string', share.privateKey),
+      );
+
+      // Token amount (liquidation collateral and operational runway balance to be funded)
+      const tokenAmount = web3.utils.toBN("25342395400000000000").toString();
+      const operatorIdsArray = Array.from(operatorIds);
+
+      // Get the withdrawal credentials from the depositData file
+      const withdrawal_credentials = depositData.withdrawal_credentials;
+      // Get the signature from the depositData file
+      const signature = depositData.signature;
+      // Get the deposit data root from the depositData file
+      const deposit_data_root = depositData.deposit_data_root;
+
+      const staker = await signer.getAddress(); // needs to be changed to the staker address
+
+      // Return all the needed params to build a transaction payload
+      const ssvData = [
+        staker,
+        threshold.validatorPublicKey,
+        operatorIdsArray,
+        sharesPublicKeys,
+        sharesEncrypted,
+        tokenAmount,
+        // withdrawal_credentials,
+        // signature,
+        // deposit_data_root,
+      ];
+
+      // console.log(ssvData, 'ssvData');
+
+      const unsignedTx = await instStaContract.populateTransaction[
+        "createSSVTest"
+      ](...ssvData);
 
 
-  } catch (error) {
-    console.log(error);
-    return false;
-  }
+      console.log(unsignedTx, 'unsignedTx');
+
+      const tx = await signer.sendTransaction(unsignedTx);
+
+      console.log(tx, 'tx');
+      // const txReceipt = await tx.wait();
+      //   console.log(txReceipt.status);
+
+
+
+      // Call the createSSV function
+
+
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   // });
 })();
 
+/// Create SSV Validator
+(async () => {
+
+  // Listen for the DepositReceived event
+  const filterDepositReceived = contract.filters.DepositReceived();
+
+  console.log("Waiting for DepositReceived event...");
+
+  provider.on(filterDepositReceived, async () => {
+    console.log("DepositReceived event received!");
+    console.log(filterDepositReceived);
+
+    try {
+
+
+      const exec = promisify(require('child_process').exec)
+
+      let account: number = Number(fs.readFileSync('./keystore2.json', 'utf8'));
+
+      await exec(`./ethdo account create --account="Vali/${account}" --wallet-passphrase="${process.env.WALLET_PASSPHRASE}" --passphrase="${process.env.PASSPHRASE}"`);
+
+      const depositData: IdepositData = JSON.parse(await (await
+        exec(`./ethdo validator depositdata --validatoraccount 'Vali/${account}' --withdrawalaccount 'Vali/${account}' --depositvalue='32 Ether' --account 'Vali/${account}' --passphrase '${process.env.PASSPHRASE}' --launchpad --forkversion 00001020`)).stdout.trim())[0];
+
+
+      const thresholdInstance = new Threshold();
+
+      const privateKey = await (await exec(`./ethdo account key --account=Vali/${account} --passphrase=${process.env.PASSPHRASE}`)).stdout.trim().split('0x')[1];
+
+
+      account = account + 1;
+      fs.writeFileSync('./keystore2.json', String(account));
+      console.log(privateKey, 'privateKey');
+
+      const threshold = await thresholdInstance.create(privateKey, operatorIds);
+
+      let shares = new Encryption(operators, threshold.shares).encrypt();
+
+      // Loop through the operators RSA keys and format them as base64
+      shares = shares.map((share) => {
+        share.operatorPublicKey = encode(share.operatorPublicKey);
+        // Return the operator key and KeyShares (sharePublicKey & shareEncrypted)
+        return share;
+      });
+
+      const web3 = new Web3();
+      //Get all the public keys from the shares
+      const sharesPublicKeys = shares.map((share) => share.publicKey);
+      // Get all the private keys from the shares and encode them as ABI parameters
+      const sharesEncrypted = shares.map((share) =>
+        web3.eth.abi.encodeParameter('string', share.privateKey),
+      );
+
+      // Token amount (liquidation collateral and operational runway balance to be funded)
+      const tokenAmount = web3.utils.toBN("25342395400000000000").toString();
+      const operatorIdsArray = Array.from(operatorIds);
+
+      // Get the withdrawal credentials from the depositData file
+      const withdrawal_credentials = depositData.withdrawal_credentials;
+      // Get the signature from the depositData file
+      const signature = depositData.signature;
+      // Get the deposit data root from the depositData file
+      const deposit_data_root = depositData.deposit_data_root;
+
+      const staker = await signer.getAddress(); // needs to be changed to the staker address
+
+      // Return all the needed params to build a transaction payload
+      const ssvData = [
+        staker,
+        threshold.validatorPublicKey,
+        operatorIdsArray,
+        sharesPublicKeys,
+        sharesEncrypted,
+        tokenAmount,
+        withdrawal_credentials,
+        signature,
+        deposit_data_root,
+      ];
+
+      // console.log(ssvData, 'ssvData');
+
+      const unsignedTx = await instStaContract.populateTransaction[
+        "createSSV"
+      ](...ssvData);
+
+
+      console.log(unsignedTx, 'unsignedTx');
+
+      const tx = await signer.sendTransaction(unsignedTx);
+
+      console.log(tx, 'tx');
+      // const txReceipt = await tx.wait();
+      //   console.log(txReceipt.status);
+
+
+
+      // Call the createSSV function
+
+
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  });
+})();

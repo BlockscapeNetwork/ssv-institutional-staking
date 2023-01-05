@@ -85,9 +85,77 @@ contract InstSta is ReentrancyGuard, Ownable {
     }
 
     event DepositReceivedStaked(address _sender, bytes _pubkey); // event for when Deposit is received and staked
+
     event DepositReceived(address indexed _sender); // event for when a deposit is received
     event DepositReceivedTest(address indexed _sender); // event for when a deposit is received - test without actual deposit
-    event DepositStaked(address _sender); // event for when a deposit is staked & also for test deposit
+
+    event DepositStaked(address _sender); // event for when a deposit is staked & also for test deposit 
+
+    // event UserRequestedWithdrawal(
+    //     uint256 _tokenID,
+    //     address _user,
+    //     uint256 _fee,
+    //     uint256 _stakedETH
+    // ); // event for when a user requests a withdrawal
+
+    // ssv testing
+    // function depositSSV(
+    //     bytes calldata pubkey,
+    //     uint32[] calldata operatorIds,
+    //     bytes[] calldata sharesPublicKeys,
+    //     bytes[] calldata sharesEncrypted,
+    //     uint256 ssvAmount,
+    //     bytes calldata withdrawal_credentials,
+    //     bytes calldata signature,
+    //     bytes32 deposit_data_root
+    // ) external payable nonReentrant {
+    //     require(verified(msg.sender), "You are not a verified business yet.");
+    //     require(
+    //         msg.value == 32 ether,
+    //         "You need to deposit 32 ETH."
+    //     );
+    //     IDepositContract(DEPOSIT_ADDRESS).deposit{value: msg.value}(
+    //         pubkey,
+    //         withdrawal_credentials,
+    //         signature,
+    //         deposit_data_root
+    //     );
+    //     IERC20(SSV_TOKEN).approve(SSV_ADDRESS, ssvAmount);
+    //     ISSVNetwork(SSV_ADDRESS).registerValidator(
+    //         pubkey,
+    //         operatorIds,
+    //         sharesPublicKeys,
+    //         sharesEncrypted,
+    //         ssvAmount
+    //     );
+    //     validatortoStaker[msg.sender].push(pubkey);
+    //     emit DepositReceivedStaked(msg.sender, pubkey);
+    // }
+
+    // function depositTestSSV(
+    //     bytes calldata pubkey,
+    //     uint32[] calldata operatorIds,
+    //     bytes[] calldata sharesPublicKeys,
+    //     bytes[] calldata sharesEncrypted,
+    //     uint256 ssvAmount
+    // ) external payable nonReentrant {
+    //     require(verified(msg.sender), "You are not a verified business yet.");
+    //     // require(
+    //     //     msg.value == 32 ether,
+    //     //     "You are trying to deposit more than the current pool can hold. Please wait for the next one or deposit less."
+    //     // );
+    //     IERC20(SSV_TOKEN).approve(SSV_ADDRESS, ssvAmount);
+    //     ISSVNetwork(SSV_ADDRESS).registerValidator(
+    //         pubkey,
+    //         operatorIds,
+    //         sharesPublicKeys,
+    //         sharesEncrypted,
+    //         ssvAmount
+    //     );
+    //     validatortoStaker[msg.sender].push(pubkey);
+    //     emit DepositReceivedStaked(msg.sender, pubkey);
+    // }
+   
 
     // function to check if the user is verified by Quadrata & deposit 32 ETH to the contract to become which triggers an event in the backend
     function depositIntoContract() external payable nonReentrant {
@@ -100,14 +168,17 @@ contract InstSta is ReentrancyGuard, Ownable {
         emit DepositReceived(msg.sender);
     }
 
-    // function with no desposit requirement to check if the user is verified by Quadrata & trigger an event in the backend (no actual deposit)
-    function depositIntoContractTest() external payable nonReentrant {
+    // function with no desposit requirement to check if the user is verified by Quadrata & trigger an event in the backend
+     function depositIntoContractTest() external payable nonReentrant {
         require(verified(msg.sender), "You are not a verified business yet.");
+        // require(
+        //     msg.value == 32 ether,
+        //     "You are trying to deposit more than the current pool can hold. Please wait for the next one or deposit less."
+        // );
         stakerDeposited[msg.sender] = true;
         emit DepositReceivedTest(msg.sender);
     }
 
-    // function triggered by the backend: Creates KYB'ed validator owned by the smart contract and operated by 4 SSV nodes; A mapping represents the validator to staker relationship
     function createSSV(
         address _staker,
         bytes calldata pubkey,
@@ -118,15 +189,19 @@ contract InstSta is ReentrancyGuard, Ownable {
         bytes calldata withdrawal_credentials,
         bytes calldata signature,
         bytes32 deposit_data_root
-    ) external payable nonReentrant onlyOwner {
+    ) external payable nonReentrant onlyOwner{
         require(stakerDeposited[_staker], "Staker did not deposit ETH yet.");
-        require(address(this).balance >= 32 ether, "Not enought ETH.");
+        require(
+            address(this).balance >= 32 ether,
+            "Not enought ETH."
+        );
         IDepositContract(DEPOSIT_ADDRESS).deposit{value: 32 ether}(
             pubkey,
             withdrawal_credentials,
             signature,
             deposit_data_root
         );
+        IERC20(SSV_TOKEN).approve(SSV_ADDRESS, ssvAmount);
         ISSVNetwork(SSV_ADDRESS).registerValidator(
             pubkey,
             operatorIds,
@@ -135,11 +210,10 @@ contract InstSta is ReentrancyGuard, Ownable {
             ssvAmount
         );
         validatortoStaker[_staker].push(pubkey);
-        stakerDeposited[_staker] = false;
+         stakerDeposited[_staker] = false;
         emit DepositReceivedStaked(_staker, pubkey);
     }
 
-    // function triggered by the backend: Creates KYB'ed validator owned by the smart contract and operated by 4 SSV nodes; A mapping represents the validator to staker relationship (no actual validator creation)
     function createSSVTest(
         address _staker,
         bytes calldata pubkey,
@@ -147,7 +221,10 @@ contract InstSta is ReentrancyGuard, Ownable {
         bytes[] calldata sharesPublicKeys,
         bytes[] calldata sharesEncrypted,
         uint256 ssvAmount
-    ) external payable nonReentrant onlyOwner {
+        // bytes calldata withdrawal_credentials,
+        // bytes calldata signature,
+        // bytes32 deposit_data_root
+    ) external {
         require(stakerDeposited[_staker], "Staker did not deposit ETH yet.");
         IERC20(SSV_TOKEN).approve(SSV_ADDRESS, ssvAmount);
         ISSVNetwork(SSV_ADDRESS).registerValidator(
@@ -162,56 +239,23 @@ contract InstSta is ReentrancyGuard, Ownable {
         emit DepositReceivedStaked(_staker, pubkey);
     }
 
-    function SSVunlimitedApprove() external onlyOwner {
-        IERC20(SSV_TOKEN).approve(SSV_ADDRESS, type(uint256).max);
-    }
-
-    // manuel function for SSV token approval
-    function SSVapprove(uint256 ssvAmount) external onlyOwner {
+    function approveSSV (uint256 ssvAmount) external onlyOwner {
         IERC20(SSV_TOKEN).approve(SSV_ADDRESS, ssvAmount);
     }
 
-    // manuel function to remove validator
-    function SSVremoveValidator(bytes calldata pubkey) external onlyOwner {
-        ISSVNetwork(SSV_ADDRESS).removeValidator(pubkey);
-    }
-
-    // manuel function to get SSV balance
-    function SSVgetAddressBalance() external view returns (uint256) {
-        return ISSVNetwork(SSV_ADDRESS).getAddressBalance(address(this));
-    }
-
-    // manuel function to deposit SSV
-    function SSVdeposit(uint256 ssvAmount) external onlyOwner {
-        ISSVNetwork(SSV_ADDRESS).deposit(address(this), ssvAmount);
-    }
-
-    // manuel function to withdraw SSV
-    function SSVwithdrawAll() external onlyOwner {
-        ISSVNetwork(SSV_ADDRESS).withdrawAll();
-    }
-
-    // function to check if the user is verified by Quadrata
     function verified(address _sender) public view returns (bool) {
         uint256 rslt = IQuadrata(QUADRATA).balanceOf(_sender, is_BUSINESS);
         return (rslt >= 1);
     }
 
-    // function to get the validators of a staker
     function getValidatorSelf() external view returns (bytes[] memory) {
         return validatortoStaker[msg.sender];
     }
 
-    // function to get the validators of a staker
-    function getValidator(address _addr)
-        external
-        view
-        returns (bytes[] memory)
-    {
+    function getValidator(address _addr) external view returns (bytes[] memory) {
         return validatortoStaker[_addr];
     }
 
-    // function to get the balance of the contract
     function getBalance() external view returns (uint256) {
         return address(this).balance;
     }

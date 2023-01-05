@@ -18,6 +18,7 @@ contract InstStaScript is Script {
             0xb9e155e65B5c4D66df28Da8E9a0957f06F11Bc04,
             0xff50ed3d0ec03aC01D4C79aAd74928BFF48a7b2b
         );
+        instSta.SSVunlimitedApprove();
         vm.stopBroadcast();
     }
 }
