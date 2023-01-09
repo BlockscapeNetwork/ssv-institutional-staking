@@ -15,15 +15,6 @@ const nextConfig = {
     return config;
   },
   reactStrictMode: true,
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: process.env.NEXT_PUBLIC_BASE_PATH+'/stake',
-        permanent: true,
-      },
-    ]
-  },
   // experimental: {
   //   appDir: true,
   // },
