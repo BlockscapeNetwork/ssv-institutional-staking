@@ -3,6 +3,7 @@
 ## Overview
 ![Architecture](https://i.ibb.co/ZSNtwbK/Screenshot-2022-11-16-at-12-29-29.png)
 
+<<<<<<< HEAD
 ## Visit website
 
 https://blcs-inst-stake.vercel.app/ssv
@@ -13,16 +14,14 @@ https://blcs-inst-stake.vercel.app/ssv
 ```
 $ sh run.sh
 ```
+=======
+## To use
+1. Get verified
+>>>>>>> a22cd48432b2a3612b075a47cbe2dd4620fd4b22
 
-2. Generate your keystores
-* generate ten keys locally with wagyu (https://github.com/stake-house/wagyu-key-gen/releases)
-* copy them into backend/assets/keys
-* rename keys similar to current naming (1-10)
-
-3. Fix known build bug:
-copy `latest.txt` into dist folder. 
-Find file at `backend/assets/keys`
-=> copy into backend/dist/assets/keys
+2. Register validator
+* with 32 goerli eth 
+* or wihout eth
 
 
 
