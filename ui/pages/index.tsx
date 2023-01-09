@@ -173,13 +173,15 @@ const Staking: NextPage = () => {
                 />
                 {isConnected && verified ? (
                   <>
-                   
+                   <div className="tooltip w-full" data-tip="Insufficient ETH. You need 32 GöETH" hidden={!writeContract}>
                     <button
                       className="btn btn-primary btn-block"
                       onClick={() => writeContract?.()}
+                      disabled={!writeContract}
                     >
                       Deposit & Stake 32 GöETH 
                     </button>
+                    </div>
                     <div className="divider p-0 m-0">OR</div>
                     <button
                       className="btn-sm btn-primary btn-block rounded-xl"
