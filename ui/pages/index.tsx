@@ -45,7 +45,7 @@ const Staking: NextPage = () => {
 
   const contractAddr =
     chain?.name === "Goerli"
-      ?  //"0x58258904d95ec47d598b4db0d9f94fb26bb65f08"
+      ?  "0x58258904d95ec47d598b4db0d9f94fb26bb65f08"
       : chain?.name === "Mainnet"
       ? "0xe0C8df4270F4342132ec333F6048cb703E7A9c77"
       : "0x0000000000000000000000000000000000000000";
