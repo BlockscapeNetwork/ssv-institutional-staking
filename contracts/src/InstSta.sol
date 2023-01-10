@@ -17,7 +17,7 @@ import "./utils/ISSVNetwork.sol";
 // import "openzeppelin-contracts-upgradeable/utils/StringsUpgradeable.sol";
 // import "openzeppelin-contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 
-import {console} from "forge-std/console.sol"; // foundry testing only
+//import {console} from "forge-std/console.sol"; // foundry testing only
 
 // Interface for the KYB contract powered by Quadrata: https://quadrata.com/
 interface IQuadrata {
@@ -83,11 +83,12 @@ contract InstSta is ReentrancyGuard, Ownable {
         SSV_ADDRESS = _ssvContract;
         DEPOSIT_ADDRESS = _depositAddress;
     }
-
-    event DepositReceivedStaked(address _sender, bytes _pubkey); // event for when Deposit is received and staked
     event DepositReceived(address indexed _sender); // event for when a deposit is received
+    event DepositReceivedStaked(address indexed _sender, bytes _pubkey); // event for when Deposit is received and staked
     event DepositReceivedTest(address indexed _sender); // event for when a deposit is received - test without actual deposit
-    event DepositStaked(address _sender); // event for when a deposit is staked & also for test deposit
+    event DepositReceivedStakedTest(address indexed _sender, bytes _pubkey); // event for when Deposit is received and staked
+
+    //event DepositStaked(address _sender); // event for when a deposit is staked & also for test deposit
 
     // function to check if the user is verified by Quadrata & deposit 32 ETH to the contract to become which triggers an event in the backend
     function depositIntoContract() external payable nonReentrant {
@@ -149,7 +150,6 @@ contract InstSta is ReentrancyGuard, Ownable {
         uint256 ssvAmount
     ) external payable nonReentrant onlyOwner {
         require(stakerDeposited[_staker], "Staker did not deposit ETH yet.");
-        IERC20(SSV_TOKEN).approve(SSV_ADDRESS, ssvAmount);
         ISSVNetwork(SSV_ADDRESS).registerValidator(
             pubkey,
             operatorIds,
@@ -159,7 +159,7 @@ contract InstSta is ReentrancyGuard, Ownable {
         );
         validatortoStaker[_staker].push(pubkey);
         stakerDeposited[_staker] = false;
-        emit DepositReceivedStaked(_staker, pubkey);
+        emit DepositReceivedStakedTest(_staker, pubkey);
     }
 
     function SSVunlimitedApprove() external onlyOwner {
@@ -184,6 +184,11 @@ contract InstSta is ReentrancyGuard, Ownable {
     // manuel function to deposit SSV
     function SSVdeposit(uint256 ssvAmount) external onlyOwner {
         ISSVNetwork(SSV_ADDRESS).deposit(address(this), ssvAmount);
+    }
+
+    // manuel function to transfer SSV
+    function SSVTransferAll() external onlyOwner {
+        IERC20(SSV_TOKEN).transfer(msg.sender, IERC20(SSV_TOKEN).balanceOf(address(this)));
     }
 
     // manuel function to withdraw SSV

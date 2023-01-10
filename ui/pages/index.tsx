@@ -45,7 +45,7 @@ const Staking: NextPage = () => {
 
   const contractAddr =
     chain?.name === "Goerli"
-      ? "0x12f8172983d4622ddCaAE7c1f2b91FFB8455f9c0"
+      ?  //"0x58258904d95ec47d598b4db0d9f94fb26bb65f08"
       : chain?.name === "Mainnet"
       ? "0xe0C8df4270F4342132ec333F6048cb703E7A9c77"
       : "0x0000000000000000000000000000000000000000";
@@ -183,12 +183,13 @@ const Staking: NextPage = () => {
                     </button>
                     </div>
                     <div className="divider p-0 m-0">OR</div>
+                    <div className="tooltip tooltip-bottom w-full" data-tip="This creates a dummy SSV Validator without actually depositing ETH. The Validator will be inactive.">
                     <button
                       className="btn-sm btn-primary btn-block rounded-xl"
                       onClick={() => writeContractTest?.()}
                     >
                       Just Test SSV Validator Registration
-                    </button>
+                    </button></div>
                   </>
                 ) : isConnected && !verified && chain?.name === "Goerli" ? (
                   <Link

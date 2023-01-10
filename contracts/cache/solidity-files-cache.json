@@ -739,66 +739,9 @@
         }
       }
     },
-    "src/InstSta copy.sol": {
-      "lastModificationDate": 1672924075865,
-      "contentHash": "0055036e67ae6d930f750dcf58492558",
-      "sourceName": "src/InstSta copy.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 10000000
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "viaIR": true,
-          "libraries": {}
-        }
-      },
-      "imports": [
-        "lib/forge-std/src/console.sol",
-        "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
-        "lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol",
-        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
-        "lib/openzeppelin-contracts/contracts/utils/Context.sol",
-        "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
-        "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
-        "src/utils/ISSVNetwork.sol",
-        "src/utils/ISSVRegistry.sol"
-      ],
-      "versionRequirement": ">=0.8.15",
-      "artifacts": {
-        "IDepositContract": {
-          "0.8.17+commit.8df45f5f.Darwin.appleclang": "InstSta copy.sol/IDepositContract.json"
-        },
-        "IQuadrata": {
-          "0.8.17+commit.8df45f5f.Darwin.appleclang": "InstSta copy.sol/IQuadrata.json"
-        },
-        "InstSta": {
-          "0.8.17+commit.8df45f5f.Darwin.appleclang": "InstSta copy.sol/InstSta.json"
-        }
-      }
-    },
     "src/InstSta.sol": {
-      "lastModificationDate": 1672927400587,
-      "contentHash": "d8e805feeeaaec9ebc3b6da56c91ca54",
+      "lastModificationDate": 1673349273255,
+      "contentHash": "c032d2732f8b1382c99be6a7ca6a2ae7",
       "sourceName": "src/InstSta.sol",
       "solcConfig": {
         "settings": {
@@ -830,7 +773,6 @@
         }
       },
       "imports": [
-        "lib/forge-std/src/console.sol",
         "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
         "lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
@@ -850,6 +792,63 @@
         },
         "InstSta": {
           "0.8.17+commit.8df45f5f.Darwin.appleclang": "InstSta.sol/InstSta.json"
+        }
+      }
+    },
+    "src/InstSta_old.sol": {
+      "lastModificationDate": 1672924075865,
+      "contentHash": "0055036e67ae6d930f750dcf58492558",
+      "sourceName": "src/InstSta_old.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 10000000
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "viaIR": true,
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/forge-std/src/console.sol",
+        "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
+        "lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Context.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
+        "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
+        "src/utils/ISSVNetwork.sol",
+        "src/utils/ISSVRegistry.sol"
+      ],
+      "versionRequirement": ">=0.8.15",
+      "artifacts": {
+        "IDepositContract": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "InstSta_old.sol/IDepositContract.json"
+        },
+        "IQuadrata": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "InstSta_old.sol/IQuadrata.json"
+        },
+        "InstSta": {
+          "0.8.17+commit.8df45f5f.Darwin.appleclang": "InstSta_old.sol/InstSta.json"
         }
       }
     },
