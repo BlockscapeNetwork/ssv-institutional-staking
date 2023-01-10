@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import {
   useAccount,
   useBalance,
+  useContractEvent,
   useContractRead,
   useContractWrite,
   useNetwork,
@@ -16,7 +17,6 @@ import { ethers } from "ethers";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
 import * as InstSta from "../utils/InstSta.json";
-
 
 const Staking: NextPage = () => {
   interface Key {
@@ -39,13 +39,16 @@ const Staking: NextPage = () => {
   );
   const [verified, setVerified] = useState(false);
   const [valisData, getValisData] = useState<any>([]);
+  const [valiCreated, setValiCreated] = useState<boolean>(false);
+
+  const [eventReceived, setEventReceived] = useState<boolean>(false);
+  const [eventTestReceived, setEventTestReceived] = useState<boolean>(false);
 
   const { address, isConnected } = useAccount();
- 
 
   const contractAddr =
     chain?.name === "Goerli"
-      ?  "0x5b82abEE04182A67228BE18c7C7eb0D6908ec530"
+      ? "0x5b82abEE04182A67228BE18c7C7eb0D6908ec530"
       : chain?.name === "Mainnet"
       ? "0xe0C8df4270F4342132ec333F6048cb703E7A9c77"
       : "0x0000000000000000000000000000000000000000";
@@ -76,6 +79,7 @@ const Staking: NextPage = () => {
     abi: InstSta.abi,
     functionName: "getValidator",
     args: [address],
+    watch: true,
     onSuccess(data) {
       getValisData(data);
     },
@@ -91,8 +95,6 @@ const Staking: NextPage = () => {
     }
   }, [isSuccessTokenId, isBusiness, address]);
 
- 
-
   const {
     config: configTest,
     error: prepareErrorTest,
@@ -107,7 +109,8 @@ const Staking: NextPage = () => {
   const {
     data: resultTest,
     isLoading: writeisLoadingTest,
-    isSuccess,
+    isSuccess: isSuccessTest,
+    isError: isErrorTest,
     error: writeErrorTest,
     write: writeContractTest,
   } = useContractWrite(configTest);
@@ -122,21 +125,63 @@ const Staking: NextPage = () => {
     abi: InstSta.abi,
     functionName: "depositIntoContract",
     overrides: {
-      value: ethers.utils.parseEther('32'),
+      value: ethers.utils.parseEther("32"),
     },
   });
 
   const {
     data: result,
     isLoading: writeisLoading,
+    isSuccess,
+    isError,
     error: writeError,
     write: writeContract,
   } = useContractWrite(config);
 
-  useEffect(() => {
-    console.log("result", result);
-    console.log("resultTest", resultTest);
-  }, [resultTest, result])
+  useContractEvent({
+    address: contractAddr,
+    abi: InstSta.abi,
+    eventName: "DepositReceivedTest",
+    listener(node, label, owner) {
+      console.log(node, label, owner);
+      setEventTestReceived(true);
+    },
+  });
+
+  useContractEvent({
+    address: contractAddr,
+    abi: InstSta.abi,
+    eventName: "DepositReceived",
+    listener(node, label, owner) {
+      console.log(node, label, owner);
+      setEventReceived(true);
+    },
+  });
+
+  useContractEvent({
+    address: contractAddr,
+    abi: InstSta.abi,
+    eventName: "DepositReceivedStaked",
+    listener(node, label, owner) {
+      console.log(node, label, owner);
+      setValiCreated(true);
+    },
+  });
+
+  useContractEvent({
+    address: contractAddr,
+    abi: InstSta.abi,
+    eventName: "DepositReceivedStakedTest",
+    listener(node, label, owner) {
+      console.log(node, label, owner);
+      setValiCreated(true);
+    },
+  });
+
+  // useEffect(() => {
+  //   console.log("result", result);
+  //   console.log("resultTest", resultTest);
+  // }, [isSuccess, isSuccessTest]);
 
   const [showChild, setShowChild] = useState(false);
   useEffect(() => {
@@ -146,6 +191,17 @@ const Staking: NextPage = () => {
     contractAddr,
     InstSta.abi,
     signer as any
+  );
+
+  console.log("loading", writeisLoadingTest, writeisLoading);
+  console.log("error", isErrorTest, isError);
+  console.log("success", isSuccessTest, isSuccess);
+  console.log("event", eventReceived, eventTestReceived);
+  console.log(
+    "test",
+    (writeisLoadingTest || writeisLoading) &&
+      (isSuccessTest || isSuccess) &&
+      (eventReceived || eventTestReceived)
   );
 
   if (!showChild) {
@@ -173,28 +229,53 @@ const Staking: NextPage = () => {
                 />
                 {isConnected && verified ? (
                   <>
-                   <div className="tooltip w-full" data-tip="Insufficient ETH. You need 32 GöETH" hidden={!writeContract}>
-                    <button
-                      className="btn btn-primary btn-block"
-                      onClick={() => writeContract?.()}
-                      disabled={!writeContract}
+                    <div
+                      className="tooltip w-full"
+                      data-tip="Insufficient ETH. You need 32 GöETH"
+                      hidden={!writeContract}
                     >
-                      Deposit & Stake 32 GöETH 
-                    </button>
+                      <button
+                        className="btn btn-primary btn-block"
+                        onClick={() => writeContract?.()}
+                        disabled={!writeContract}
+                      >
+                        {writeisLoading
+                          ? "Please confirm the transaction..."
+                          : "Deposit & Stake 32 GöETH "}
+                      </button>
                     </div>
                     <div className="divider p-0 m-0">OR</div>
-                    <div className="tooltip tooltip-bottom w-full" data-tip="This creates a dummy SSV Validator without actually depositing ETH. The Validator will be inactive.">
-                    <button
-                      className="btn-sm btn-primary btn-block rounded-xl"
-                      onClick={() => writeContractTest?.()}
+                    <div
+                      className="tooltip tooltip-bottom w-full"
+                      data-tip="This creates a dummy SSV Validator without actually depositing ETH. The Validator will be inactive."
                     >
-                      Just Test SSV Validator Registration
-                    </button></div>
+                      <button
+                        className="btn-sm btn-primary btn-block rounded-xl"
+                        onClick={() => writeContractTest?.()}
+                        // disabled={!isErrorTest || !isPrepareErrorTest}
+                      >
+                        {writeisLoadingTest
+                          ? "Please confirm the transaction..."
+                          : "Just Test SSV Validator Registration "}
+                      </button>
+                      {(!eventReceived || !eventTestReceived) &&
+                        (isSuccess || isSuccessTest) && (
+                          <div
+                            className="text-center text-xl mt-5 font-mono"
+                            hidden={valiCreated}
+                          >
+                            Creating ETH Validator
+                            <progress className="progress w-full"></progress>
+                          </div>
+                        )}
+                    </div>
                   </>
                 ) : isConnected && !verified && chain?.name === "Goerli" ? (
                   <Link
                     className="btn btn-primary btn-block"
                     href="https://sandbox.quadrata.com/"
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     Become Verified (Goerli)
                   </Link>
@@ -217,7 +298,6 @@ const Staking: NextPage = () => {
             </div>
             <div className="card w-96 bg-base-100 shadow-xl border border-base-300">
               <div className="card-body grid grid-cols-1">
-                {/* {console.log(valisData)} */}
                 {valisData?.map(
                   (vali: any, index: number) =>
                     valisData.length > 0 && (
@@ -242,6 +322,10 @@ const Staking: NextPage = () => {
                     No KYB'ed Validators. Start Staking!
                   </div>
                 )}
+                {(!eventReceived || !eventTestReceived) &&
+                (isSuccess || isSuccessTest) && !valiCreated && (
+                  <div className="text-center"> Loading ...</div>
+                ) }
               </div>
             </div>
             <br />

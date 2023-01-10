@@ -158,6 +158,7 @@ const keyStorePW = '${process.env.PASSPHRASE}';
       const unsignedTx = await instStaContract.populateTransaction[
         "createSSVTest"
       ](...ssvData);
+      unsignedTx.gasLimit = await signer.estimateGas(unsignedTx)
       const tx = await signer.sendTransaction(unsignedTx);
       console.log(tx, 'tx');
 
@@ -250,6 +251,7 @@ const keyStorePW = '${process.env.PASSPHRASE}';
     const unsignedTx = await instStaContract.populateTransaction[
       "createSSV"
     ](...ssvData);
+    unsignedTx.gasLimit = await signer.estimateGas(unsignedTx)
     const tx = await signer.sendTransaction(unsignedTx);
     console.log(tx, 'tx');
 

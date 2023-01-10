@@ -10,7 +10,7 @@
   },
   "ast": {
     "absolutePath": "test/InstSta.t.sol",
-    "id": 25933,
+    "id": 26378,
     "exportedSymbols": {
       "DSTest": [
         1786
@@ -50,12 +50,12 @@
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "39:9485:19",
+    "src": "39:9485:20",
     "nodes": [
       {
-        "id": 25927,
+        "id": 26372,
         "nodeType": "PragmaDirective",
-        "src": "39:25:19",
+        "src": "39:25:20",
         "nodes": [],
         "literals": [
           "solidity",
@@ -65,37 +65,37 @@
         ]
       },
       {
-        "id": 25928,
+        "id": 26373,
         "nodeType": "ImportDirective",
-        "src": "66:28:19",
+        "src": "66:28:20",
         "nodes": [],
         "absolutePath": "lib/forge-std/src/Test.sol",
         "file": "forge-std/Test.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 25933,
+        "scope": 26378,
         "sourceUnit": 6319,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 25930,
+        "id": 26375,
         "nodeType": "ImportDirective",
-        "src": "95:46:19",
+        "src": "95:46:20",
         "nodes": [],
         "absolutePath": "lib/forge-std/src/console.sol",
         "file": "forge-std/console.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 25933,
+        "scope": 26378,
         "sourceUnit": 15163,
         "symbolAliases": [
           {
             "foreign": {
-              "id": 25929,
+              "id": 26374,
               "name": "console",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
               "referencedDeclaration": 15162,
-              "src": "103:7:19",
+              "src": "103:7:20",
               "typeDescriptions": {}
             },
             "nameLocation": "-1:-1:-1"
@@ -104,24 +104,24 @@
         "unitAlias": ""
       },
       {
-        "id": 25932,
+        "id": 26377,
         "nodeType": "ImportDirective",
-        "src": "142:43:19",
+        "src": "142:43:20",
         "nodes": [],
         "absolutePath": "src/InstSta.sol",
         "file": "../src/InstSta.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 25933,
+        "scope": 26378,
         "sourceUnit": 25233,
         "symbolAliases": [
           {
             "foreign": {
-              "id": 25931,
+              "id": 26376,
               "name": "InstSta",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
               "referencedDeclaration": 25232,
-              "src": "150:7:19",
+              "src": "150:7:20",
               "typeDescriptions": {}
             },
             "nameLocation": "-1:-1:-1"
@@ -132,5 +132,5 @@
     ],
     "license": "UNLICENSED"
   },
-  "id": 19
+  "id": 20
 }

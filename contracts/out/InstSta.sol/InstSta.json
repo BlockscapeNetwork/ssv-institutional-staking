@@ -1065,10 +1065,10 @@
         24713
       ],
       "ISSVNetwork": [
-        25723
+        26168
       ],
       "ISSVRegistry": [
-        25925
+        26370
       ],
       "InstSta": [
         25232
@@ -1162,7 +1162,7 @@
         "file": "./utils/ISSVNetwork.sol",
         "nameLocation": "-1:-1:-1",
         "scope": 25233,
-        "sourceUnit": 25724,
+        "sourceUnit": 26169,
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -4318,10 +4318,10 @@
                           "name": "ISSVNetwork",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 25723,
+                          "referencedDeclaration": 26168,
                           "src": "5740:11:16",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_ISSVNetwork_$25723_$",
+                            "typeIdentifier": "t_type$_t_contract$_ISSVNetwork_$26168_$",
                             "typeString": "type(contract ISSVNetwork)"
                           }
                         },
@@ -4337,7 +4337,7 @@
                         "src": "5740:24:16",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISSVNetwork_$25723",
+                          "typeIdentifier": "t_contract$_ISSVNetwork_$26168",
                           "typeString": "contract ISSVNetwork"
                         }
                       },
@@ -4349,7 +4349,7 @@
                       "memberLocation": "5765:17:16",
                       "memberName": "registerValidator",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 25497,
+                      "referencedDeclaration": 25942,
                       "src": "5740:42:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_bytes_memory_ptr_$_t_array$_t_uint32_$dyn_memory_ptr_$_t_array$_t_bytes_memory_ptr_$dyn_memory_ptr_$_t_array$_t_bytes_memory_ptr_$dyn_memory_ptr_$_t_uint256_$returns$__$",
@@ -5168,10 +5168,10 @@
                           "name": "ISSVNetwork",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 25723,
+                          "referencedDeclaration": 26168,
                           "src": "6653:11:16",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_ISSVNetwork_$25723_$",
+                            "typeIdentifier": "t_type$_t_contract$_ISSVNetwork_$26168_$",
                             "typeString": "type(contract ISSVNetwork)"
                           }
                         },
@@ -5187,7 +5187,7 @@
                         "src": "6653:24:16",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISSVNetwork_$25723",
+                          "typeIdentifier": "t_contract$_ISSVNetwork_$26168",
                           "typeString": "contract ISSVNetwork"
                         }
                       },
@@ -5199,7 +5199,7 @@
                       "memberLocation": "6678:17:16",
                       "memberName": "registerValidator",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 25497,
+                      "referencedDeclaration": 25942,
                       "src": "6653:42:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_bytes_memory_ptr_$_t_array$_t_uint32_$dyn_memory_ptr_$_t_array$_t_bytes_memory_ptr_$dyn_memory_ptr_$_t_array$_t_bytes_memory_ptr_$dyn_memory_ptr_$_t_uint256_$returns$__$",
@@ -6211,10 +6211,10 @@
                           "name": "ISSVNetwork",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 25723,
+                          "referencedDeclaration": 26168,
                           "src": "7422:11:16",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_ISSVNetwork_$25723_$",
+                            "typeIdentifier": "t_type$_t_contract$_ISSVNetwork_$26168_$",
                             "typeString": "type(contract ISSVNetwork)"
                           }
                         },
@@ -6230,7 +6230,7 @@
                         "src": "7422:24:16",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISSVNetwork_$25723",
+                          "typeIdentifier": "t_contract$_ISSVNetwork_$26168",
                           "typeString": "contract ISSVNetwork"
                         }
                       },
@@ -6242,7 +6242,7 @@
                       "memberLocation": "7447:15:16",
                       "memberName": "removeValidator",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 25520,
+                      "referencedDeclaration": 25965,
                       "src": "7422:40:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_bytes_memory_ptr_$returns$__$",
@@ -6444,10 +6444,10 @@
                           "name": "ISSVNetwork",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 25723,
+                          "referencedDeclaration": 26168,
                           "src": "7606:11:16",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_ISSVNetwork_$25723_$",
+                            "typeIdentifier": "t_type$_t_contract$_ISSVNetwork_$26168_$",
                             "typeString": "type(contract ISSVNetwork)"
                           }
                         },
@@ -6463,7 +6463,7 @@
                         "src": "7606:24:16",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISSVNetwork_$25723",
+                          "typeIdentifier": "t_contract$_ISSVNetwork_$26168",
                           "typeString": "contract ISSVNetwork"
                         }
                       },
@@ -6475,7 +6475,7 @@
                       "memberLocation": "7631:17:16",
                       "memberName": "getAddressBalance",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 25593,
+                      "referencedDeclaration": 26038,
                       "src": "7606:42:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -6677,10 +6677,10 @@
                           "name": "ISSVNetwork",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 25723,
+                          "referencedDeclaration": 26168,
                           "src": "7782:11:16",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_ISSVNetwork_$25723_$",
+                            "typeIdentifier": "t_type$_t_contract$_ISSVNetwork_$26168_$",
                             "typeString": "type(contract ISSVNetwork)"
                           }
                         },
@@ -6696,7 +6696,7 @@
                         "src": "7782:24:16",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISSVNetwork_$25723",
+                          "typeIdentifier": "t_contract$_ISSVNetwork_$26168",
                           "typeString": "contract ISSVNetwork"
                         }
                       },
@@ -6708,7 +6708,7 @@
                       "memberLocation": "7807:7:16",
                       "memberName": "deposit",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 25528,
+                      "referencedDeclaration": 25973,
                       "src": "7782:32:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -7173,10 +7173,10 @@
                           "name": "ISSVNetwork",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 25723,
+                          "referencedDeclaration": 26168,
                           "src": "8136:11:16",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_ISSVNetwork_$25723_$",
+                            "typeIdentifier": "t_type$_t_contract$_ISSVNetwork_$26168_$",
                             "typeString": "type(contract ISSVNetwork)"
                           }
                         },
@@ -7192,7 +7192,7 @@
                         "src": "8136:24:16",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISSVNetwork_$25723",
+                          "typeIdentifier": "t_contract$_ISSVNetwork_$26168",
                           "typeString": "contract ISSVNetwork"
                         }
                       },
@@ -7204,7 +7204,7 @@
                       "memberLocation": "8161:11:16",
                       "memberName": "withdrawAll",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 25538,
+                      "referencedDeclaration": 25983,
                       "src": "8136:36:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$__$returns$__$",
