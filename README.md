@@ -12,7 +12,11 @@ In summary, Our solution is a one-stop-shop for institutional Ethereum stakers s
 
 
 ## Overview
-![Architecture](https://i.ibb.co/ZSNtwbK/Screenshot-2022-11-16-at-12-29-29.png)
+![Overview](https://i.ibb.co/ZSNtwbK/Screenshot-2022-11-16-at-12-29-29.png)
+
+
+## Architecture
+![Tech. Architecture](https://i.postimg.cc/tCVMQy3y/Screenshot-2023-01-11-at-15-25-35.png)
 
 ## Visit website
 
